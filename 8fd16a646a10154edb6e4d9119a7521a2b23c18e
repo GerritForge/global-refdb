@@ -69,6 +69,30 @@
       "revId": "8fd16a646a10154edb6e4d9119a7521a2b23c18e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b48dde0b_94042c3c",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2019-09-23T12:26:18Z",
+      "side": 1,
+      "message": "Ok than :)",
+      "parentUuid": "fe6122bd_51f9f863",
+      "range": {
+        "startLine": 83,
+        "startChar": 7,
+        "endLine": 83,
+        "endChar": 13
+      },
+      "revId": "8fd16a646a10154edb6e4d9119a7521a2b23c18e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
