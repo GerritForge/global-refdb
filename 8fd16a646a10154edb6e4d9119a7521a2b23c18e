@@ -45,6 +45,30 @@
       "revId": "8fd16a646a10154edb6e4d9119a7521a2b23c18e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe6122bd_51f9f863",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-09-23T12:22:51Z",
+      "side": 1,
+      "message": "Nope, I\u0027m just copying the code at the moment.\nThe design doc is under discussion, it is unclear how that discussion will go.\n\nThe start isn\u0027t promising: \"this is not something that Gerrit should do\" :-(",
+      "parentUuid": "1e80403f_18cee46b",
+      "range": {
+        "startLine": 83,
+        "startChar": 7,
+        "endLine": 83,
+        "endChar": 13
+      },
+      "revId": "8fd16a646a10154edb6e4d9119a7521a2b23c18e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }
