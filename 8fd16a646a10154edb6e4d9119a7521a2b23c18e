@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d76e743_8c28edd2",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2019-09-23T12:20:43Z",
+      "side": 1,
+      "message": "Is this read, write exclusive lock? You can copy description from design doc",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 21
+      },
+      "revId": "8fd16a646a10154edb6e4d9119a7521a2b23c18e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e80403f_18cee46b",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2019-09-23T12:20:43Z",
+      "side": 1,
+      "message": "are we following design doc? If yes we need to add remove(project, refName) method",
+      "range": {
+        "startLine": 83,
+        "startChar": 7,
+        "endLine": 83,
+        "endChar": 13
+      },
+      "revId": "8fd16a646a10154edb6e4d9119a7521a2b23c18e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
