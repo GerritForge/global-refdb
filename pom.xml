@@ -20,8 +20,8 @@
     </licenses>
 
     <scm>
-        <url>https://review.gerrithub.io/gerritforge/global-refdb.git</url>
-        <connection>https://review.gerrithub.io/gerritforge/global-refdb.git</connection>
+        <url>https://review.gerrithub.io/GerritForge/global-refdb.git</url>
+        <connection>https://review.gerrithub.io/GerritForge/global-refdb.git</connection>
     </scm>
 
     <developers>
