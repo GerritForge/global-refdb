@@ -16,6 +16,24 @@
       "revId": "7769d3cbe3b8e8bd510a15109348b541e9951c41",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bebfe454_9a8d471f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2019-10-07T11:51:46Z",
+      "side": 1,
+      "message": "To which empty line you are referring? In line 14? If yes this is added automatically. I believe gerrithub is not linking to the monorail at all",
+      "parentUuid": "441005c1_acfe17b5",
+      "revId": "7769d3cbe3b8e8bd510a15109348b541e9951c41",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }
