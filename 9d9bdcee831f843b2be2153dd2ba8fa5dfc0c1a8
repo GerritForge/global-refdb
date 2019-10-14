@@ -22,6 +22,30 @@
       "revId": "9d9bdcee831f843b2be2153dd2ba8fa5dfc0c1a8",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89a3dc54_7305ff32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-10-14T09:58:17Z",
+      "side": 1,
+      "message": "\u003e To avoid confusion, say \"build verification\" and Java file format validation. I have misunderstood the subject as format check for Bazel (build) and Java files. It turned out, Bazel format validation is not involved here.\n\nYes, exactly. I would have chosen a Bazel build instead of of Maven, if you know a simple way to publish to Maven Central from Bazel without having Maven in the first place :-)",
+      "parentUuid": "9eebf8d2_b097cbe2",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "9d9bdcee831f843b2be2153dd2ba8fa5dfc0c1a8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }
