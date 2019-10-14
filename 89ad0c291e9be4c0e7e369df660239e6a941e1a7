@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21b4d715_b3a1f0d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2019-10-14T07:00:40Z",
+      "side": 1,
+      "message": "May be explain what exactly is checked? Java file with google-java-format 1.7 and Bazel (BUILD) and Starlark files (*.bzl) files buildifier.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "89ad0c291e9be4c0e7e369df660239e6a941e1a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3d385b3_85c0d0ad",
+        "filename": "Jenkinsfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2019-10-14T07:00:40Z",
+      "side": 1,
+      "message": "Can groovy file also be auto-formatted?",
+      "revId": "89ad0c291e9be4c0e7e369df660239e6a941e1a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
