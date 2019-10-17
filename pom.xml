@@ -4,7 +4,7 @@
 
     <groupId>com.gerritforge</groupId>
     <artifactId>global-refdb</artifactId>
-    <version>0.1.1</version>
+    <version>3.0.0</version>
     <packaging>jar</packaging>
 
     <name>global-refdb</name>
@@ -20,8 +20,8 @@
     </licenses>
 
     <scm>
-        <url>https://review.gerrithub.io/gerritforge/global-refdb.git</url>
-        <connection>https://review.gerrithub.io/gerritforge/global-refdb.git</connection>
+        <url>https://review.gerrithub.io/GerritForge/global-refdb.git</url>
+        <connection>https://review.gerrithub.io/GerritForge/global-refdb.git</connection>
     </scm>
 
     <developers>
@@ -38,19 +38,20 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <gerrit.version>3.0.2</gerrit.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.google.gerrit</groupId>
             <artifactId>gerrit-plugin-api</artifactId>
-            <version>3.0.2</version>
+            <version>${gerrit.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.google.gerrit</groupId>
             <artifactId>gerrit-acceptance-framework</artifactId>
-            <version>3.0.2</version>
+            <version>${gerrit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -120,6 +121,30 @@
                         <goals>
                             <goal>sign</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.theoryinpractise</groupId>
+                <artifactId>googleformatter-maven-plugin</artifactId>
+                <version>1.7.3</version>
+                <executions>
+                    <execution>
+                        <id>reformat-sources</id>
+                        <configuration>
+                            <includeStale>false</includeStale>
+                            <style>GOOGLE</style>
+                            <formatMain>true</formatMain>
+                            <formatTest>true</formatTest>
+                            <filterModified>false</filterModified>
+                            <skip>false</skip>
+                            <fixImports>true</fixImports>
+                            <maxLineLength>100</maxLineLength>
+                        </configuration>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                        <phase>process-sources</phase>
                     </execution>
                 </executions>
             </plugin>
