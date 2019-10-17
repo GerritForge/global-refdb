@@ -190,6 +190,30 @@
       "revId": "9d9bdcee831f843b2be2153dd2ba8fa5dfc0c1a8",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2953f7ff_64900e58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-10-17T10:16:14Z",
+      "side": 1,
+      "message": "\u003e \u003e Bazel doesn\u0027t help with the purpose of this library, however, I\u0027m fully sold for using it everywhere else.\n\u003e \n\u003e But then it\u0027s something to be improved in Bazel, right? And we could contribute to it, because that\u0027s how open source works.\n\nHoly words :-)\n\nLooking forward to the Summit and get some \"Bazel crash-course\" :-)\nI went to a meetup in London that was supposed to be Bazel-centric, but then actually there were many other build systems and was very theoretical.\n\nBazelCon also is just 1 week after our Gerrit User Summit, I am so sorry we did not manage to do a unique conference for both :-(",
+      "parentUuid": "9695556a_5f437630",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "9d9bdcee831f843b2be2153dd2ba8fa5dfc0c1a8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
