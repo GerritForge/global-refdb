@@ -15,7 +15,7 @@
 package com.gerritforge.gerrit.globalrefdb;
 
 import com.google.common.collect.MapMaker;
-import com.google.gerrit.reviewdb.client.Project;
+import com.google.gerrit.entities.Project;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Lock;
