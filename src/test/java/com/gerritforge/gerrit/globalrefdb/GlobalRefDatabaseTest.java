@@ -15,9 +15,10 @@
 package com.gerritforge.gerrit.globalrefdb;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.fail;
 
 import com.google.gerrit.acceptance.AbstractDaemonTest;
-import com.google.gerrit.reviewdb.client.RefNames;
+import com.google.gerrit.entities.RefNames;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import org.eclipse.jgit.lib.ObjectId;
