@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12d612c0_dba1b2cd",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabaseTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2019-10-17T12:35:27Z",
+      "side": 1,
+      "message": "Why is this needed now?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 36
+      },
+      "revId": "bf6656b4893fef92c3b4478175657ad52917272a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
