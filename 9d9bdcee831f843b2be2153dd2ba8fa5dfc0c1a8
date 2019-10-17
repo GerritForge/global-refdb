@@ -118,6 +118,30 @@
       "revId": "9d9bdcee831f843b2be2153dd2ba8fa5dfc0c1a8",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91166d01_01992e47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2019-10-17T09:39:26Z",
+      "side": 1,
+      "message": "\u003e AFAIK, [1] uses Maven anyway.\n\nTrue, but in: [1] mvn only used to install|deploy final artifact (as interface to Maven Central or other repositories, like Google Storage Bucket), while right now, you are using mvn to build/test your sources.",
+      "parentUuid": "437ccbac_f0575806",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "9d9bdcee831f843b2be2153dd2ba8fa5dfc0c1a8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }
