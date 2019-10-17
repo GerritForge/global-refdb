@@ -166,6 +166,30 @@
       "revId": "9d9bdcee831f843b2be2153dd2ba8fa5dfc0c1a8",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9695556a_5f437630",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2019-10-17T10:11:24Z",
+      "side": 1,
+      "message": "\u003e Bazel doesn\u0027t help with the purpose of this library, however, I\u0027m fully sold for using it everywhere else.\n\nBut then it\u0027s something to be improved in Bazel, right? And we could contribute to it, because that\u0027s how open source works.\n\nIn Buck it was possible to assign maven_coordinates to a java rule,\nbuild it and just say:\n\n  buck publish :foo\n\nand then it just worked and deployed to Maven Central, and that what great: [3].\n\nBazel is still missing that feature, unfortuantely. The corresponding feature request is here: [4]. It seems, that some other projects have found the workaround, and we could investiagte their approach: [5].\n\n[3] https://buck.build/command/publish.html\n[4] https://github.com/bazelbuild/bazel/issues/1372\n[5] https://github.com/graknlabs/bazel-distribution",
+      "parentUuid": "58b6d44d_719a36c4",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "9d9bdcee831f843b2be2153dd2ba8fa5dfc0c1a8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
