@@ -22,6 +22,30 @@
       "revId": "bf6656b4893fef92c3b4478175657ad52917272a",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "848147e4_847f800b",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabaseTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-10-17T15:41:17Z",
+      "side": 1,
+      "message": "The method was exposed by the AbstractDaemonTest but then removed in Gerrit master with e62e5ee6f791545c6f1e486be06807a324dc8fc8.",
+      "parentUuid": "12d612c0_dba1b2cd",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 36
+      },
+      "revId": "bf6656b4893fef92c3b4478175657ad52917272a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }
