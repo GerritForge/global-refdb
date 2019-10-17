@@ -46,6 +46,30 @@
       "revId": "9d9bdcee831f843b2be2153dd2ba8fa5dfc0c1a8",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89c98f88_2ead1807",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2019-10-17T06:59:05Z",
+      "side": 1,
+      "message": "Well, we could do something similar what gerrit and gitiles project do. Gitiles project is more interesting, as it\u0027s using Bazlets infrastructure, see: [1].\n\nMoreover, there was a discussion on bazel mailing list about that topic: [1]. And I also got private message from another build engineer, with this content:\n\n\"\nWe do something similar. We publish, at last count, 410 artifacts to an internal Nexus repo. We use a custom rule to generate pom.xml (although you could use rules_jvm_external and bazel-common\u0027s pom-file as shown here[0]) and then have an install/publish script that finds all of our poms in `bazel-bin` and stuffs them as modules into a templated \"super pom\". We then run `mvn -f $SUPER_POM [install|deploy] on this \"super pom\". In our testing, maven was faster at uploading several hundred artifacts than what we could achieve using the nexus rest api or invoking individual maven processes in parallel, thus the \"super pom\" complication. This all takes about 30s of wall clock time.\n\"\n\nBottom line: we have a number of options here, to get rid of Maven altogether. And we should seize them.\n\n* [0] https://github.com/bazelbuild/rules_jvm_external/tree/master/examples/pom_file_generation)\n* [1] https://gerrit.googlesource.com/gitiles/+/refs/heads/master/tools/maven/BUILD\n* [2] https://groups.google.com/d/topic/bazel-discuss/65b2pphtCdM/discussion",
+      "parentUuid": "89a3dc54_7305ff32",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "9d9bdcee831f843b2be2153dd2ba8fa5dfc0c1a8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }
