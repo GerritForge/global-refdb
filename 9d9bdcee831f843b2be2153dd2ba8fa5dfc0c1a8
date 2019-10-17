@@ -142,6 +142,30 @@
       "revId": "9d9bdcee831f843b2be2153dd2ba8fa5dfc0c1a8",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58b6d44d_719a36c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-10-17T09:44:17Z",
+      "side": 1,
+      "message": "\u003e \u003e AFAIK, [1] uses Maven anyway.\n\u003e \n\u003e True, but in: [1] mvn only used to install|deploy final artifact (as interface to Maven Central or other repositories, like Google Storage Bucket), while right now, you are using mvn to build/test your sources.\n\nThis library contains only one interface: I wanted only to publish to Maven Central, that the purpose. Bazel doesn\u0027t help with the purpose of this library, however, I\u0027m fully sold for using it everywhere else.",
+      "parentUuid": "91166d01_01992e47",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "9d9bdcee831f843b2be2153dd2ba8fa5dfc0c1a8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
