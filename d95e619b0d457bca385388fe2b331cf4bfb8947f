@@ -1,0 +1,9 @@
+Formatting+1: Jenkins at Gerrit-CI <jenkins@gerritforge.com>
+Verified+1: Luca Milanesio <luca.milanesio@gmail.com>
+Verified+1: Jenkins at Gerrit-CI <jenkins@gerritforge.com>
+Code-Review+2: David Ostrovsky <david.ostrovsky@gmail.com>
+Submitted-by: Luca Milanesio <luca.milanesio@gmail.com>
+Submitted-at: Thu, 17 Oct 2019 12:33:35 +0000
+Reviewed-on: https://review.gerrithub.io/c/GerritForge/global-refdb/+/471623
+Project: GerritForge/global-refdb
+Branch: refs/heads/master
