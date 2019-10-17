@@ -14,7 +14,7 @@
 
 package com.gerritforge.gerrit.globalrefdb;
 
-import com.google.gerrit.reviewdb.client.Project;
+import com.google.gerrit.entities.Project;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
 
