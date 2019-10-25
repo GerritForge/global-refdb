@@ -1,0 +1,8 @@
+Formatting+1: Jenkins at Gerrit-CI <jenkins@gerritforge.com>
+Verified+1: Jenkins at Gerrit-CI <jenkins@gerritforge.com>
+Code-Review+2: Antonio Barone <syntonyze@gmail.com>
+Submitted-by: Luca Milanesio <luca.milanesio@gmail.com>
+Submitted-at: Fri, 25 Oct 2019 15:02:33 +0000
+Reviewed-on: https://review.gerrithub.io/c/GerritForge/global-refdb/+/472405
+Project: GerritForge/global-refdb
+Branch: refs/heads/stable-3.1
