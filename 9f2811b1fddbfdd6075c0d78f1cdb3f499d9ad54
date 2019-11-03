@@ -22,6 +22,30 @@
       "revId": "9f2811b1fddbfdd6075c0d78f1cdb3f499d9ad54",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a7a85a0_bd59e3c3",
+        "filename": "BUILD",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2019-11-03T21:15:41Z",
+      "side": 1,
+      "message": "Not really, we have fixed the test target in retrospective for all plugins to be exactly the same like the main target, plus \"_tests\" suffix, see for example: [1]. Main target is: \"global-refdb\" so that the test target must be: \"global-refdb_tests\".\n\nHint: you can use bazel test modules/global-refdb/... or just use tab for suggest the target for you (if you correctly installed bazel bash completion script, it should just work).\n\n* [1] https://gerrit-review.googlesource.com/c/plugins/high-availability/+/237692",
+      "parentUuid": "7eac0ba4_6b257cbf",
+      "range": {
+        "startLine": 19,
+        "startChar": 12,
+        "endLine": 19,
+        "endChar": 30
+      },
+      "revId": "9f2811b1fddbfdd6075c0d78f1cdb3f499d9ad54",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }
