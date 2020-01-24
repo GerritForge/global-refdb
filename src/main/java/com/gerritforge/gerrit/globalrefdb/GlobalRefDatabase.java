@@ -56,6 +56,18 @@ public interface GlobalRefDatabase {
       throws GlobalRefDbSystemError;
 
   /**
+   * Attempt to atomically set the value to the given one.
+   *
+   * @param project name of the ref.
+   * @param ref to set the value for.
+   * @param newRefValue new reference to store
+   * @return true if the put was successful; false otherwise.
+   * @throws GlobalRefDbSystemError the reference cannot be put due to a system error.
+   */
+  boolean put(Project.NameKey project, Ref ref, ObjectId newRefValue)
+      throws GlobalRefDbSystemError;
+
+  /**
    * Lock a reference.
    *
    * @param project project name
