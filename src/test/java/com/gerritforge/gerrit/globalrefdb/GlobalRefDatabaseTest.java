@@ -94,6 +94,12 @@ public class GlobalRefDatabaseTest extends AbstractDaemonTest {
   }
 
   @Test
+  public void shouldUpdateEntry() {
+    assertThat(objectUnderTest.tryAndSet(project, ref1, objectId1)).isTrue();
+    assertThat(objectUnderTest.exists(project, ref1.getName())).isTrue();
+  }
+
+  @Test
   public void shouldReturnIsUpToDateWhenProjectDoesNotExistsInTheGlobalRefDB() {
     assertThat(objectUnderTest.isUpToDate(project, initialRef)).isTrue();
   }
