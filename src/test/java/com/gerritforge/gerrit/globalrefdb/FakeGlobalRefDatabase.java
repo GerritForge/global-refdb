@@ -60,6 +60,13 @@ public class FakeGlobalRefDatabase implements GlobalRefDatabase {
   }
 
   @Override
+  public boolean tryAndSet(Project.NameKey project, Ref ref, ObjectId newRefValue) throws GlobalRefDbSystemError {
+    ConcurrentMap<String, AtomicReference<ObjectId>> projectRefDb = projectRefDb(project);
+    projectRefDb.put(ref.getName(), new AtomicReference<>(newRefValue));
+    return true;
+  }
+
+  @Override
   public AutoCloseable lockRef(Project.NameKey project, String refName)
       throws GlobalRefDbLockException {
     ConcurrentMap<String, AtomicReference<Lock>> projectRefLock = projectRefLock(project);
