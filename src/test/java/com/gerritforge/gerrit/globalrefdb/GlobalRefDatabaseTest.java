@@ -152,6 +152,12 @@ public class GlobalRefDatabaseTest extends AbstractDaemonTest {
     }
   }
 
+  @Test
+  public void shouldReturnValueInTheGlobalRefDB() {
+    objectUnderTest.compareAndPut(project, initialRef, objectId1);
+    assertThat((ObjectId) objectUnderTest.get(project, initialRef.getName())).isEqualTo(objectId1);
+  }
+
   private Ref ref(String refName, ObjectId objectId) {
     return new ObjectIdRef.Unpeeled(Ref.Storage.NETWORK, refName, objectId);
   }
