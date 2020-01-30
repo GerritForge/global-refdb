@@ -16,6 +16,7 @@ package com.gerritforge.gerrit.globalrefdb;
 
 import com.google.common.collect.MapMaker;
 import com.google.gerrit.reviewdb.client.Project;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Lock;
@@ -84,6 +85,17 @@ public class FakeGlobalRefDatabase implements GlobalRefDatabase {
   @Override
   public void remove(Project.NameKey project) throws GlobalRefDbSystemError {
     keyValueStore.remove(project);
+  }
+
+  @Override
+  @SuppressWarnings("unchecked")
+  public <T> Optional<T> get(Project.NameKey project, String refName)
+      throws GlobalRefDbSystemError {
+    if (projectRefDb(project).containsKey(refName)) {
+      return Optional.of((T) projectRefDb(project).get(refName).get());
+    } else {
+      return Optional.empty();
+    }
   }
 
   private ConcurrentMap<String, AtomicReference<ObjectId>> projectRefDb(Project.NameKey project) {

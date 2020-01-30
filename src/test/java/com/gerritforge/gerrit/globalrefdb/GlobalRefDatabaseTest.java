@@ -18,6 +18,7 @@ import static com.google.common.truth.Truth.assertThat;
 
 import com.google.gerrit.acceptance.AbstractDaemonTest;
 import com.google.gerrit.reviewdb.client.RefNames;
+import java.util.Optional;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import org.eclipse.jgit.lib.ObjectId;
@@ -150,6 +151,20 @@ public class GlobalRefDatabaseTest extends AbstractDaemonTest {
         }
       }
     }
+  }
+
+  @Test
+  public void shouldReturnValueInTheGlobalRefDB() {
+    objectUnderTest.compareAndPut(project, initialRef, objectId1);
+    Optional<ObjectId> o = objectUnderTest.get(project, initialRef.getName());
+    assertThat(o.isPresent()).isTrue();
+    assertThat(o.get()).isEqualTo(objectId1);
+  }
+
+  @Test
+  public void shouldReturnEmptyIfValueIsNotInTheGlobalRefDB() {
+    Optional<ObjectId> o = objectUnderTest.get(project, "nonExistentRef");
+    assertThat(o.isPresent()).isFalse();
   }
 
   private Ref ref(String refName, ObjectId objectId) {

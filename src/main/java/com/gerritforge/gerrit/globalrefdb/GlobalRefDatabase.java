@@ -15,6 +15,7 @@
 package com.gerritforge.gerrit.globalrefdb;
 
 import com.google.gerrit.reviewdb.client.Project;
+import java.util.Optional;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
 
@@ -81,4 +82,14 @@ public interface GlobalRefDatabase {
    * @throws GlobalRefDbSystemError project cannot be removed due to a system error.
    */
   void remove(Project.NameKey project) throws GlobalRefDbSystemError;
+
+  /**
+   * Return value for a specific project and ref name
+   *
+   * @param project project name
+   * @param refName reference name
+   * @return {@link java.util.Optional} of the value
+   * @throws GlobalRefDbSystemError value cannot be returned due to a system error.
+   */
+  <T> Optional<T> get(Project.NameKey project, String refName) throws GlobalRefDbSystemError;
 }
