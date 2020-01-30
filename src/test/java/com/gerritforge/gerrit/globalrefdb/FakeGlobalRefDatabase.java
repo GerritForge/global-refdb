@@ -86,6 +86,12 @@ public class FakeGlobalRefDatabase implements GlobalRefDatabase {
     keyValueStore.remove(project);
   }
 
+  @Override
+  @SuppressWarnings("unchecked")
+  public <T> T get(Project.NameKey project, String refName) throws GlobalRefDbSystemError {
+    return (T) projectRefDb(project).get(refName).get();
+  }
+
   private ConcurrentMap<String, AtomicReference<ObjectId>> projectRefDb(Project.NameKey project) {
     ConcurrentMap<String, AtomicReference<ObjectId>> projectRefDb = keyValueStore.get(project);
     if (projectRefDb == null) {

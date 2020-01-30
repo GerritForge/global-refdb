@@ -81,4 +81,13 @@ public interface GlobalRefDatabase {
    * @throws GlobalRefDbSystemError project cannot be removed due to a system error.
    */
   void remove(Project.NameKey project) throws GlobalRefDbSystemError;
+
+  /**
+   * Return value for the specific project and ref name
+   *
+   * @param project project name
+   * @param refName reference name
+   * @throws GlobalRefDbSystemError value cannot be returned due to a system error.
+   */
+  <T> T get(Project.NameKey project, String refName) throws GlobalRefDbSystemError;
 }
