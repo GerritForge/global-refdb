@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3e041c9_51a27483",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/FakeGlobalRefDatabase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2020-01-30T19:02:58Z",
+      "side": 1,
+      "message": "I thought it was worthy exposing a generic getter since at the moment we are only storing ObjectId, but we will need to store other types to contain, for example, version information.",
+      "range": {
+        "startLine": 91,
+        "startChar": 15,
+        "endLine": 91,
+        "endChar": 18
+      },
+      "revId": "06c70ecddf3619caf20f8b8414920eb81d335ad6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
