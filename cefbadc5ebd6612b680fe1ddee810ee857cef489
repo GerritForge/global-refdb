@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80dcbec2_51085885",
+        "filename": "pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-01-31T18:13:56Z",
+      "side": 1,
+      "message": "Why is the version changing to v3.1.0? This is the stable-3.0 branch, which is made for the stable-3.0 version of Gerrit.\n\nWe should not mix the release process with the development process: I will change the current release when I publish the library to Maven Central.",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "cefbadc5ebd6612b680fe1ddee810ee857cef489",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0855e838_f45e3e08",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabase.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-01-31T18:13:56Z",
+      "side": 1,
+      "message": "Should this be an Optional\u003cT\u003e in case the value does not exist?",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 7
+      },
+      "revId": "cefbadc5ebd6612b680fe1ddee810ee857cef489",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4ba2ff9_2099a160",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/FakeGlobalRefDatabase.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-01-31T18:13:56Z",
+      "side": 1,
+      "message": "NPE if the refName does not have a corresponding value.\nSee above my suggestion to return an Optional\u003cT\u003e instead.",
+      "range": {
+        "startLine": 92,
+        "startChar": 49,
+        "endLine": 92,
+        "endChar": 55
+      },
+      "revId": "cefbadc5ebd6612b680fe1ddee810ee857cef489",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
