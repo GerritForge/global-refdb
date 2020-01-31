@@ -56,6 +56,21 @@ public interface GlobalRefDatabase {
       throws GlobalRefDbSystemError;
 
   /**
+   * Compare a value of generic type T, and put if it is up-to-date with the current.
+   *
+   * <p>Compare and put are executed as an atomic operation.
+   *
+   * @param project project name of the ref.
+   * @param ref to store the value for.
+   * @param expectedValue current expected value in the DB.
+   * @param newValue new value to store.
+   * @return true if the put was successful; false otherwise.
+   * @throws GlobalRefDbSystemError the reference cannot be put due to a system error.
+   */
+  <T> boolean compareAndPut(Project.NameKey project, Ref ref, T expectedValue, T newValue)
+      throws GlobalRefDbSystemError;
+
+  /**
    * Lock a reference.
    *
    * @param project project name
