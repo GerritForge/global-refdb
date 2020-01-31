@@ -22,6 +22,29 @@
       "revId": "06c70ecddf3619caf20f8b8414920eb81d335ad6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a771256_eec8523e",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabaseTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2020-01-31T15:56:08Z",
+      "side": 1,
+      "message": "nit: We can show that we don\u0027t have to cast. WDYT about that:\n    ObjectId o \u003d objectUnderTest.get(project, initialRef.getName());\n    assertThat(o).isEqualTo(objectId1);",
+      "range": {
+        "startLine": 158,
+        "startChar": 3,
+        "endLine": 158,
+        "endChar": 99
+      },
+      "revId": "06c70ecddf3619caf20f8b8414920eb81d335ad6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }
