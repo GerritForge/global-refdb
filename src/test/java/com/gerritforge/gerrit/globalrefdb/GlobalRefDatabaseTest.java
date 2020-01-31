@@ -167,6 +167,34 @@ public class GlobalRefDatabaseTest extends AbstractDaemonTest {
     assertThat(o.isPresent()).isFalse();
   }
 
+  @Test
+  public void shouldCreateGenericEntryInTheGlobalRefDBWhenFirstValue() {
+    assertThat(objectUnderTest.compareAndPut(project, refName, null, new Object())).isTrue();
+  }
+
+  @Test
+  public void shouldUpdateGenericEntryWithNewRef() throws Exception {
+    createChange(refName);
+
+    Object object1 = new Object();
+    objectUnderTest.compareAndPut(project, refName, null, object1);
+
+    Object object2 = new Object();
+    assertThat(objectUnderTest.compareAndPut(project, refName, object1, object2)).isTrue();
+  }
+
+  @Test
+  public void shouldRejectGenericUpdateWhenLocalRepoIsOutdated() throws Exception {
+    createChange(refName);
+
+    Object object1 = new Object();
+    objectUnderTest.compareAndPut(project, refName, null, object1);
+
+    Object object2 = new Object();
+    Object object3 = new Object();
+    assertThat(objectUnderTest.compareAndPut(project, refName, object2, object3)).isFalse();
+  }
+
   private Ref ref(String refName, ObjectId objectId) {
     return new ObjectIdRef.Unpeeled(Ref.Storage.NETWORK, refName, objectId);
   }
