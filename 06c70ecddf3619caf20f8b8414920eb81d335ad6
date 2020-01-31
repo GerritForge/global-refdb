@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1062e477_4a2ca1ee",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/FakeGlobalRefDatabase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2020-01-31T17:22:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3e041c9_51a27483",
+      "range": {
+        "startLine": 91,
+        "startChar": 15,
+        "endLine": 91,
+        "endChar": 18
+      },
+      "revId": "06c70ecddf3619caf20f8b8414920eb81d335ad6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a771256_eec8523e",
         "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabaseTest.java",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "06c70ecddf3619caf20f8b8414920eb81d335ad6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd59a9c1_c86e01e5",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabaseTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2020-01-31T17:22:03Z",
+      "side": 1,
+      "message": "good point..done",
+      "parentUuid": "4a771256_eec8523e",
+      "range": {
+        "startLine": 158,
+        "startChar": 3,
+        "endLine": 158,
+        "endChar": 99
+      },
+      "revId": "06c70ecddf3619caf20f8b8414920eb81d335ad6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
