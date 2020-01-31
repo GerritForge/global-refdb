@@ -56,6 +56,21 @@ public interface GlobalRefDatabase {
       throws GlobalRefDbSystemError;
 
   /**
+   * Compare a {@link java.lang.Long}, and put if it is up-to-date with the current.
+   *
+   * <p>Compare and put are executed as an atomic operation.
+   *
+   * @param project project name of the ref.
+   * @param ref to store the value for.
+   * @param expectedValue current expected value in the DB ({@link java.lang.Long}).
+   * @param newValue new value to store ({@link java.lang.Long}).
+   * @return true if the put was successful; false otherwise.
+   * @throws GlobalRefDbSystemError the reference cannot be put due to a system error.
+   */
+  boolean compareAndPut(Project.NameKey project, Ref ref, Long expectedValue, Long newValue)
+      throws GlobalRefDbSystemError;
+
+  /**
    * Lock a reference.
    *
    * @param project project name

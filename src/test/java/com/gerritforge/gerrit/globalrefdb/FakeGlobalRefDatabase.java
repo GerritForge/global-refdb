@@ -29,12 +29,14 @@ public class FakeGlobalRefDatabase implements GlobalRefDatabase {
 
   private ConcurrentMap<Project.NameKey, ConcurrentMap<String, AtomicReference<ObjectId>>>
       keyValueStore;
+  private ConcurrentMap<String, AtomicReference<Long>> longKeyValueStore;
 
   private ConcurrentMap<Project.NameKey, ConcurrentMap<String, AtomicReference<Lock>>> refLockStore;
 
   public FakeGlobalRefDatabase() {
     keyValueStore = new MapMaker().concurrencyLevel(1).makeMap();
     refLockStore = new MapMaker().concurrencyLevel(1).makeMap();
+    longKeyValueStore = new MapMaker().concurrencyLevel(1).makeMap();
   }
 
   @Override
@@ -57,6 +59,20 @@ public class FakeGlobalRefDatabase implements GlobalRefDatabase {
     }
 
     return currValue.compareAndSet(currRef.getObjectId(), newRefValue);
+  }
+
+  @Override
+  public boolean compareAndPut(
+      Project.NameKey project, Ref currRef, Long expectedValue, Long newValue)
+      throws GlobalRefDbSystemError {
+    String key = String.format("%s/%s", project.get(), currRef.getName());
+    AtomicReference<Long> currValue = longKeyValueStore.get(key);
+    if (currValue == null) {
+      longKeyValueStore.put(key, new AtomicReference<>(newValue));
+      return true;
+    }
+
+    return currValue.compareAndSet(expectedValue, newValue);
   }
 
   @Override
