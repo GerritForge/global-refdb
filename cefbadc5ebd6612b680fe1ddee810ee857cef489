@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "9bed2ea4_25a4e82e",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabase.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2020-01-31T18:36:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0c23771_0624df68",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 7
+      },
+      "revId": "cefbadc5ebd6612b680fe1ddee810ee857cef489",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4ba2ff9_2099a160",
         "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/FakeGlobalRefDatabase.java",
         "patchSetId": 2
