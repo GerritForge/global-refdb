@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30b2270b_cb81b75c",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabase.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-02-02T22:57:43Z",
+      "side": 1,
+      "message": "This should just be:\n  String refName\n\nWe do not care anymore about the ref-value, because the expected and new value are passed as separate parameters.",
+      "range": {
+        "startLine": 71,
+        "startChar": 53,
+        "endLine": 71,
+        "endChar": 60
+      },
+      "revId": "bf511fcff94eeba4f3c244728052006878cc2c16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ed48bbf_8a070257",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabase.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-02-02T22:57:43Z",
+      "side": 1,
+      "message": "currValue, for consistency with the other compareAndPut() method.",
+      "range": {
+        "startLine": 71,
+        "startChar": 64,
+        "endLine": 71,
+        "endChar": 77
+      },
+      "revId": "bf511fcff94eeba4f3c244728052006878cc2c16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28e3421a_f0d69f7f",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabase.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-02-02T22:57:43Z",
+      "side": 1,
+      "message": "This should have a default implementation (e.g. throwing an exception) so that it doesn\u0027t break compilation and binary compatibility with the existing code.",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 27
+      },
+      "revId": "bf511fcff94eeba4f3c244728052006878cc2c16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
