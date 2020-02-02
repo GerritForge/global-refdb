@@ -22,6 +22,30 @@
       "revId": "affd9f623a2db754e0a37ddbf2c9fa66f304169f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5c8c0b1_18000dbb",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/FakeGlobalRefDatabase.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2020-02-02T14:27:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3368bb_d0677080",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 5
+      },
+      "revId": "affd9f623a2db754e0a37ddbf2c9fa66f304169f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
