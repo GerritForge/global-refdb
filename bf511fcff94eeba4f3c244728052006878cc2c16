@@ -68,6 +68,54 @@
       "revId": "bf511fcff94eeba4f3c244728052006878cc2c16",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e623cd96_1139877f",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabase.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2020-02-02T23:32:10Z",
+      "side": 1,
+      "message": "What do you mean? An implementation in the global-refdb library? The current code will be forced to implement the interface once using this version of the library, isn\u0027t that what we want?",
+      "parentUuid": "28e3421a_f0d69f7f",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 27
+      },
+      "revId": "bf511fcff94eeba4f3c244728052006878cc2c16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "452699b3_2016b586",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabase.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2020-02-02T23:32:10Z",
+      "side": 1,
+      "message": "I thought of using a Ref to keep the API as closer as possible with the other companeAndPut",
+      "parentUuid": "30b2270b_cb81b75c",
+      "range": {
+        "startLine": 71,
+        "startChar": 53,
+        "endLine": 71,
+        "endChar": 60
+      },
+      "revId": "bf511fcff94eeba4f3c244728052006878cc2c16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }
