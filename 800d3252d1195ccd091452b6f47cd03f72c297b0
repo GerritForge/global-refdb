@@ -1,0 +1,8 @@
+Code-Review+2: Fabio Ponciroli <ponch78@gmail.com>
+Formatting+1: Jenkins at Gerrit-CI <jenkins@gerritforge.com>
+Verified+1: Fabio Ponciroli <ponch78@gmail.com>
+Submitted-by: Luca Milanesio <luca.milanesio@gmail.com>
+Submitted-at: Mon, 03 Feb 2020 11:26:44 +0000
+Reviewed-on: https://review.gerrithub.io/c/GerritForge/global-refdb/+/483674
+Project: GerritForge/global-refdb
+Branch: refs/heads/stable-3.0
