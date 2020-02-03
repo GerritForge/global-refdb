@@ -164,6 +164,78 @@
       "revId": "bf511fcff94eeba4f3c244728052006878cc2c16",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e92df18f_fa1adb46",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabase.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2020-02-03T08:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78ea902e_27481b03",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 27
+      },
+      "revId": "bf511fcff94eeba4f3c244728052006878cc2c16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5200138_b7de1a48",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabase.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2020-02-03T08:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc6c379b_c7b3e036",
+      "range": {
+        "startLine": 71,
+        "startChar": 53,
+        "endLine": 71,
+        "endChar": 60
+      },
+      "revId": "bf511fcff94eeba4f3c244728052006878cc2c16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad3d68e8_3750383f",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabase.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2020-02-03T08:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ed48bbf_8a070257",
+      "range": {
+        "startLine": 71,
+        "startChar": 64,
+        "endLine": 71,
+        "endChar": 77
+      },
+      "revId": "bf511fcff94eeba4f3c244728052006878cc2c16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
