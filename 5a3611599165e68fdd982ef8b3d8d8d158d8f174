@@ -22,6 +22,30 @@
       "revId": "5a3611599165e68fdd982ef8b3d8d8d158d8f174",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d24cbf6_458d2487",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/FakeGlobalRefDatabase.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2020-02-03T11:11:02Z",
+      "side": 1,
+      "message": "mmm...probably you are right, the Atomic reference compareAndSet, doesn\u0027t allow null values 😞 \nIn which case I think we should amend the other compareAndPut as well to be consistent.\n\nIf we decide to change the other compareAndPut we will need a bit of rework of the Zookeeper library and the multi-site.\n\nWDYT?",
+      "parentUuid": "78f99ac1_b71fd676",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 5
+      },
+      "revId": "5a3611599165e68fdd982ef8b3d8d8d158d8f174",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }
