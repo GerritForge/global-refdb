@@ -116,6 +116,54 @@
       "revId": "bf511fcff94eeba4f3c244728052006878cc2c16",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc6c379b_c7b3e036",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabase.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-02-03T07:48:42Z",
+      "side": 1,
+      "message": "But that would be misleading, because the stored value isn\u0027t actually a ref.",
+      "parentUuid": "452699b3_2016b586",
+      "range": {
+        "startLine": 71,
+        "startChar": 53,
+        "endLine": 71,
+        "endChar": 60
+      },
+      "revId": "bf511fcff94eeba4f3c244728052006878cc2c16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78ea902e_27481b03",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabase.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-02-03T07:48:42Z",
+      "side": 1,
+      "message": "Fair enough, we are the only ones using it now.",
+      "parentUuid": "e623cd96_1139877f",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 27
+      },
+      "revId": "bf511fcff94eeba4f3c244728052006878cc2c16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }
