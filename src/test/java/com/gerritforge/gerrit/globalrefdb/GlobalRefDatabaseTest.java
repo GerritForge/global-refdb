@@ -19,6 +19,7 @@ import static org.junit.Assert.fail;
 
 import com.google.gerrit.acceptance.AbstractDaemonTest;
 import com.google.gerrit.entities.RefNames;
+import java.util.Optional;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import org.eclipse.jgit.lib.ObjectId;
@@ -151,6 +152,48 @@ public class GlobalRefDatabaseTest extends AbstractDaemonTest {
         }
       }
     }
+  }
+
+  @Test
+  public void shouldReturnValueInTheGlobalRefDB() {
+    objectUnderTest.compareAndPut(project, initialRef, objectId1);
+    Optional<ObjectId> o = objectUnderTest.get(project, initialRef.getName());
+    assertThat(o.isPresent()).isTrue();
+    assertThat(o.get()).isEqualTo(objectId1);
+  }
+
+  @Test
+  public void shouldReturnEmptyIfValueIsNotInTheGlobalRefDB() {
+    Optional<ObjectId> o = objectUnderTest.get(project, "nonExistentRef");
+    assertThat(o.isPresent()).isFalse();
+  }
+
+  @Test
+  public void shouldCreateGenericEntryInTheGlobalRefDBWhenFirstValue() {
+    assertThat(objectUnderTest.compareAndPut(project, refName, null, new Object())).isTrue();
+  }
+
+  @Test
+  public void shouldUpdateGenericEntryWithNewRef() throws Exception {
+    createChange(refName);
+
+    Object object1 = new Object();
+    objectUnderTest.compareAndPut(project, refName, null, object1);
+
+    Object object2 = new Object();
+    assertThat(objectUnderTest.compareAndPut(project, refName, object1, object2)).isTrue();
+  }
+
+  @Test
+  public void shouldRejectGenericUpdateWhenLocalRepoIsOutdated() throws Exception {
+    createChange(refName);
+
+    Object object1 = new Object();
+    objectUnderTest.compareAndPut(project, refName, null, object1);
+
+    Object object2 = new Object();
+    Object object3 = new Object();
+    assertThat(objectUnderTest.compareAndPut(project, refName, object2, object3)).isFalse();
   }
 
   private Ref ref(String refName, ObjectId objectId) {
