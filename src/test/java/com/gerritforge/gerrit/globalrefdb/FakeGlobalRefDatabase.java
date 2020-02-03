@@ -16,6 +16,7 @@ package com.gerritforge.gerrit.globalrefdb;
 
 import com.google.common.collect.MapMaker;
 import com.google.gerrit.entities.Project;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Lock;
@@ -29,12 +30,14 @@ public class FakeGlobalRefDatabase implements GlobalRefDatabase {
 
   private ConcurrentMap<Project.NameKey, ConcurrentMap<String, AtomicReference<ObjectId>>>
       keyValueStore;
+  private ConcurrentMap<String, AtomicReference<?>> genericKeyValueStore;
 
   private ConcurrentMap<Project.NameKey, ConcurrentMap<String, AtomicReference<Lock>>> refLockStore;
 
   public FakeGlobalRefDatabase() {
     keyValueStore = new MapMaker().concurrencyLevel(1).makeMap();
     refLockStore = new MapMaker().concurrencyLevel(1).makeMap();
+    genericKeyValueStore = new MapMaker().concurrencyLevel(1).makeMap();
   }
 
   @Override
@@ -57,6 +60,20 @@ public class FakeGlobalRefDatabase implements GlobalRefDatabase {
     }
 
     return currValue.compareAndSet(currRef.getObjectId(), newRefValue);
+  }
+
+  @Override
+  @SuppressWarnings("unchecked")
+  public <T> boolean compareAndPut(Project.NameKey project, String refName, T currValue, T newValue)
+      throws GlobalRefDbSystemError {
+    String key = String.format("%s/%s", project.get(), refName);
+    AtomicReference<T> storedValue = (AtomicReference<T>) genericKeyValueStore.get(key);
+    if (storedValue == null) {
+      genericKeyValueStore.put(key, new AtomicReference<>(newValue));
+      return true;
+    }
+
+    return storedValue.compareAndSet(currValue, newValue);
   }
 
   @Override
@@ -84,6 +101,14 @@ public class FakeGlobalRefDatabase implements GlobalRefDatabase {
   @Override
   public void remove(Project.NameKey project) throws GlobalRefDbSystemError {
     keyValueStore.remove(project);
+  }
+
+  @Override
+  @SuppressWarnings("unchecked")
+  public <T> Optional<T> get(Project.NameKey project, String refName)
+      throws GlobalRefDbSystemError {
+    return Optional.ofNullable((T) projectRefDb(project).get(refName))
+        .map(v -> ((AtomicReference<T>) v).get());
   }
 
   private ConcurrentMap<String, AtomicReference<ObjectId>> projectRefDb(Project.NameKey project) {

@@ -15,6 +15,7 @@
 package com.gerritforge.gerrit.globalrefdb;
 
 import com.google.gerrit.entities.Project;
+import java.util.Optional;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
 
@@ -56,6 +57,21 @@ public interface GlobalRefDatabase {
       throws GlobalRefDbSystemError;
 
   /**
+   * Compare a value of generic type T, and put if it is up-to-date with the current.
+   *
+   * <p>Compare and put are executed as an atomic operation.
+   *
+   * @param project project name of the ref.
+   * @param refName to store the value for.
+   * @param currValue current expected value in the DB.
+   * @param newValue new value to store.
+   * @return true if the put was successful; false otherwise.
+   * @throws GlobalRefDbSystemError the reference cannot be put due to a system error.
+   */
+  <T> boolean compareAndPut(Project.NameKey project, String refName, T currValue, T newValue)
+      throws GlobalRefDbSystemError;
+
+  /**
    * Lock a reference.
    *
    * @param project project name
@@ -81,4 +97,14 @@ public interface GlobalRefDatabase {
    * @throws GlobalRefDbSystemError project cannot be removed due to a system error.
    */
   void remove(Project.NameKey project) throws GlobalRefDbSystemError;
+
+  /**
+   * Return value for a specific project and ref name
+   *
+   * @param project project name
+   * @param refName reference name
+   * @return {@link java.util.Optional} of the value
+   * @throws GlobalRefDbSystemError value cannot be returned due to a system error.
+   */
+  <T> Optional<T> get(Project.NameKey project, String refName) throws GlobalRefDbSystemError;
 }
