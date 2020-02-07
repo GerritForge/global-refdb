@@ -103,8 +103,10 @@ public interface GlobalRefDatabase {
    *
    * @param project project name
    * @param refName reference name
+   * @param clazz wanted Class of the returned value
    * @return {@link java.util.Optional} of the value
    * @throws GlobalRefDbSystemError value cannot be returned due to a system error.
    */
-  <T> Optional<T> get(Project.NameKey project, String refName) throws GlobalRefDbSystemError;
+  <T> Optional<T> get(Project.NameKey project, String refName, Class<T> clazz)
+      throws GlobalRefDbSystemError;
 }

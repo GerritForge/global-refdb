@@ -155,16 +155,20 @@ public class GlobalRefDatabaseTest extends AbstractDaemonTest {
 
   @Test
   public void shouldReturnValueInTheGlobalRefDB() {
-    objectUnderTest.compareAndPut(project, initialRef, objectId1);
-    Optional<ObjectId> o = objectUnderTest.get(project, initialRef.getName());
+    Object object = new Object();
+    objectUnderTest.compareAndPut(project, refName, null, object);
+
+    Optional<Object> o = objectUnderTest.get(project, refName, Object.class);
+
     assertThat(o.isPresent()).isTrue();
-    assertThat(o.get()).isEqualTo(objectId1);
+    assertThat(o.get()).isEqualTo(object);
   }
 
   @Test
   public void shouldReturnEmptyIfValueIsNotInTheGlobalRefDB() {
-    Optional<ObjectId> o = objectUnderTest.get(project, "nonExistentRef");
-    assertThat(o.isPresent()).isFalse();
+    Optional<Object> value = objectUnderTest.get(project, "nonExistentRef", Object.class);
+
+    assertThat(value.isPresent()).isFalse();
   }
 
   @Test
