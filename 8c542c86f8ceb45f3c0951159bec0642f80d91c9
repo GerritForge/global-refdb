@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7b1c215_17082f3b",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabaseTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-02-07T15:50:26Z",
+      "side": 1,
+      "message": "It would be useful to add another test with a more specific Object?\n(e.g. Long?)",
+      "revId": "8c542c86f8ceb45f3c0951159bec0642f80d91c9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
