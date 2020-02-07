@@ -16,6 +16,24 @@
       "revId": "8c542c86f8ceb45f3c0951159bec0642f80d91c9",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "075dfffe_cb055019",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabaseTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2020-02-07T15:58:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7b1c215_17082f3b",
+      "revId": "8c542c86f8ceb45f3c0951159bec0642f80d91c9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

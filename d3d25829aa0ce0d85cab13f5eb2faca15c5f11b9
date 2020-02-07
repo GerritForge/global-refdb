@@ -46,6 +46,30 @@
       "revId": "d3d25829aa0ce0d85cab13f5eb2faca15c5f11b9",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4313582_b3c7ac63",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/GlobalRefDatabase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2020-02-07T15:58:41Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "0d2e89f0_c3a67996",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 93
+      },
+      "revId": "d3d25829aa0ce0d85cab13f5eb2faca15c5f11b9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
