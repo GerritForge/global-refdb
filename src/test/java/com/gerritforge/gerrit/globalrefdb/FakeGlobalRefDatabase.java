@@ -105,9 +105,10 @@ public class FakeGlobalRefDatabase implements GlobalRefDatabase {
 
   @Override
   @SuppressWarnings("unchecked")
-  public <T> Optional<T> get(Project.NameKey project, String refName)
+  public <T> Optional<T> get(Project.NameKey project, String refName, Class<T> clazz)
       throws GlobalRefDbSystemError {
-    return Optional.ofNullable((T) projectRefDb(project).get(refName))
+    String key = String.format("%s/%s", project.get(), refName);
+    return Optional.ofNullable((T) genericKeyValueStore.get(key))
         .map(v -> ((AtomicReference<T>) v).get());
   }
 
