@@ -25,6 +25,12 @@ hs_err_pid*
 # Maven target
 target
 
+# Eclipse
+.classpath
+.factorypath
+.project
+.settings/
+
 # IntelliJ
 .idea
 *.iml
