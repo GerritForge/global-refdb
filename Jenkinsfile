@@ -19,7 +19,7 @@ pipeline {
         stage('build') {
             steps {
                 gerritReview labels: [Verified: 0], message: "Build started: ${env.BUILD_URL}"
-                sh 'mvn test'
+                sh "bash -c '. set-java.sh 11 && mvn test'"
             }
         }
     }
