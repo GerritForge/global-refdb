@@ -20,6 +20,7 @@ import static org.mockito.Mockito.verify;
 
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.RefFixture;
 import java.io.IOException;
+import org.eclipse.jgit.lib.ObjectDatabase;
 import org.eclipse.jgit.lib.RefDatabase;
 import org.eclipse.jgit.lib.RefUpdate.Result;
 import org.eclipse.jgit.lib.Repository;
@@ -34,6 +35,7 @@ public class SharedRefDbRepositoryTest implements RefFixture {
   @Mock SharedRefDbRefDatabase.Factory sharedRefDbRefDbFactory;
   @Mock SharedRefDbRefDatabase sharedRefDb;
   @Mock RefDatabase genericRefDb;
+  @Mock ObjectDatabase objectDatabase;
 
   @Mock SharedRefDbRefUpdate sharedRefDbRefUpdate;
 
@@ -48,7 +50,9 @@ public class SharedRefDbRepositoryTest implements RefFixture {
   }
 
   private void setMockitoCommon() {
+    doReturn(true).when(repository).isBare();
     doReturn(genericRefDb).when(repository).getRefDatabase();
+    doReturn(objectDatabase).when(repository).getObjectDatabase();
     doReturn(sharedRefDb).when(sharedRefDbRefDbFactory).create(PROJECT_NAME, genericRefDb);
   }
 
