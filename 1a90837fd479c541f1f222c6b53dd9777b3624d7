@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34ee133b_17f7e0c9",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-10-09T12:28:41Z",
+      "side": 1,
+      "message": "Best to keep it on Java 8 for now, as we need to potentially build against plugins compatible with Java 8.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 39
+      },
+      "revId": "1a90837fd479c541f1f222c6b53dd9777b3624d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73c841b0_68093bbe",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-10-09T12:28:41Z",
+      "side": 1,
+      "message": "unrelated change",
+      "range": {
+        "startLine": 98,
+        "startChar": 25,
+        "endLine": 98,
+        "endChar": 31
+      },
+      "revId": "1a90837fd479c541f1f222c6b53dd9777b3624d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
