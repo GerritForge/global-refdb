@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "114eb0c8_b7eed2cf",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-10-13T22:33:09Z",
+      "side": 1,
+      "message": "Where? I can\u0027t find any mention of the version upgrade in the commit message.",
+      "parentUuid": "79f93898_8c700c34",
+      "range": {
+        "startLine": 41,
+        "startChar": 24,
+        "endLine": 41,
+        "endChar": 29
+      },
+      "revId": "69518e7b74e7f7ebb89f1ea35a00f989437e8ae0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7d6eacf_068d9066",
         "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/BatchRefUpdateValidator.java",
         "patchSetId": 1
