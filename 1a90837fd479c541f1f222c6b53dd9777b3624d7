@@ -69,6 +69,30 @@
       "revId": "1a90837fd479c541f1f222c6b53dd9777b3624d7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2459df54_276d98a3",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-10-13T23:10:29Z",
+      "side": 1,
+      "message": "Mentioned in the commit message.",
+      "parentUuid": "73c841b0_68093bbe",
+      "range": {
+        "startLine": 98,
+        "startChar": 25,
+        "endLine": 98,
+        "endChar": 31
+      },
+      "revId": "1a90837fd479c541f1f222c6b53dd9777b3624d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
