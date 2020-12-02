@@ -52,7 +52,6 @@ public class SharedRefDbRepositoryTest implements RefFixture {
   private void setMockitoCommon() {
     doReturn(true).when(repository).isBare();
     doReturn(genericRefDb).when(repository).getRefDatabase();
-    doReturn(objectDatabase).when(repository).getObjectDatabase();
     doReturn(sharedRefDb).when(sharedRefDbRefDbFactory).create(PROJECT_NAME, genericRefDb);
   }
 
