@@ -14,6 +14,7 @@
 
 package com.gerritforge.gerrit.globalrefdb.validation;
 
+import static java.util.Collections.EMPTY_SET;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 
@@ -49,11 +50,16 @@ public class SharedRefDbRefDatabaseTest implements RefFixture {
     String refName = aBranchRef();
     SharedRefDbRefDatabase sharedRefDbRefDb =
         new SharedRefDbRefDatabase(
-            refUpdateFactoryMock, refBatchUpdateFactoryMock, A_TEST_PROJECT_NAME, refDatabaseMock);
+            refUpdateFactoryMock,
+            refBatchUpdateFactoryMock,
+            A_TEST_PROJECT_NAME,
+            refDatabaseMock,
+            EMPTY_SET);
     doReturn(refUpdateMock).when(refDatabaseMock).newUpdate(refName, false);
 
     sharedRefDbRefDb.newUpdate(refName, false);
 
-    verify(refUpdateFactoryMock).create(A_TEST_PROJECT_NAME, refUpdateMock, refDatabaseMock);
+    verify(refUpdateFactoryMock)
+        .create(A_TEST_PROJECT_NAME, refUpdateMock, refDatabaseMock, EMPTY_SET);
   }
 }

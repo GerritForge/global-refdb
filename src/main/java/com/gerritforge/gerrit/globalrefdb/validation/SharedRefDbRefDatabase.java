@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.eclipse.jgit.lib.BatchRefUpdate;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.RefDatabase;
@@ -31,9 +32,11 @@ public class SharedRefDbRefDatabase extends RefDatabase {
   private final SharedRefDbBatchRefUpdate.Factory batchRefUpdateFactory;
   private final String projectName;
   private final RefDatabase refDatabase;
+  private final Set<String> ignoredRefs;
 
   public interface Factory {
-    public SharedRefDbRefDatabase create(String projectName, RefDatabase refDatabase);
+    SharedRefDbRefDatabase create(
+        String projectName, RefDatabase refDatabase, Set<String> ignoredRefs);
   }
 
   @Inject
@@ -41,11 +44,13 @@ public class SharedRefDbRefDatabase extends RefDatabase {
       SharedRefDbRefUpdate.Factory refUpdateFactory,
       SharedRefDbBatchRefUpdate.Factory batchRefUpdateFactory,
       @Assisted String projectName,
-      @Assisted RefDatabase refDatabase) {
+      @Assisted RefDatabase refDatabase,
+      @Assisted Set<String> ignoredRefs) {
     this.refUpdateFactory = refUpdateFactory;
     this.batchRefUpdateFactory = batchRefUpdateFactory;
     this.projectName = projectName;
     this.refDatabase = refDatabase;
+    this.ignoredRefs = ignoredRefs;
   }
 
   @Override
@@ -155,6 +160,6 @@ public class SharedRefDbRefDatabase extends RefDatabase {
   }
 
   RefUpdate wrapRefUpdate(RefUpdate refUpdate) {
-    return refUpdateFactory.create(projectName, refUpdate, refDatabase);
+    return refUpdateFactory.create(projectName, refUpdate, refDatabase, ignoredRefs);
   }
 }

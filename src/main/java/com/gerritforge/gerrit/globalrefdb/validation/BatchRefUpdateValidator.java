@@ -23,6 +23,7 @@ import com.google.inject.assistedinject.Assisted;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.eclipse.jgit.lib.BatchRefUpdate;
@@ -51,7 +52,8 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
       LockWrapper.Factory lockWrapperFactory,
       ProjectsFilter projectsFilter,
       @Assisted String projectName,
-      @Assisted RefDatabase refDb) {
+      @Assisted RefDatabase refDb,
+      @Assisted Set<String> ignoredRefs) {
     super(
         sharedRefDb,
         validationMetrics,
@@ -59,7 +61,8 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
         lockWrapperFactory,
         projectsFilter,
         projectName,
-        refDb);
+        refDb,
+        ignoredRefs);
   }
 
   public void executeBatchUpdateWithValidation(

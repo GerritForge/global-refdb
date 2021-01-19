@@ -15,6 +15,7 @@
 package com.gerritforge.gerrit.globalrefdb.validation;
 
 import static com.google.common.truth.Truth.assertThat;
+import static java.util.Collections.EMPTY_SET;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 
@@ -52,17 +53,19 @@ public class SharedRefDbRepositoryTest implements RefFixture {
   private void setMockitoCommon() {
     doReturn(true).when(repository).isBare();
     doReturn(genericRefDb).when(repository).getRefDatabase();
-    doReturn(sharedRefDb).when(sharedRefDbRefDbFactory).create(PROJECT_NAME, genericRefDb);
+    doReturn(sharedRefDb)
+        .when(sharedRefDbRefDbFactory)
+        .create(PROJECT_NAME, genericRefDb, EMPTY_SET);
   }
 
   @Test
   public void shouldInvokeSharedRefDbRefDbFactoryCreate() {
     setMockitoCommon();
     try (SharedRefDbRepository sharedRefDbRepository =
-        new SharedRefDbRepository(sharedRefDbRefDbFactory, PROJECT_NAME, repository)) {
+        new SharedRefDbRepository(sharedRefDbRefDbFactory, PROJECT_NAME, repository, EMPTY_SET)) {
 
       sharedRefDbRepository.getRefDatabase();
-      verify(sharedRefDbRefDbFactory).create(PROJECT_NAME, genericRefDb);
+      verify(sharedRefDbRefDbFactory).create(PROJECT_NAME, genericRefDb, EMPTY_SET);
     }
   }
 
@@ -70,7 +73,7 @@ public class SharedRefDbRepositoryTest implements RefFixture {
   public void shouldInvokeNewUpdateInSharedRefDbRefDatabase() throws IOException {
     setMockitoCommon();
     try (SharedRefDbRepository sharedRefDbRepository =
-        new SharedRefDbRepository(sharedRefDbRefDbFactory, PROJECT_NAME, repository)) {
+        new SharedRefDbRepository(sharedRefDbRefDbFactory, PROJECT_NAME, repository, EMPTY_SET)) {
       sharedRefDbRepository.getRefDatabase().newUpdate(REFS_HEADS_MASTER, false);
 
       verify(sharedRefDb).newUpdate(REFS_HEADS_MASTER, false);
@@ -84,7 +87,7 @@ public class SharedRefDbRepositoryTest implements RefFixture {
     doReturn(sharedRefDbRefUpdate).when(sharedRefDb).newUpdate(REFS_HEADS_MASTER, false);
 
     try (SharedRefDbRepository sharedRefDbRepository =
-        new SharedRefDbRepository(sharedRefDbRefDbFactory, PROJECT_NAME, repository)) {
+        new SharedRefDbRepository(sharedRefDbRefDbFactory, PROJECT_NAME, repository, EMPTY_SET)) {
 
       Result updateResult =
           sharedRefDbRepository.getRefDatabase().newUpdate(REFS_HEADS_MASTER, false).update();

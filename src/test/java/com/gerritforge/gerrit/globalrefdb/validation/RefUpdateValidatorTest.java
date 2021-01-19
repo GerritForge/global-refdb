@@ -15,6 +15,7 @@
 package com.gerritforge.gerrit.globalrefdb.validation;
 
 import static com.google.common.truth.Truth.assertThat;
+import static java.util.Collections.EMPTY_SET;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doReturn;
@@ -213,6 +214,7 @@ public class RefUpdateValidatorTest implements RefFixture {
         new DummyLockWrapper(),
         projectsFilter,
         A_TEST_PROJECT_NAME,
-        localRefDb);
+        localRefDb,
+        EMPTY_SET);
   }
 }
