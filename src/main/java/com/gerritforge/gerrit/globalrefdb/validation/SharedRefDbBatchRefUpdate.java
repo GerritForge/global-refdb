@@ -19,6 +19,7 @@ import com.google.inject.assistedinject.Assisted;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import org.eclipse.jgit.lib.BatchRefUpdate;
 import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.lib.ProgressMonitor;
@@ -34,21 +35,24 @@ public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
   private final String project;
   private final BatchRefUpdateValidator.Factory batchRefValidatorFactory;
   private final RefDatabase refDb;
+  private final Set<String> ignoredRefs;
 
-  public static interface Factory {
-    SharedRefDbBatchRefUpdate create(String project, RefDatabase refDb);
+  public interface Factory {
+    SharedRefDbBatchRefUpdate create(String project, RefDatabase refDb, Set<String> ignoredRefs);
   }
 
   @Inject
   public SharedRefDbBatchRefUpdate(
       BatchRefUpdateValidator.Factory batchRefValidatorFactory,
       @Assisted String project,
-      @Assisted RefDatabase refDb) {
+      @Assisted RefDatabase refDb,
+      @Assisted Set<String> ignoredRefs) {
     super(refDb);
     this.refDb = refDb;
     this.project = project;
     this.batchRefUpdate = refDb.newBatchUpdate();
     this.batchRefValidatorFactory = batchRefValidatorFactory;
+    this.ignoredRefs = ignoredRefs;
   }
 
   @Override
@@ -165,7 +169,7 @@ public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
   public void execute(RevWalk walk, ProgressMonitor monitor, List<String> options)
       throws IOException {
     batchRefValidatorFactory
-        .create(project, refDb)
+        .create(project, refDb, ignoredRefs)
         .executeBatchUpdateWithValidation(
             batchRefUpdate, () -> batchRefUpdate.execute(walk, monitor, options));
   }
@@ -173,7 +177,7 @@ public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
   @Override
   public void execute(RevWalk walk, ProgressMonitor monitor) throws IOException {
     batchRefValidatorFactory
-        .create(project, refDb)
+        .create(project, refDb, ignoredRefs)
         .executeBatchUpdateWithValidation(
             batchRefUpdate, () -> batchRefUpdate.execute(walk, monitor));
   }
