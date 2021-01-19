@@ -17,6 +17,7 @@ package com.gerritforge.gerrit.globalrefdb.validation;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import java.io.IOException;
+import java.util.Set;
 import org.eclipse.jgit.lib.AnyObjectId;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.PersonIdent;
@@ -35,7 +36,8 @@ public class SharedRefDbRefUpdate extends RefUpdate {
   private final RefUpdateValidator refUpdateValidator;
 
   public interface Factory {
-    SharedRefDbRefUpdate create(String projectName, RefUpdate refUpdate, RefDatabase refDb);
+    SharedRefDbRefUpdate create(
+        String projectName, RefUpdate refUpdate, RefDatabase refDb, Set<String> ignoredRefs);
   }
 
   @Inject
@@ -43,12 +45,13 @@ public class SharedRefDbRefUpdate extends RefUpdate {
       RefUpdateValidator.Factory refValidatorFactory,
       @Assisted String projectName,
       @Assisted RefUpdate refUpdate,
-      @Assisted RefDatabase refDb) {
+      @Assisted RefDatabase refDb,
+      @Assisted Set<String> ignoredRefs) {
     super(refUpdate.getRef());
     refUpdateBase = refUpdate;
     this.projectName = projectName;
     this.refValidatorFactory = refValidatorFactory;
-    refUpdateValidator = this.refValidatorFactory.create(this.projectName, refDb);
+    refUpdateValidator = this.refValidatorFactory.create(this.projectName, refDb, ignoredRefs);
   }
 
   @Override
