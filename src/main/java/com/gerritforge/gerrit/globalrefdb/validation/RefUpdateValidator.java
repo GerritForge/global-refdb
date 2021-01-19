@@ -37,6 +37,8 @@ public class RefUpdateValidator {
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
   public static final String SHARED_REF_DB_VERSIONING_REF = "refs/global-refdb/version";
+  public static final String SHARED_REF_DB_VERSIONING_VALUE_REF =
+      SHARED_REF_DB_VERSIONING_REF + "/value";
 
   protected final SharedRefDatabaseWrapper sharedRefDb;
   protected final ValidationMetrics validationMetrics;
