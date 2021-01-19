@@ -18,6 +18,7 @@ import com.google.gerrit.server.git.DelegateRepository;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import java.io.IOException;
+import java.util.Set;
 import org.eclipse.jgit.lib.RefDatabase;
 import org.eclipse.jgit.lib.RefUpdate;
 import org.eclipse.jgit.lib.Repository;
@@ -27,16 +28,19 @@ public class SharedRefDbRepository extends DelegateRepository {
   private final SharedRefDbRefDatabase sharedRefDatabase;
 
   public interface Factory {
-    public SharedRefDbRepository create(String projectName, Repository repository);
+    SharedRefDbRepository create(
+        String projectName, Repository repository, Set<String> ignoredRefs);
   }
 
   @Inject
   public SharedRefDbRepository(
       SharedRefDbRefDatabase.Factory refDbFactory,
       @Assisted String projectName,
-      @Assisted Repository repository) {
+      @Assisted Repository repository,
+      @Assisted Set<String> ignoredRefs) {
     super(repository);
-    this.sharedRefDatabase = refDbFactory.create(projectName, repository.getRefDatabase());
+    this.sharedRefDatabase =
+        refDbFactory.create(projectName, repository.getRefDatabase(), ignoredRefs);
   }
 
   @Override
