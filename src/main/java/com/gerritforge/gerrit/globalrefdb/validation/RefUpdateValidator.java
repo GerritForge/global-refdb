@@ -27,6 +27,7 @@ import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Set;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.ObjectIdRef;
 import org.eclipse.jgit.lib.Ref;
@@ -36,8 +37,6 @@ import org.eclipse.jgit.lib.RefUpdate;
 public class RefUpdateValidator {
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
-  public static final String SHARED_REF_DB_VERSIONING_REF = "refs/global-refdb/version";
-
   protected final SharedRefDatabaseWrapper sharedRefDb;
   protected final ValidationMetrics validationMetrics;
 
@@ -46,9 +45,10 @@ public class RefUpdateValidator {
   protected final RefDatabase refDb;
   protected final SharedRefEnforcement refEnforcement;
   protected final ProjectsFilter projectsFilter;
+  private final Set<String> ignoredRefs;
 
-  public static interface Factory {
-    RefUpdateValidator create(String projectName, RefDatabase refDb);
+  public interface Factory {
+    RefUpdateValidator create(String projectName, RefDatabase refDb, Set<String> ignoredRefs);
   }
 
   public interface ExceptionThrowingSupplier<T, E extends Exception> {
@@ -76,11 +76,13 @@ public class RefUpdateValidator {
       LockWrapper.Factory lockWrapperFactory,
       ProjectsFilter projectsFilter,
       @Assisted String projectName,
-      @Assisted RefDatabase refDb) {
+      @Assisted RefDatabase refDb,
+      @Assisted Set<String> ignoredRefs) {
     this.sharedRefDb = sharedRefDb;
     this.validationMetrics = validationMetrics;
     this.lockWrapperFactory = lockWrapperFactory;
     this.refDb = refDb;
+    this.ignoredRefs = ignoredRefs;
     this.projectName = projectName;
     this.refEnforcement = refEnforcement;
     this.projectsFilter = projectsFilter;
@@ -89,7 +91,7 @@ public class RefUpdateValidator {
   public RefUpdate.Result executeRefUpdate(
       RefUpdate refUpdate, NoParameterFunction<RefUpdate.Result> refUpdateFunction)
       throws IOException {
-    if (isProjectVersionUpdate(refUpdate.getName())
+    if (isRefToBeIgnored(refUpdate.getName())
         || !isGlobalProject(projectName)
         || refEnforcement.getPolicy(projectName) == EnforcePolicy.IGNORED) {
       return refUpdateFunction.invoke();
@@ -110,10 +112,10 @@ public class RefUpdateValidator {
     return null;
   }
 
-  private Boolean isProjectVersionUpdate(String refName) {
-    Boolean isProjectVersionUpdate = refName.equals(SHARED_REF_DB_VERSIONING_REF);
-    logger.atFine().log("Is project version update? " + isProjectVersionUpdate);
-    return isProjectVersionUpdate;
+  private Boolean isRefToBeIgnored(String refName) {
+    Boolean isRefToBeIgnored = ignoredRefs.contains(refName);
+    logger.atFine().log("Is project version update? " + isRefToBeIgnored);
+    return isRefToBeIgnored;
   }
 
   private <T extends Throwable> void softFailBasedOnEnforcement(T e, EnforcePolicy policy)

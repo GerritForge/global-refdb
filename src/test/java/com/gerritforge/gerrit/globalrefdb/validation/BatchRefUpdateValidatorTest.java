@@ -15,9 +15,10 @@
 package com.gerritforge.gerrit.globalrefdb.validation;
 
 import static com.google.common.truth.Truth.assertThat;
+import static java.util.Collections.EMPTY_SET;
+import static java.util.Collections.singletonList;
 import static org.eclipse.jgit.transport.ReceiveCommand.Type.UPDATE;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyString;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.lenient;
@@ -32,7 +33,6 @@ import com.google.gerrit.entities.Project;
 import com.google.gerrit.metrics.DisabledMetricMaker;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import org.eclipse.jgit.internal.storage.file.RefDirectory;
 import org.eclipse.jgit.junit.LocalDiskRepositoryTestCase;
@@ -118,8 +118,7 @@ public class BatchRefUpdateValidatorTest extends LocalDiskRepositoryTestCase imp
   public void validationShouldFailWhenLocalRefDbIsOutOfSync() throws Exception {
     String AN_OUT_OF_SYNC_REF = "refs/changes/01/1/1";
     BatchRefUpdate batchRefUpdate =
-        newBatchUpdate(
-            Collections.singletonList(new ReceiveCommand(A, B, AN_OUT_OF_SYNC_REF, UPDATE)));
+        newBatchUpdate(singletonList(new ReceiveCommand(A, B, AN_OUT_OF_SYNC_REF, UPDATE)));
     BatchRefUpdateValidator batchRefUpdateValidator =
         getRefValidatorForEnforcement(A_TEST_PROJECT_NAME, tmpRefEnforcement);
 
@@ -146,8 +145,7 @@ public class BatchRefUpdateValidatorTest extends LocalDiskRepositoryTestCase imp
 
     String AN_OUT_OF_SYNC_REF = "refs/changes/01/1/1";
     BatchRefUpdate batchRefUpdate =
-        newBatchUpdate(
-            Collections.singletonList(new ReceiveCommand(A, B, AN_OUT_OF_SYNC_REF, UPDATE)));
+        newBatchUpdate(singletonList(new ReceiveCommand(A, B, AN_OUT_OF_SYNC_REF, UPDATE)));
     BatchRefUpdateValidator batchRefUpdateValidator =
         getRefValidatorForEnforcement(A_TEST_PROJECT_NAME, tmpRefEnforcement);
 
@@ -171,7 +169,8 @@ public class BatchRefUpdateValidatorTest extends LocalDiskRepositoryTestCase imp
         new DummyLockWrapper(),
         projectsFilter,
         projectName,
-        diskRepo.getRefDatabase());
+        diskRepo.getRefDatabase(),
+        EMPTY_SET);
   }
 
   private Void execute(BatchRefUpdate u) throws IOException {

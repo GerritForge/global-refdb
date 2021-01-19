@@ -14,6 +14,7 @@
 
 package com.gerritforge.gerrit.globalrefdb.validation;
 
+import static java.util.Collections.EMPTY_SET;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 
@@ -48,10 +49,10 @@ public class SharedRefDbGitRepositoryManagerTest implements RefFixture {
   public void setUp() throws Exception {
     doReturn(sharedRefDbRepositoryMock)
         .when(sharedRefDbRepositoryFactoryMock)
-        .create(A_TEST_PROJECT_NAME, repositoryMock);
+        .create(A_TEST_PROJECT_NAME, repositoryMock, EMPTY_SET);
     msRepoMgr =
         new SharedRefDbGitRepositoryManager(
-            sharedRefDbRepositoryFactoryMock, localDiskRepositoryManagerMock);
+            sharedRefDbRepositoryFactoryMock, localDiskRepositoryManagerMock, null);
   }
 
   @Test
@@ -77,6 +78,6 @@ public class SharedRefDbGitRepositoryManagerTest implements RefFixture {
   }
 
   private void verifyThatSharedRefDbRepositoryWrapperHasBeenCreated() {
-    verify(sharedRefDbRepositoryFactoryMock).create(A_TEST_PROJECT_NAME, repositoryMock);
+    verify(sharedRefDbRepositoryFactoryMock).create(A_TEST_PROJECT_NAME, repositoryMock, EMPTY_SET);
   }
 }
