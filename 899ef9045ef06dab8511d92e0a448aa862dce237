@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaaf0484_8486720e",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbConfiguration.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-20T23:41:53Z",
+      "side": 1,
+      "message": "Global ref-db is a library that can be used in multiple plugins: it won\u0027t be fair to mix and match different plugins\u0027 metrics.\n\nI believe it would make more sense to just use the plugin name as a default: WDYT?",
+      "range": {
+        "startLine": 77,
+        "startChar": 31,
+        "endLine": 77,
+        "endChar": 68
+      },
+      "revId": "899ef9045ef06dab8511d92e0a448aa862dce237",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
