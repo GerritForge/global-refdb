@@ -38,6 +38,7 @@ import org.eclipse.jgit.internal.storage.file.RefDirectory;
 import org.eclipse.jgit.junit.LocalDiskRepositoryTestCase;
 import org.eclipse.jgit.junit.TestRepository;
 import org.eclipse.jgit.lib.BatchRefUpdate;
+import org.eclipse.jgit.lib.Config;
 import org.eclipse.jgit.lib.NullProgressMonitor;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
@@ -164,7 +165,8 @@ public class BatchRefUpdateValidatorTest extends LocalDiskRepositoryTestCase imp
       String projectName, SharedRefEnforcement sharedRefEnforcement) {
     return new BatchRefUpdateValidator(
         sharedRefDatabase,
-        new ValidationMetrics(new DisabledMetricMaker()),
+        new ValidationMetrics(
+            new DisabledMetricMaker(), new SharedRefDbConfiguration(new Config())),
         sharedRefEnforcement,
         new DummyLockWrapper(),
         projectsFilter,
