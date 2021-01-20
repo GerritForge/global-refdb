@@ -39,6 +39,30 @@
       },
       "revId": "075e5a5e94f2eb2257b794613da9d3c67ee0b6e6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cc68fcf_ca4ad226",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/BatchRefUpdateValidator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-01-20T17:20:47Z",
+      "side": 1,
+      "message": "To be able to test follow up change I had to add missing bits so I have the code if you want I can push it to this change",
+      "parentUuid": "1e7f49a6_2df53d24",
+      "range": {
+        "startLine": 40,
+        "startChar": 28,
+        "endLine": 40,
+        "endChar": 74
+      },
+      "revId": "075e5a5e94f2eb2257b794613da9d3c67ee0b6e6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
