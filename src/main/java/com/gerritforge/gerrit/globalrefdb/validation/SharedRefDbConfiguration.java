@@ -18,6 +18,7 @@ import static com.google.common.base.Suppliers.memoize;
 import static com.google.common.base.Suppliers.ofInstance;
 
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedRefEnforcement.EnforcePolicy;
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Supplier;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Multimap;
@@ -36,10 +37,10 @@ public class SharedRefDbConfiguration {
   private final Supplier<Projects> projects;
   private final Supplier<SharedRefDatabase> sharedRefDb;
 
-  public SharedRefDbConfiguration(Config config) {
+  public SharedRefDbConfiguration(Config config, String pluginName) {
     Supplier<Config> lazyCfg = lazyLoad(config);
     projects = memoize(() -> new Projects(lazyCfg));
-    sharedRefDb = memoize(() -> new SharedRefDatabase(lazyCfg));
+    sharedRefDb = memoize(() -> new SharedRefDatabase(lazyCfg, pluginName));
   }
 
   public SharedRefDatabase getSharedRefDb() {
@@ -72,13 +73,16 @@ public class SharedRefDbConfiguration {
     public static final String SECTION = "ref-database";
     public static final String ENABLE_KEY = "enabled";
     public static final String SUBSECTION_ENFORCEMENT_RULES = "enforcementRules";
+    public static final String METRICS_ROOT = "metricsRoot";
 
     private final boolean enabled;
     private final Multimap<EnforcePolicy, String> enforcementRules;
+    private final String metricsRoot;
 
-    private SharedRefDatabase(Supplier<Config> cfg) {
+    private SharedRefDatabase(Supplier<Config> cfg, String pluginName) {
       enabled = getBoolean(cfg, SECTION, null, ENABLE_KEY, false);
-
+      metricsRoot =
+          MoreObjects.firstNonNull(cfg.get().getString(SECTION, null, METRICS_ROOT), pluginName);
       enforcementRules = MultimapBuilder.hashKeys().arrayListValues().build();
       for (EnforcePolicy policy : EnforcePolicy.values()) {
         enforcementRules.putAll(
@@ -92,6 +96,10 @@ public class SharedRefDbConfiguration {
 
     public Multimap<EnforcePolicy, String> getEnforcementRules() {
       return enforcementRules;
+    }
+
+    public String getMetricsRoot() {
+      return metricsRoot;
     }
 
     private List<String> getList(
