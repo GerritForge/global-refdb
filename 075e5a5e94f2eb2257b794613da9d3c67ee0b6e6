@@ -18,6 +18,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "843147e5_6cb7fc6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-20T23:20:21Z",
+      "side": 1,
+      "message": "Sure, but I believe we\u0027re missing the chapter where to insert that note: the README.md doesn\u0027t really explain how to use the library :-(\n\nIt\u0027s a good idea, should we first follow-up with a documentation change to add a \"users\u0027 manual\" section and then including this IGNORED_REFS annotation?\n\nBear in mind that without the IGNORED_REFS annotation the library would still work as before, but it just won\u0027t ignored any refs: the binding is in fact optional.",
+      "parentUuid": "b9cce094_a2e20987",
+      "revId": "075e5a5e94f2eb2257b794613da9d3c67ee0b6e6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e7f49a6_2df53d24",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "To be able to test follow up change I had to add missing bits so I have the code if you want I can push it to this change",
       "parentUuid": "1e7f49a6_2df53d24",
+      "range": {
+        "startLine": 40,
+        "startChar": 28,
+        "endLine": 40,
+        "endChar": 74
+      },
+      "revId": "075e5a5e94f2eb2257b794613da9d3c67ee0b6e6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd19ed5c_aaff5c7b",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/BatchRefUpdateValidator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-20T23:20:21Z",
+      "side": 1,
+      "message": "Good catch. I am wondering why all tests passed though :-(\nI believe we\u0027re missing some Guice-based injection to demonstrate that the factories are working fine.\n\nIt can be addressed as a follow-up. Thanks @Marcin for your review, very useful indeed :+1",
+      "parentUuid": "1cc68fcf_ca4ad226",
       "range": {
         "startLine": 40,
         "startChar": 28,
