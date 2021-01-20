@@ -18,6 +18,7 @@ import static com.google.common.base.Suppliers.memoize;
 import static com.google.common.base.Suppliers.ofInstance;
 
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedRefEnforcement.EnforcePolicy;
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Supplier;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Multimap;
@@ -72,13 +73,18 @@ public class SharedRefDbConfiguration {
     public static final String SECTION = "ref-database";
     public static final String ENABLE_KEY = "enabled";
     public static final String SUBSECTION_ENFORCEMENT_RULES = "enforcementRules";
+    public static final String METRICS_ROOT = "metricsRoot";
+    public static final String DEFAULT_METRICS_ROOT = "global-refdb";
 
     private final boolean enabled;
     private final Multimap<EnforcePolicy, String> enforcementRules;
+    private final String metricsRoot;
 
     private SharedRefDatabase(Supplier<Config> cfg) {
       enabled = getBoolean(cfg, SECTION, null, ENABLE_KEY, false);
-
+      metricsRoot =
+          MoreObjects.firstNonNull(
+              cfg.get().getString(SECTION, null, METRICS_ROOT), DEFAULT_METRICS_ROOT);
       enforcementRules = MultimapBuilder.hashKeys().arrayListValues().build();
       for (EnforcePolicy policy : EnforcePolicy.values()) {
         enforcementRules.putAll(
@@ -92,6 +98,10 @@ public class SharedRefDbConfiguration {
 
     public Multimap<EnforcePolicy, String> getEnforcementRules() {
       return enforcementRules;
+    }
+
+    public String getMetricsRoot() {
+      return metricsRoot;
     }
 
     private List<String> getList(
