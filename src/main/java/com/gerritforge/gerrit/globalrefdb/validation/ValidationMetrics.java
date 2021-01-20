@@ -31,10 +31,10 @@ public class ValidationMetrics {
   private final Counter1<String> splitBrainCounter;
 
   @Inject
-  public ValidationMetrics(MetricMaker metricMaker) {
+  public ValidationMetrics(MetricMaker metricMaker, SharedRefDbConfiguration cfg) {
     this.splitBrainPreventionCounter =
         metricMaker.newCounter(
-            "global-refdb/validation/git_update_split_brain_prevented",
+            String.format("%s/validation/git_update_split_brain_prevented", cfg.pluginName()),
             rateDescription("errors", "Rate of REST API error responses"),
             stringField(
                 GIT_UPDATE_SPLIT_BRAIN_PREVENTED,
@@ -42,7 +42,7 @@ public class ValidationMetrics {
 
     this.splitBrainCounter =
         metricMaker.newCounter(
-            "global-refdb/validation/git_update_split_brain",
+            String.format("%s/validation/git_update_split_brain", cfg.pluginName()),
             rateDescription("errors", "Rate of REST API error responses"),
             stringField(
                 GIT_UPDATE_SPLIT_BRAIN,

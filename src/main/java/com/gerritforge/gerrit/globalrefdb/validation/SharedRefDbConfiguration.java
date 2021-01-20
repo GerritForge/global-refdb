@@ -35,11 +35,13 @@ public class SharedRefDbConfiguration {
 
   private final Supplier<Projects> projects;
   private final Supplier<SharedRefDatabase> sharedRefDb;
+  private final String pluginName;
 
-  public SharedRefDbConfiguration(Config config) {
+  public SharedRefDbConfiguration(Config config, String pluginName) {
     Supplier<Config> lazyCfg = lazyLoad(config);
     projects = memoize(() -> new Projects(lazyCfg));
     sharedRefDb = memoize(() -> new SharedRefDatabase(lazyCfg));
+    this.pluginName = pluginName;
   }
 
   public SharedRefDatabase getSharedRefDb() {
@@ -48,6 +50,10 @@ public class SharedRefDbConfiguration {
 
   public Projects projects() {
     return projects.get();
+  }
+
+  public String pluginName() {
+    return pluginName;
   }
 
   private Supplier<Config> lazyLoad(Config config) {
@@ -78,7 +84,6 @@ public class SharedRefDbConfiguration {
 
     private SharedRefDatabase(Supplier<Config> cfg) {
       enabled = getBoolean(cfg, SECTION, null, ENABLE_KEY, false);
-
       enforcementRules = MultimapBuilder.hashKeys().arrayListValues().build();
       for (EnforcePolicy policy : EnforcePolicy.values()) {
         enforcementRules.putAll(
