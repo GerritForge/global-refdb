@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5a9bbd1_b023269f",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbConfiguration.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-21T08:59:18Z",
+      "side": 1,
+      "message": "Libraries should have an overview on how to use it and JavaDoc on the public classes and methods:\nhttps://bugs.chromium.org/p/gerrit/issues/detail?id\u003d13978\n\nBut yes, it\u0027s a separate change I believe.",
+      "parentUuid": "cbae9258_ef582f95",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 60
+      },
+      "revId": "4baa0c440ad4457ec8159227815282e8f0adf87e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6eaffa6d_1aadffde",
         "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbConfiguration.java",
         "patchSetId": 5
@@ -126,6 +150,30 @@
       "writtenOn": "2021-01-21T08:38:59Z",
       "side": 1,
       "message": "I am thinking whether this configuration actually needed.\nWhat\u0027s the use-case for overriding \"metricsRoot\" with something other than the plugin name?\n\nWouldn\u0027t multi-site always prefix metrics as \"multi-site/\", high-availability with \"high-availability/\" and so on?",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 85,
+        "endChar": 97
+      },
+      "revId": "4baa0c440ad4457ec8159227815282e8f0adf87e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9233c170_8767a7ea",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbConfiguration.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-21T08:59:18Z",
+      "side": 1,
+      "message": "\u003e I am thinking whether this configuration actually needed.\n\u003e What\u0027s the use-case for overriding \"metricsRoot\" with something other than the plugin name?\n\nGood point. @Marcin do you foresee any other use-cases?\n\n\u003e Wouldn\u0027t multi-site always prefix metrics as \"multi-site/\", high-availability with \"high-availability/\" and so on?\n\nYep.",
+      "parentUuid": "6eaffa6d_1aadffde",
       "range": {
         "startLine": 84,
         "startChar": 6,
