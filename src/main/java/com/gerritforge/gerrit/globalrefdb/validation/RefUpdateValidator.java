@@ -21,13 +21,13 @@ import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedLockExceptio
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedRefEnforcement;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedRefEnforcement.EnforcePolicy;
 import com.google.common.base.MoreObjects;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.entities.Project;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Set;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.ObjectIdRef;
 import org.eclipse.jgit.lib.Ref;
@@ -45,10 +45,11 @@ public class RefUpdateValidator {
   protected final RefDatabase refDb;
   protected final SharedRefEnforcement refEnforcement;
   protected final ProjectsFilter projectsFilter;
-  private final Set<String> ignoredRefs;
+  private final ImmutableSet<String> ignoredRefs;
 
   public interface Factory {
-    RefUpdateValidator create(String projectName, RefDatabase refDb, Set<String> ignoredRefs);
+    RefUpdateValidator create(
+        String projectName, RefDatabase refDb, ImmutableSet<String> ignoredRefs);
   }
 
   public interface ExceptionThrowingSupplier<T, E extends Exception> {
@@ -77,7 +78,7 @@ public class RefUpdateValidator {
       ProjectsFilter projectsFilter,
       @Assisted String projectName,
       @Assisted RefDatabase refDb,
-      @Assisted Set<String> ignoredRefs) {
+      @Assisted ImmutableSet<String> ignoredRefs) {
     this.sharedRefDb = sharedRefDb;
     this.validationMetrics = validationMetrics;
     this.lockWrapperFactory = lockWrapperFactory;

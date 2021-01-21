@@ -16,7 +16,6 @@ package com.gerritforge.gerrit.globalrefdb.validation;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.EMPTY_LIST;
-import static java.util.Collections.EMPTY_SET;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.ArgumentMatchers.eq;
@@ -29,8 +28,8 @@ import static org.mockito.Mockito.when;
 
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.DefaultSharedRefEnforcement;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.RefFixture;
+import com.google.common.collect.ImmutableSet;
 import java.io.IOException;
-import java.util.Set;
 import org.eclipse.jgit.lib.BatchRefUpdate;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.ObjectIdRef;
@@ -171,7 +170,7 @@ public class SharedRefDbBatchRefUpdateTest implements RefFixture {
         new BatchRefUpdateValidator.Factory() {
           @Override
           public BatchRefUpdateValidator create(
-              String projectName, RefDatabase refDb, Set<String> ignoredRefs) {
+              String projectName, RefDatabase refDb, ImmutableSet<String> ignoredRefs) {
             return new BatchRefUpdateValidator(
                 sharedRefDb,
                 validationMetrics,
@@ -184,20 +183,14 @@ public class SharedRefDbBatchRefUpdateTest implements RefFixture {
           }
         };
     return new SharedRefDbBatchRefUpdate(
-        batchRefValidatorFactory, A_TEST_PROJECT_NAME, refDatabase, EMPTY_SET);
+        batchRefValidatorFactory, A_TEST_PROJECT_NAME, refDatabase, ImmutableSet.of());
   }
 
   private SharedRefDbBatchRefUpdate getSharedRefDbBatchRefUpdateWithMockedValidator() {
     BatchRefUpdateValidator.Factory batchRefValidatorFactory =
-        new BatchRefUpdateValidator.Factory() {
-          @Override
-          public BatchRefUpdateValidator create(
-              String projectName, RefDatabase refDb, Set<String> ignoredRefs) {
-            return batchRefUpdateValidator;
-          }
-        };
+        (projectName, refDb, ignoredRefs) -> batchRefUpdateValidator;
     return new SharedRefDbBatchRefUpdate(
-        batchRefValidatorFactory, A_TEST_PROJECT_NAME, refDatabase, EMPTY_SET);
+        batchRefValidatorFactory, A_TEST_PROJECT_NAME, refDatabase, ImmutableSet.of());
   }
 
   protected static class RefMatcher implements ArgumentMatcher<Ref> {

@@ -15,7 +15,6 @@
 package com.gerritforge.gerrit.globalrefdb.validation;
 
 import static com.google.common.truth.Truth.assertThat;
-import static java.util.Collections.EMPTY_SET;
 import static java.util.Collections.singletonList;
 import static org.eclipse.jgit.transport.ReceiveCommand.Type.UPDATE;
 import static org.mockito.ArgumentMatchers.any;
@@ -29,6 +28,7 @@ import static org.mockito.Mockito.when;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.DefaultSharedRefEnforcement;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.RefFixture;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedRefEnforcement;
+import com.google.common.collect.ImmutableSet;
 import com.google.gerrit.entities.Project;
 import com.google.gerrit.metrics.DisabledMetricMaker;
 import java.io.IOException;
@@ -172,7 +172,7 @@ public class BatchRefUpdateValidatorTest extends LocalDiskRepositoryTestCase imp
         projectsFilter,
         projectName,
         diskRepo.getRefDatabase(),
-        EMPTY_SET);
+        ImmutableSet.of());
   }
 
   private Void execute(BatchRefUpdate u) throws IOException {

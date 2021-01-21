@@ -14,12 +14,17 @@
 
 package com.gerritforge.gerrit.globalrefdb.validation;
 
-import static java.util.Collections.EMPTY_SET;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.RefFixture;
+import com.google.common.collect.ImmutableSet;
 import com.google.gerrit.server.git.LocalDiskRepositoryManager;
+import com.google.inject.AbstractModule;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.google.inject.TypeLiteral;
+import com.google.inject.name.Names;
 import org.eclipse.jgit.lib.Repository;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,6 +34,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SharedRefDbGitRepositoryManagerTest implements RefFixture {
+  private static final ImmutableSet<String> IGNORED_REFS =
+      ImmutableSet.of("refs/heads/foo", "refs/heads/bar");
 
   @Mock LocalDiskRepositoryManager localDiskRepositoryManagerMock;
 
@@ -49,10 +56,8 @@ public class SharedRefDbGitRepositoryManagerTest implements RefFixture {
   public void setUp() throws Exception {
     doReturn(sharedRefDbRepositoryMock)
         .when(sharedRefDbRepositoryFactoryMock)
-        .create(A_TEST_PROJECT_NAME, repositoryMock, EMPTY_SET);
-    msRepoMgr =
-        new SharedRefDbGitRepositoryManager(
-            sharedRefDbRepositoryFactoryMock, localDiskRepositoryManagerMock, null);
+        .create(A_TEST_PROJECT_NAME, repositoryMock, ImmutableSet.of());
+    msRepoMgr = getInjector(ImmutableSet.of()).getInstance(SharedRefDbGitRepositoryManager.class);
   }
 
   @Test
@@ -63,7 +68,21 @@ public class SharedRefDbGitRepositoryManagerTest implements RefFixture {
 
     msRepoMgr.openRepository(A_TEST_PROJECT_NAME_KEY);
 
-    verifyThatSharedRefDbRepositoryWrapperHasBeenCreated();
+    verifyThatSharedRefDbRepositoryWrapperHasBeenCreated(ImmutableSet.of());
+  }
+
+  @Test
+  public void openRepositoryShouldCreateSharedRefDbRepositoryWrapperWithIgnoredRefs()
+      throws Exception {
+    doReturn(repositoryMock)
+        .when(localDiskRepositoryManagerMock)
+        .openRepository(A_TEST_PROJECT_NAME_KEY);
+
+    getInjector(IGNORED_REFS)
+        .getInstance(SharedRefDbGitRepositoryManager.class)
+        .openRepository(A_TEST_PROJECT_NAME_KEY);
+
+    verifyThatSharedRefDbRepositoryWrapperHasBeenCreated(IGNORED_REFS);
   }
 
   @Test
@@ -74,10 +93,41 @@ public class SharedRefDbGitRepositoryManagerTest implements RefFixture {
 
     msRepoMgr.createRepository(A_TEST_PROJECT_NAME_KEY);
 
-    verifyThatSharedRefDbRepositoryWrapperHasBeenCreated();
+    verifyThatSharedRefDbRepositoryWrapperHasBeenCreated(ImmutableSet.of());
   }
 
-  private void verifyThatSharedRefDbRepositoryWrapperHasBeenCreated() {
-    verify(sharedRefDbRepositoryFactoryMock).create(A_TEST_PROJECT_NAME, repositoryMock, EMPTY_SET);
+  @Test
+  public void createRepositoryShouldCreateSharedRefDbRepositoryWrapperWithIgnoredRefs()
+      throws Exception {
+    doReturn(repositoryMock)
+        .when(localDiskRepositoryManagerMock)
+        .createRepository(A_TEST_PROJECT_NAME_KEY);
+
+    getInjector(IGNORED_REFS)
+        .getInstance(SharedRefDbGitRepositoryManager.class)
+        .createRepository(A_TEST_PROJECT_NAME_KEY);
+
+    verifyThatSharedRefDbRepositoryWrapperHasBeenCreated(IGNORED_REFS);
+  }
+
+  private Injector getInjector(ImmutableSet<String> ignoredRefs) {
+    return Guice.createInjector(
+        new AbstractModule() {
+
+          @Override
+          protected void configure() {
+            bind(new TypeLiteral<ImmutableSet<String>>() {})
+                .annotatedWith(Names.named(SharedRefDbGitRepositoryManager.IGNORED_REFS))
+                .toInstance(ignoredRefs);
+            bind(SharedRefDbRepository.Factory.class).toInstance(sharedRefDbRepositoryFactoryMock);
+            bind(LocalDiskRepositoryManager.class).toInstance(localDiskRepositoryManagerMock);
+          }
+        });
+  }
+
+  private void verifyThatSharedRefDbRepositoryWrapperHasBeenCreated(
+      ImmutableSet<String> ignoredRefs) {
+    verify(sharedRefDbRepositoryFactoryMock)
+        .create(A_TEST_PROJECT_NAME, repositoryMock, ignoredRefs);
   }
 }

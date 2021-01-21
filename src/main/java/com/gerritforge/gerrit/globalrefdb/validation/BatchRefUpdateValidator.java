@@ -17,13 +17,13 @@ package com.gerritforge.gerrit.globalrefdb.validation;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.OutOfSyncException;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedRefEnforcement;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedRefEnforcement.EnforcePolicy;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.flogger.FluentLogger;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.eclipse.jgit.lib.BatchRefUpdate;
@@ -37,7 +37,8 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
   public interface Factory {
-    BatchRefUpdateValidator create(String projectName, RefDatabase refDb, Set<String> ignoredRefs);
+    BatchRefUpdateValidator create(
+        String projectName, RefDatabase refDb, ImmutableSet<String> ignoredRefs);
   }
 
   public interface BatchValidationWrapper {
@@ -53,7 +54,7 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
       ProjectsFilter projectsFilter,
       @Assisted String projectName,
       @Assisted RefDatabase refDb,
-      @Assisted Set<String> ignoredRefs) {
+      @Assisted ImmutableSet<String> ignoredRefs) {
     super(
         sharedRefDb,
         validationMetrics,

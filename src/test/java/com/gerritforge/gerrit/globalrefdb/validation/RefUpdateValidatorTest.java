@@ -15,7 +15,6 @@
 package com.gerritforge.gerrit.globalrefdb.validation;
 
 import static com.google.common.truth.Truth.assertThat;
-import static java.util.Collections.EMPTY_SET;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doReturn;
@@ -27,6 +26,7 @@ import static org.mockito.Mockito.when;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.DefaultSharedRefEnforcement;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.RefFixture;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedDbSplitBrainException;
+import com.google.common.collect.ImmutableSet;
 import com.google.gerrit.entities.Project;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
@@ -215,6 +215,6 @@ public class RefUpdateValidatorTest implements RefFixture {
         projectsFilter,
         A_TEST_PROJECT_NAME,
         localRefDb,
-        EMPTY_SET);
+        ImmutableSet.of());
   }
 }
