@@ -58,6 +58,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66b51b85_313cbb52",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbGitRepositoryManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-21T22:05:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6f05ae25_6ab2a918",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 26
+      },
+      "revId": "a43d38ae879d996180a27bb004e49cc7e0bc8c7c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2377fcb7_3eb0b431",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-01-21T21:51:52Z",
       "side": 1,
       "message": "This can also be ImmutableSet type? Error Prone has a check enforcing it.",
+      "range": {
+        "startLine": 39,
+        "startChar": 10,
+        "endLine": 39,
+        "endChar": 13
+      },
+      "revId": "a43d38ae879d996180a27bb004e49cc7e0bc8c7c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcedee1b_13f9baf3",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbGitRepositoryManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-21T22:05:40Z",
+      "side": 1,
+      "message": "True, let me change it.",
+      "parentUuid": "2377fcb7_3eb0b431",
       "range": {
         "startLine": 39,
         "startChar": 10,
