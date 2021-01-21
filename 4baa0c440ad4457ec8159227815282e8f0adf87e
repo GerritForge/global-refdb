@@ -182,6 +182,30 @@
       },
       "revId": "4baa0c440ad4457ec8159227815282e8f0adf87e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8cc340b_6498c5dd",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbConfiguration.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-01-21T09:02:51Z",
+      "side": 1,
+      "message": "For example if you have ha plugin and multi-site and you want to have a single metric. In this case for both HA and multi-site we can put something like \u0027global-refdb\u0027. Without that we will always have separate metrics.",
+      "parentUuid": "9233c170_8767a7ea",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 85,
+        "endChar": 97
+      },
+      "revId": "4baa0c440ad4457ec8159227815282e8f0adf87e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
