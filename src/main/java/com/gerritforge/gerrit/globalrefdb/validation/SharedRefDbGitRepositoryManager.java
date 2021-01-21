@@ -17,6 +17,7 @@ package com.gerritforge.gerrit.globalrefdb.validation;
 import static java.util.Collections.EMPTY_SET;
 
 import com.google.common.base.MoreObjects;
+import com.google.gerrit.common.Nullable;
 import com.google.gerrit.entities.Project;
 import com.google.gerrit.server.git.GitRepositoryManager;
 import com.google.gerrit.server.git.LocalDiskRepositoryManager;
@@ -27,7 +28,6 @@ import com.google.inject.name.Named;
 import java.io.IOException;
 import java.util.Set;
 import java.util.SortedSet;
-import javax.annotation.Nullable;
 import org.eclipse.jgit.errors.RepositoryNotFoundException;
 import org.eclipse.jgit.lib.Repository;
 
@@ -36,16 +36,18 @@ public class SharedRefDbGitRepositoryManager implements GitRepositoryManager {
   public static final String IGNORED_REFS = "ignored_refs";
   private final GitRepositoryManager gitRepositoryManager;
   private final SharedRefDbRepository.Factory sharedRefDbRepoFactory;
-  private final Set<String> ignoredRefs;
+
+  @Inject(optional = true)
+  @Named(IGNORED_REFS)
+  @Nullable
+  private Set<String> ignoredRefs;
 
   @Inject
   public SharedRefDbGitRepositoryManager(
       SharedRefDbRepository.Factory sharedRefDbRepoFactory,
-      LocalDiskRepositoryManager localDiskRepositoryManager,
-      @Nullable @Named(IGNORED_REFS) Set<String> ignoredRefs) {
+      LocalDiskRepositoryManager localDiskRepositoryManager) {
     this.sharedRefDbRepoFactory = sharedRefDbRepoFactory;
     this.gitRepositoryManager = localDiskRepositoryManager;
-    this.ignoredRefs = MoreObjects.firstNonNull(ignoredRefs, EMPTY_SET);
   }
 
   @Override
@@ -67,5 +69,9 @@ public class SharedRefDbGitRepositoryManager implements GitRepositoryManager {
 
   private Repository wrap(Project.NameKey projectName, Repository projectRepo) {
     return sharedRefDbRepoFactory.create(projectName.get(), projectRepo, ignoredRefs);
+  }
+
+  public Set<String> getIgnoredRefs() {
+    return MoreObjects.firstNonNull(ignoredRefs, EMPTY_SET);
   }
 }
