@@ -254,6 +254,29 @@
       },
       "revId": "4baa0c440ad4457ec8159227815282e8f0adf87e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c94ea9a_366c3de9",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/ValidationMetrics.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-21T10:49:54Z",
+      "side": 1,
+      "message": "I think this will fail if we allow multiple plugins to expose the metrics with the same root prefix, because it will try to register two metrics with the same name.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 55
+      },
+      "revId": "4baa0c440ad4457ec8159227815282e8f0adf87e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
