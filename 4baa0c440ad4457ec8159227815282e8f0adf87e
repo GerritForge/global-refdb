@@ -277,6 +277,30 @@
       },
       "revId": "4baa0c440ad4457ec8159227815282e8f0adf87e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82c35af4_edb70a7a",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/ValidationMetrics.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-21T14:04:09Z",
+      "side": 1,
+      "message": "Exactly, BUT if we have the plugin name as prefix, it *will never* fail because Gerrit would refuse two plugins with the same name.\n\nDoes that make sense?",
+      "parentUuid": "0c94ea9a_366c3de9",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 55
+      },
+      "revId": "4baa0c440ad4457ec8159227815282e8f0adf87e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
