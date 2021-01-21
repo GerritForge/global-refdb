@@ -14,10 +14,10 @@
 
 package com.gerritforge.gerrit.globalrefdb.validation;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import java.io.IOException;
-import java.util.Set;
 import org.eclipse.jgit.lib.AnyObjectId;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.PersonIdent;
@@ -37,7 +37,10 @@ public class SharedRefDbRefUpdate extends RefUpdate {
 
   public interface Factory {
     SharedRefDbRefUpdate create(
-        String projectName, RefUpdate refUpdate, RefDatabase refDb, Set<String> ignoredRefs);
+        String projectName,
+        RefUpdate refUpdate,
+        RefDatabase refDb,
+        ImmutableSet<String> ignoredRefs);
   }
 
   @Inject
@@ -46,7 +49,7 @@ public class SharedRefDbRefUpdate extends RefUpdate {
       @Assisted String projectName,
       @Assisted RefUpdate refUpdate,
       @Assisted RefDatabase refDb,
-      @Assisted Set<String> ignoredRefs) {
+      @Assisted ImmutableSet<String> ignoredRefs) {
     super(refUpdate.getRef());
     refUpdateBase = refUpdate;
     this.projectName = projectName;

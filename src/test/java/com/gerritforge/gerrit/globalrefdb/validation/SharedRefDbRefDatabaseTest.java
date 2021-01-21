@@ -14,11 +14,11 @@
 
 package com.gerritforge.gerrit.globalrefdb.validation;
 
-import static java.util.Collections.EMPTY_SET;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.RefFixture;
+import com.google.common.collect.ImmutableSet;
 import org.eclipse.jgit.lib.RefDatabase;
 import org.eclipse.jgit.lib.RefUpdate;
 import org.junit.Rule;
@@ -54,12 +54,12 @@ public class SharedRefDbRefDatabaseTest implements RefFixture {
             refBatchUpdateFactoryMock,
             A_TEST_PROJECT_NAME,
             refDatabaseMock,
-            EMPTY_SET);
+            ImmutableSet.of());
     doReturn(refUpdateMock).when(refDatabaseMock).newUpdate(refName, false);
 
     sharedRefDbRefDb.newUpdate(refName, false);
 
     verify(refUpdateFactoryMock)
-        .create(A_TEST_PROJECT_NAME, refUpdateMock, refDatabaseMock, EMPTY_SET);
+        .create(A_TEST_PROJECT_NAME, refUpdateMock, refDatabaseMock, ImmutableSet.of());
   }
 }

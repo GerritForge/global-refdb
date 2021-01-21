@@ -15,11 +15,11 @@
 package com.gerritforge.gerrit.globalrefdb.validation;
 
 import static com.google.common.truth.Truth.assertThat;
-import static java.util.Collections.EMPTY_SET;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.RefFixture;
+import com.google.common.collect.ImmutableSet;
 import java.io.IOException;
 import org.eclipse.jgit.lib.ObjectDatabase;
 import org.eclipse.jgit.lib.RefDatabase;
@@ -55,17 +55,18 @@ public class SharedRefDbRepositoryTest implements RefFixture {
     doReturn(genericRefDb).when(repository).getRefDatabase();
     doReturn(sharedRefDb)
         .when(sharedRefDbRefDbFactory)
-        .create(PROJECT_NAME, genericRefDb, EMPTY_SET);
+        .create(PROJECT_NAME, genericRefDb, ImmutableSet.of());
   }
 
   @Test
   public void shouldInvokeSharedRefDbRefDbFactoryCreate() {
     setMockitoCommon();
     try (SharedRefDbRepository sharedRefDbRepository =
-        new SharedRefDbRepository(sharedRefDbRefDbFactory, PROJECT_NAME, repository, EMPTY_SET)) {
+        new SharedRefDbRepository(
+            sharedRefDbRefDbFactory, PROJECT_NAME, repository, ImmutableSet.of())) {
 
       sharedRefDbRepository.getRefDatabase();
-      verify(sharedRefDbRefDbFactory).create(PROJECT_NAME, genericRefDb, EMPTY_SET);
+      verify(sharedRefDbRefDbFactory).create(PROJECT_NAME, genericRefDb, ImmutableSet.of());
     }
   }
 
@@ -73,7 +74,8 @@ public class SharedRefDbRepositoryTest implements RefFixture {
   public void shouldInvokeNewUpdateInSharedRefDbRefDatabase() throws IOException {
     setMockitoCommon();
     try (SharedRefDbRepository sharedRefDbRepository =
-        new SharedRefDbRepository(sharedRefDbRefDbFactory, PROJECT_NAME, repository, EMPTY_SET)) {
+        new SharedRefDbRepository(
+            sharedRefDbRefDbFactory, PROJECT_NAME, repository, ImmutableSet.of())) {
       sharedRefDbRepository.getRefDatabase().newUpdate(REFS_HEADS_MASTER, false);
 
       verify(sharedRefDb).newUpdate(REFS_HEADS_MASTER, false);
@@ -87,7 +89,8 @@ public class SharedRefDbRepositoryTest implements RefFixture {
     doReturn(sharedRefDbRefUpdate).when(sharedRefDb).newUpdate(REFS_HEADS_MASTER, false);
 
     try (SharedRefDbRepository sharedRefDbRepository =
-        new SharedRefDbRepository(sharedRefDbRefDbFactory, PROJECT_NAME, repository, EMPTY_SET)) {
+        new SharedRefDbRepository(
+            sharedRefDbRefDbFactory, PROJECT_NAME, repository, ImmutableSet.of())) {
 
       Result updateResult =
           sharedRefDbRepository.getRefDatabase().newUpdate(REFS_HEADS_MASTER, false).update();

@@ -14,12 +14,12 @@
 
 package com.gerritforge.gerrit.globalrefdb.validation;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 import org.eclipse.jgit.lib.BatchRefUpdate;
 import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.lib.ProgressMonitor;
@@ -35,10 +35,11 @@ public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
   private final String project;
   private final BatchRefUpdateValidator.Factory batchRefValidatorFactory;
   private final RefDatabase refDb;
-  private final Set<String> ignoredRefs;
+  private final ImmutableSet<String> ignoredRefs;
 
   public interface Factory {
-    SharedRefDbBatchRefUpdate create(String project, RefDatabase refDb, Set<String> ignoredRefs);
+    SharedRefDbBatchRefUpdate create(
+        String project, RefDatabase refDb, ImmutableSet<String> ignoredRefs);
   }
 
   @Inject
@@ -46,7 +47,7 @@ public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
       BatchRefUpdateValidator.Factory batchRefValidatorFactory,
       @Assisted String project,
       @Assisted RefDatabase refDb,
-      @Assisted Set<String> ignoredRefs) {
+      @Assisted ImmutableSet<String> ignoredRefs) {
     super(refDb);
     this.refDb = refDb;
     this.project = project;
