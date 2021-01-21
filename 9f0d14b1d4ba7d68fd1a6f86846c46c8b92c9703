@@ -16,6 +16,24 @@
       "message": "Looks like @Nullable @Named annotation cannot work together. I\u0027m getting:\ncom.google.gerrit.common.Die: No implementation for java.util.Set\u003cjava.lang.String\u003e annotated with @com.google.inject.name.Named(value\u003d\"ignored_refs\") was bound.\nfor high-availability.\n\nhttps://groups.google.com/g/google-guice/c/wICHejDrLVA",
       "revId": "9f0d14b1d4ba7d68fd1a6f86846c46c8b92c9703",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9342f3b8_693971a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-21T16:52:54Z",
+      "side": 1,
+      "message": "Thanks for the feedback: I need to first add a Guice-based test and then fix the issue.",
+      "parentUuid": "3bb8d4af_b894cf84",
+      "revId": "9f0d14b1d4ba7d68fd1a6f86846c46c8b92c9703",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
