@@ -16,6 +16,23 @@
       "message": "Now this is ready for review, all tests should have been completed.",
       "revId": "a43d38ae879d996180a27bb004e49cc7e0bc8c7c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa4283c3_7c8e6d76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-21T21:51:10Z",
+      "side": 1,
+      "message": "This +1 is for Marcin\u0027s implementation. However, I would prefer someone else to give +2 as I also contributed to this change.",
+      "revId": "a43d38ae879d996180a27bb004e49cc7e0bc8c7c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
