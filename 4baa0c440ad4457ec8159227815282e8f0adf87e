@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbae9258_ef582f95",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbConfiguration.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-21T08:50:19Z",
+      "side": 1,
+      "message": "I personally think documentation would be useful, otherwise the only way to know how to configure the library would be to look at the source code itself.",
+      "parentUuid": "c3d78d26_fbd1fe36",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 60
+      },
+      "revId": "4baa0c440ad4457ec8159227815282e8f0adf87e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6eaffa6d_1aadffde",
         "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbConfiguration.java",
         "patchSetId": 5
