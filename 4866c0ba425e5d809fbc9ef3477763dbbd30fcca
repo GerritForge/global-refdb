@@ -46,6 +46,30 @@
       },
       "revId": "4866c0ba425e5d809fbc9ef3477763dbbd30fcca",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c750024_6d7f011a",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbGitRepositoryManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-21T21:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9d4dbf1_d6886f3b",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 11
+      },
+      "revId": "4866c0ba425e5d809fbc9ef3477763dbbd30fcca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
