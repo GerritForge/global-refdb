@@ -301,6 +301,30 @@
       },
       "revId": "4baa0c440ad4457ec8159227815282e8f0adf87e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0fb7d47_cf1d8438",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/ValidationMetrics.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-01-21T14:05:34Z",
+      "side": 1,
+      "message": "Yes but the point is, do we allow to override that from config or we want to \"hardcode\" it to the plugin name?",
+      "parentUuid": "82c35af4_edb70a7a",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 55
+      },
+      "revId": "4baa0c440ad4457ec8159227815282e8f0adf87e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
