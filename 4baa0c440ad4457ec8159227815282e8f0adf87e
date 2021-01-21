@@ -349,6 +349,30 @@
       },
       "revId": "4baa0c440ad4457ec8159227815282e8f0adf87e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "676f6f63_e83247ee",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/ValidationMetrics.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-21T14:11:21Z",
+      "side": 1,
+      "message": "Thanks @Marcin for your patience on this :-)",
+      "parentUuid": "808da995_6fa6a7c0",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 55
+      },
+      "revId": "4baa0c440ad4457ec8159227815282e8f0adf87e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
