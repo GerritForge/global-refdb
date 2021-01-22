@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a51288f_6aad8879",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-22T08:56:45Z",
+      "side": 1,
+      "message": "+1 for the Marcin\u0027s part of the change. @Marcin can you review my part as well?",
+      "revId": "73f4b643a76077e5ac165d4219de7a116b275736",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
