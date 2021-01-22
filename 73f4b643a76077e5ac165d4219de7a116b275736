@@ -35,6 +35,46 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50cbb863_94cca321",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2021-01-22T10:29:48Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "73f4b643a76077e5ac165d4219de7a116b275736",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67ec6cef_fcd271e3",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbBatchRefUpdateTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2021-01-22T10:29:48Z",
+      "side": 1,
+      "message": "Unrelated to this change, but could also be replaced with: Collections.emptyList(), to fix this eclipse warning:\n\n  Type safety: The expression of type List needs unchecked conversion to conform to List\u003cString\u003e",
+      "range": {
+        "startLine": 128,
+        "startChar": 59,
+        "endLine": 128,
+        "endChar": 69
+      },
+      "revId": "73f4b643a76077e5ac165d4219de7a116b275736",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35fbf199_84f510e8",
@@ -53,6 +93,29 @@
         "startChar": 7,
         "endLine": 191,
         "endChar": 9
+      },
+      "revId": "73f4b643a76077e5ac165d4219de7a116b275736",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a643bb3b_4622ad60",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/validation/ValidationModuleTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2021-01-22T10:29:48Z",
+      "side": 1,
+      "message": "Use: Collections.emptySet() to avoid Eccipse warning.",
+      "range": {
+        "startLine": 64,
+        "startChar": 32,
+        "endLine": 64,
+        "endChar": 41
       },
       "revId": "73f4b643a76077e5ac165d4219de7a116b275736",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
