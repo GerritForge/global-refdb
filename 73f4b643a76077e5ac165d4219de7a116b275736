@@ -16,6 +16,46 @@
       "message": "+1 for the Marcin\u0027s part of the change. @Marcin can you review my part as well?",
       "revId": "73f4b643a76077e5ac165d4219de7a116b275736",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bbb3fda_4b69cfcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-01-22T09:52:05Z",
+      "side": 1,
+      "message": "+1 Most of the code is done by @Luca but I pushed the draft so maybe someone else could give +2, @davido?\n",
+      "revId": "73f4b643a76077e5ac165d4219de7a116b275736",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35fbf199_84f510e8",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbBatchRefUpdateTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-01-22T09:52:05Z",
+      "side": 1,
+      "message": "nit: is this in the scope of this change?",
+      "range": {
+        "startLine": 191,
+        "startChar": 7,
+        "endLine": 191,
+        "endChar": 9
+      },
+      "revId": "73f4b643a76077e5ac165d4219de7a116b275736",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
