@@ -15,6 +15,8 @@
 package com.gerritforge.gerrit.globalrefdb.validation;
 
 import com.gerritforge.gerrit.globalrefdb.GlobalRefDbSystemError;
+import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.CustomSharedRefEnforcementByProject;
+import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.DefaultSharedRefEnforcement;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.OutOfSyncException;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedDbSplitBrainException;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedLockException;
@@ -34,6 +36,7 @@ import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.RefDatabase;
 import org.eclipse.jgit.lib.RefUpdate;
 
+/** Enables the detection of out-of-sync by validating ref updates against the global refdb. */
 public class RefUpdateValidator {
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
@@ -47,6 +50,7 @@ public class RefUpdateValidator {
   protected final ProjectsFilter projectsFilter;
   private final ImmutableSet<String> ignoredRefs;
 
+  /** {@code RefUpdateValidator} Factory for Guice assisted injection. */
   public interface Factory {
     RefUpdateValidator create(
         String projectName, RefDatabase refDb, ImmutableSet<String> ignoredRefs);
@@ -69,6 +73,23 @@ public class RefUpdateValidator {
     void invoke() throws IOException;
   }
 
+  /**
+   * Constructs a {@code RefUpdateValidator} able to check the validity of ref-updates against a
+   * global refdb before execution.
+   *
+   * @param sharedRefDb an instance of the global refdb to check for out-of-sync refs.
+   * @param validationMetrics to update validation results, such as split-brains.
+   * @param refEnforcement Specific ref enforcements for this project. Either a {@link
+   *     CustomSharedRefEnforcementByProject} when custom policies are provided via configuration
+   *     file or a {@link DefaultSharedRefEnforcement} for defaults.
+   * @param lockWrapperFactory factory providing a {@link LockWrapper}
+   * @param projectsFilter filter to match whether the project being updated should be validated
+   *     against global refdb
+   * @param projectName the name of the project being updated.
+   * @param refDb for ref operations
+   * @param ignoredRefs A set of refs for which updates should not be checked against the shared
+   *     ref-db
+   */
   @Inject
   public RefUpdateValidator(
       SharedRefDatabaseWrapper sharedRefDb,
@@ -89,6 +110,30 @@ public class RefUpdateValidator {
     this.projectsFilter = projectsFilter;
   }
 
+  /**
+   * Checks whether the provided refUpdate should be validated first against the shared ref-db. If
+   * not it just execute the provided refUpdateFunction. If it should be validated against the
+   * global refdb then it does so by executing the {@link
+   * RefUpdateValidator#doExecuteRefUpdate(RefUpdate, NoParameterFunction)} first. Upon success the
+   * refUpdate is returned, upon failure split brain metrics are incremented and a {@link
+   * SharedDbSplitBrainException} is thrown.
+   *
+   * <p>Validation is performed when either of these condition is true
+   *
+   * <ul>
+   *   <li>The ref being updated is not to be ignored ({@link
+   *       RefUpdateValidator#isRefToBeIgnored(String)})
+   *   <li>The project being updated is a global project ({@link
+   *       RefUpdateValidator#isGlobalProject(String)}
+   *   <li>The enforcement policy for the project being updated is {@link EnforcePolicy#IGNORED}
+   * </ul>
+   *
+   * @param refUpdate the refUpdate command
+   * @param refUpdateFunction the refUpdate function to execute after validation
+   * @return the result of the update, or "null" in case a split brain was detected but the policy
+   *     enforcement was not REQUIRED
+   * @throws IOException Execution of ref update failed
+   */
   public RefUpdate.Result executeRefUpdate(
       RefUpdate refUpdate, NoParameterFunction<RefUpdate.Result> refUpdateFunction)
       throws IOException {

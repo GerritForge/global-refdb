@@ -27,11 +27,35 @@ import java.util.Set;
 
 // import com.google.gerrit.entities.AccessSection;
 
+/**
+ * Filter to match against project names to indicate whether a project should be validated against a
+ * global refdb.
+ *
+ * <p>Filters are computed by reading the configuration of the libModule consuming this library.
+ */
 @Singleton
 public class ProjectsFilter {
+
+  /** The type of the pattern defining this filter */
   public enum PatternType {
+    /**
+     * Values starting with a caret `^` are treated as regular expressions. For the regular
+     * expressions details please @see <a
+     * href="https://docs.oracle.com/javase/tutorial/essential/regex/">official java
+     * documentation</a>
+     */
     REGEX,
+    /**
+     * Values that are not regular expressions and end in `*` are treated as wildcard matches.
+     * Wildcards match projects whose name agrees from the beginning until the trailing `*`. So
+     * `foo/b*` would match the projects `foo/b`, `foo/bar`, and `foo/baz`, but neither `foobar`,
+     * nor `bar/foo/baz`.
+     */
     WILDCARD,
+    /**
+     * Values that are neither regular expressions nor wildcards are treated as single project
+     * matches. So `foo/bar` matches only the project `foo/bar`, but no other project.
+     */
     EXACT_MATCH;
 
     public static PatternType getPatternType(String pattern) {
@@ -51,11 +75,24 @@ public class ProjectsFilter {
   private Set<NameKey> localProjects = Sets.newConcurrentHashSet();
   private final List<String> projectPatterns;
 
+  /**
+   * Constructs a {@code ProjectsFilter} by providing the libModule configuration
+   *
+   * @param cfg the libModule configuration
+   */
   @Inject
   public ProjectsFilter(SharedRefDbConfiguration cfg) {
     projectPatterns = cfg.projects().getPatterns();
   }
 
+  /**
+   * Given an event checks whether this project filter matches the project associated with the
+   * event. Returns false for all other events.
+   *
+   * @see #matches(NameKey)
+   * @param event the event to check against
+   * @return true when it matches, false otherwise.
+   */
   public boolean matches(Event event) {
     if (event == null) {
       throw new IllegalArgumentException("Event object cannot be null");
@@ -66,10 +103,23 @@ public class ProjectsFilter {
     return false;
   }
 
+  /**
+   * checks whether this project filter matches the projectName
+   *
+   * @see #matches(NameKey)
+   * @param projectName the project name to check against
+   * @return true when it matches, false otherwise.
+   */
   public boolean matches(String projectName) {
     return matches(NameKey.parse(projectName));
   }
 
+  /**
+   * checks whether this project filter matches the project name.
+   *
+   * @param name the name of the project to check
+   * @return true, when the project matches, false otherwise.
+   */
   public boolean matches(Project.NameKey name) {
     if (name == null || Strings.isNullOrEmpty(name.get())) {
       throw new IllegalArgumentException(

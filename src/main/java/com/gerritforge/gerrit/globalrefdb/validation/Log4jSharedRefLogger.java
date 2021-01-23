@@ -40,6 +40,11 @@ import org.eclipse.jgit.revwalk.RevWalk;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Implementation of SharedRefLogger for Log4j. Logs to 'sharedref_log' file
+ *
+ * @see <a href="https://logging.apache.org/log4j/2.x/javadoc.html">log4j</a>
+ */
 @Singleton
 public class Log4jSharedRefLogger extends LibModuleLogFile implements SharedRefLogger {
   private static final String LOG_NAME = "sharedref_log";
@@ -49,6 +54,14 @@ public class Log4jSharedRefLogger extends LibModuleLogFile implements SharedRefL
 
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
+  /**
+   * Constructs a {@code Log4jSharedRefLogger} instance with the provided systemLog used to create
+   * the Log4J apppender and the repository manager to hydrate ref information with extra
+   * information, such as committer, before logging.
+   *
+   * @param systemLog systemLog to create log appender
+   * @param gitRepositoryManager to hydrate log entries with commit data
+   */
   @Inject
   public Log4jSharedRefLogger(SystemLog systemLog, GitRepositoryManager gitRepositoryManager) {
     super(systemLog, LOG_NAME, new PatternLayout("[%d{ISO8601}] [%t] %-5p : %m%n"));
@@ -56,6 +69,15 @@ public class Log4jSharedRefLogger extends LibModuleLogFile implements SharedRefL
     sharedRefDBLog = LoggerFactory.getLogger(LOG_NAME);
   }
 
+  /**
+   * {@inheritDoc}.
+   *
+   * <p>Only logs commits and blob refs (throws {@link IncorrectObjectTypeException} for any other
+   * unexpected type). Additionally, it hydrates commits with information about the committer and
+   * commit message.
+   *
+   * <p>Logs Json serialization of {@link SharedRefLogEntry.UpdateRef}
+   */
   @Override
   public void logRefUpdate(String project, Ref currRef, ObjectId newRefValue) {
     if (!ObjectId.zeroId().equals(newRefValue)) {
@@ -99,6 +121,12 @@ public class Log4jSharedRefLogger extends LibModuleLogFile implements SharedRefL
     }
   }
 
+  /**
+   * {@inheritDoc}.
+   *
+   * <p>Logs Json serialization of {@link SharedRefLogEntry.UpdateRef} or a {@link
+   * SharedRefLogEntry.DeleteRef}, when 'newRefValue' is null
+   */
   @Override
   public <T> void logRefUpdate(String project, String refName, T currRef, T newRefValue) {
     if (newRefValue != null) {
@@ -112,16 +140,31 @@ public class Log4jSharedRefLogger extends LibModuleLogFile implements SharedRefL
     }
   }
 
+  /**
+   * {@inheritDoc}.
+   *
+   * <p>Logs Json serialization of {@link SharedRefLogEntry.DeleteProject}
+   */
   @Override
   public void logProjectDelete(String project) {
     sharedRefDBLog.info(gson.toJson(new SharedRefLogEntry.DeleteProject(project)));
   }
 
+  /**
+   * {@inheritDoc}.
+   *
+   * <p>Logs Json serialization of {@link SharedRefLogEntry.LockAcquire}
+   */
   @Override
   public void logLockAcquisition(String project, String refName) {
     sharedRefDBLog.info(gson.toJson(new SharedRefLogEntry.LockAcquire(project, refName)));
   }
 
+  /**
+   * {@inheritDoc}.
+   *
+   * <p>Logs Json serialization of {@link SharedRefLogEntry.LockRelease}
+   */
   @Override
   public void logLockRelease(String project, String refName) {
     sharedRefDBLog.info(gson.toJson(new SharedRefLogEntry.LockRelease(project, refName)));

@@ -20,6 +20,14 @@ import java.io.IOException;
 public class SharedLockException extends IOException {
   private static final long serialVersionUID = 1L;
 
+  /**
+   * Constructs a {@code SharedLockException} exception with the cause of failing to lock a
+   * project/ref resource
+   *
+   * @param project the project the lock is being acquired for
+   * @param refName the ref the project is being acquired for
+   * @param cause the cause of the failure
+   */
   public SharedLockException(String project, String refName, Exception cause) {
     super(String.format("Unable to lock project %s on ref %s", project, refName), cause);
   }

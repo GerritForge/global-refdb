@@ -26,6 +26,11 @@ import java.util.Optional;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
 
+/**
+ * Wraps an instance of {@link GlobalRefDatabase} provided as {@link DynamicItem} via a Guice
+ * binding. Such instance is bound optionally and, in case no explicit binding is registered a
+ * {@link NoopSharedRefDatabase} instance is wrapped instead.
+ */
 public class SharedRefDatabaseWrapper implements GlobalRefDatabase {
   private static final GlobalRefDatabase NOOP_REFDB = new NoopSharedRefDatabase();
 
@@ -34,6 +39,12 @@ public class SharedRefDatabaseWrapper implements GlobalRefDatabase {
 
   private final SharedRefLogger sharedRefLogger;
 
+  /**
+   * Constructs a {@code SharedRefDatabaseWrapper} wrapping an optional {@link GlobalRefDatabase},
+   * which might have been bound by consumers of this library.
+   *
+   * @param sharedRefLogger logger of shared ref-db operations.
+   */
   @Inject
   public SharedRefDatabaseWrapper(SharedRefLogger sharedRefLogger) {
     this.sharedRefLogger = sharedRefLogger;
@@ -51,6 +62,7 @@ public class SharedRefDatabaseWrapper implements GlobalRefDatabase {
     return sharedRefDb().isUpToDate(project, ref);
   }
 
+  /** {@inheritDoc}. The operation is logged upon success. */
   @Override
   public boolean compareAndPut(Project.NameKey project, Ref currRef, ObjectId newRefValue)
       throws GlobalRefDbSystemError {
@@ -61,6 +73,7 @@ public class SharedRefDatabaseWrapper implements GlobalRefDatabase {
     return succeeded;
   }
 
+  /** {@inheritDoc} the operation is logged upon success. */
   @Override
   public <T> boolean compareAndPut(Project.NameKey project, String refName, T currValue, T newValue)
       throws GlobalRefDbSystemError {
@@ -71,6 +84,7 @@ public class SharedRefDatabaseWrapper implements GlobalRefDatabase {
     return succeeded;
   }
 
+  /** {@inheritDoc}. The operation is logged. */
   @Override
   public AutoCloseable lockRef(Project.NameKey project, String refName)
       throws GlobalRefDbLockException {
@@ -84,6 +98,7 @@ public class SharedRefDatabaseWrapper implements GlobalRefDatabase {
     return sharedRefDb().exists(project, refName);
   }
 
+  /** {@inheritDoc}. The operation is logged. */
   @Override
   public void remove(Project.NameKey project) throws GlobalRefDbSystemError {
     sharedRefDb().remove(project);
