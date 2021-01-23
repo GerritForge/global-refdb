@@ -14,13 +14,33 @@
 
 package com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb;
 
+/**
+ * Default implementation of {@link SharedRefEnforcement}. This class provides the default
+ * project/ref enforcement rules when no more specific rules have been configured for the libModule
+ * consuming this library.
+ */
 public class DefaultSharedRefEnforcement implements SharedRefEnforcement {
 
+  /**
+   * Returns {@link EnforcePolicy#IGNORED} for refs to be ignored {@link
+   * SharedRefEnforcement#isRefToBeIgnoredBySharedRefDb(String)}, {@link EnforcePolicy#REQUIRED}
+   * otherwise
+   *
+   * @param projectName project to be enforced
+   * @param refName ref name to be enforced
+   * @return the policy for this project/ref
+   */
   @Override
   public EnforcePolicy getPolicy(String projectName, String refName) {
     return isRefToBeIgnoredBySharedRefDb(refName) ? EnforcePolicy.IGNORED : EnforcePolicy.REQUIRED;
   }
 
+  /**
+   * The global refdb validation policy for {@param projectName}
+   *
+   * @param projectName project to be enforced
+   * @return always {@link EnforcePolicy#REQUIRED}
+   */
   @Override
   public EnforcePolicy getPolicy(String projectName) {
     return EnforcePolicy.REQUIRED;

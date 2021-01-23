@@ -39,9 +39,18 @@ public interface SharedRefEnforcement {
   public EnforcePolicy getPolicy(String projectName);
 
   /**
-   * Check if a refName should be ignored by shared Ref-Db
+   * Check if a refName should be ignored by global refdb.
    *
-   * @param refName
+   * <ul>
+   *   The Default behaviour is to ignore:
+   * </ul>
+   *
+   * <li>refs/draft-comments :user-specific temporary storage that does not need to be seen by other
+   *     users/sites
+   * <li>refs/changes/<non-meta>: those refs are immutable
+   * <li>refs/cache-automerge: these refs would be never replicated anyway
+   *
+   * @param refName the name of the ref to check
    * @return true if ref should be ignored; false otherwise
    */
   default boolean isRefToBeIgnoredBySharedRefDb(String refName) {

@@ -22,39 +22,105 @@ import java.util.Optional;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
 
+/**
+ * Default implementation of the {@link GlobalRefDatabase} interface. accepts any refs without
+ * checking for consistency.
+ *
+ * <p>This is useful for setting up a test environment and allows multi-site library to be installed
+ * independently from any additional libModules or the existence of a specific Ref-DB installation.
+ */
 public class NoopSharedRefDatabase implements GlobalRefDatabase {
 
+  /**
+   * Project/ref is always considered up-to-date
+   *
+   * @param project project name of the ref
+   * @param ref to be checked against global ref-db
+   * @return true
+   * @throws GlobalRefDbLockException
+   */
   @Override
   public boolean isUpToDate(Project.NameKey project, Ref ref) throws GlobalRefDbLockException {
     return true;
   }
 
+  /**
+   * Put is always considered successful
+   *
+   * @param project project name of the ref
+   * @param currRef old value to compare to.
+   * @param newRefValue new reference to store.
+   * @return true
+   * @throws GlobalRefDbSystemError
+   */
   @Override
   public boolean compareAndPut(Project.NameKey project, Ref currRef, ObjectId newRefValue)
       throws GlobalRefDbSystemError {
     return true;
   }
 
+  /**
+   * Put is always considered successful
+   *
+   * @param project project name of the ref.
+   * @param refName to store the value for.
+   * @param currValue current expected value in the DB.
+   * @param newValue new value to store.
+   * @param <T>
+   * @return false
+   * @throws GlobalRefDbSystemError
+   */
   @Override
   public <T> boolean compareAndPut(Project.NameKey project, String refName, T currValue, T newValue)
       throws GlobalRefDbSystemError {
     return false;
   }
 
+  /**
+   * Locking the ref does nothing, but return an dummy {@link java.io.Closeable}.
+   *
+   * @param project project name
+   * @param refName ref to lock
+   * @return a dummy {@link java.io.Closeable}.
+   * @throws GlobalRefDbLockException
+   */
   @Override
   public AutoCloseable lockRef(Project.NameKey project, String refName)
       throws GlobalRefDbLockException {
     return () -> {};
   }
 
+  /**
+   * project/refs are always assumed to be new as to never be considered out-of-sync
+   *
+   * @param project project containing the ref
+   * @param refName the name of the ref
+   * @return false
+   */
   @Override
   public boolean exists(Project.NameKey project, String refName) {
     return false;
   }
 
+  /**
+   * Does nothing, the project is always considered to have been removed correctly from the shared
+   * ref-db.
+   *
+   * @param project project name
+   * @throws GlobalRefDbSystemError
+   */
   @Override
   public void remove(Project.NameKey project) throws GlobalRefDbSystemError {}
 
+  /**
+   * Always return an empty object as to never be considered existing in the global refdb.
+   *
+   * @param project project name
+   * @param refName reference name
+   * @param clazz wanted Class of the returned value
+   * @return {@link Optional#empty()}
+   * @throws GlobalRefDbSystemError
+   */
   @Override
   public <T> Optional<T> get(Project.NameKey project, String refName, Class<T> clazz)
       throws GlobalRefDbSystemError {

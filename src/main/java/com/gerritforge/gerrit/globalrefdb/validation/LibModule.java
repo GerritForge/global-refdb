@@ -22,6 +22,7 @@ import com.google.inject.Scopes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/** Binds {@link GlobalRefDatabase} to the {@link NoopSharedRefDatabase} */
 public class LibModule extends LifecycleModule {
   private static final Logger log = LoggerFactory.getLogger(LibModule.class);
 

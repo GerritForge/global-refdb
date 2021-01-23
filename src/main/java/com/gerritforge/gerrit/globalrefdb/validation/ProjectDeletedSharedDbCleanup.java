@@ -20,6 +20,7 @@ import com.google.gerrit.entities.Project;
 import com.google.gerrit.extensions.events.ProjectDeletedListener;
 import com.google.inject.Inject;
 
+/** Removes a project from the global refdb upon deletion */
 public class ProjectDeletedSharedDbCleanup implements ProjectDeletedListener {
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
@@ -27,6 +28,13 @@ public class ProjectDeletedSharedDbCleanup implements ProjectDeletedListener {
 
   private final ValidationMetrics validationMetrics;
 
+  /**
+   * Constructs a {@code ProjectDeletedSharedDbCleanup} with the provided validation metrics and
+   * shared ref-database
+   *
+   * @param sharedDb global refdb used to validate project deletion
+   * @param validationMetrics to increase split-brain upon project failed validation
+   */
   @Inject
   public ProjectDeletedSharedDbCleanup(
       SharedRefDatabaseWrapper sharedDb, ValidationMetrics validationMetrics) {
@@ -34,6 +42,13 @@ public class ProjectDeletedSharedDbCleanup implements ProjectDeletedListener {
     this.validationMetrics = validationMetrics;
   }
 
+  /**
+   * Attempts to delete a project from the global refdb. Upon failure, it swallows {@link
+   * GlobalRefDbSystemError} exceptions and increments split brain metrics. Executed upon project
+   * deletion.
+   *
+   * @param event the project deletion event
+   */
   @Override
   public void onProjectDeleted(Event event) {
     String projectName = event.getProjectName();
