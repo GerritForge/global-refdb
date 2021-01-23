@@ -16,13 +16,25 @@ package com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb;
 
 import java.io.IOException;
 
+/** Split-brain detected when trying to update a ref */
 public class SharedDbSplitBrainException extends IOException {
   private static final long serialVersionUID = 1L;
 
+  /**
+   * Constructs a {@code SharedDbSplitBrainException} with a {@param message}
+   *
+   * @param message details about the detected split brain
+   */
   public SharedDbSplitBrainException(String message) {
     super(message);
   }
 
+  /**
+   * Constructs a {@code SharedDbSplitBrainException} with a {@param message} and a {@param cause}
+   *
+   * @param message details about the detected split brain
+   * @param cause the cause of the split brain detection
+   */
   public SharedDbSplitBrainException(String message, Throwable cause) {
     super(message, cause);
   }

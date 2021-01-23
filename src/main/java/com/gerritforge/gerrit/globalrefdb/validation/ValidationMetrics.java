@@ -22,6 +22,12 @@ import com.google.gerrit.server.logging.PluginMetadata;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+/**
+ * Creates and registers metrics related to ref-db validations, such as split brains events. Such
+ * metrics are exposed by Gerrit and can then be used for monitoring and alerting.
+ *
+ * <p>This class is a {@link Singleton} to ensure that metrics unique are only registered once.
+ */
 @Singleton
 public class ValidationMetrics {
   private static final String GIT_UPDATE_SPLIT_BRAIN_PREVENTED = "git_update_split_brain_prevented";
@@ -30,6 +36,13 @@ public class ValidationMetrics {
   private final Counter1<String> splitBrainPreventionCounter;
   private final Counter1<String> splitBrainCounter;
 
+  /**
+   * Constructs a new {@code ValidationMetrics}, by passing metricMaker and the shared ref-db
+   * configuration. Both parameters are bound and {@link Inject}ed by Guice.
+   *
+   * @param metricMaker Factory to create metrics for monitoring
+   * @param cfg Configuration of shared ref-database configuration file
+   */
   @Inject
   public ValidationMetrics(MetricMaker metricMaker, SharedRefDbConfiguration cfg) {
     this.splitBrainPreventionCounter =
@@ -49,10 +62,18 @@ public class ValidationMetrics {
                 "Ref-update operation left node in a split-brain scenario"));
   }
 
+  /**
+   * Increment the "git_update_split_brain_prevented" metric counter to signal that a split-brain
+   * event was prevented by performing validation against the shared ref-db.
+   */
   public void incrementSplitBrainPrevention() {
     splitBrainPreventionCounter.increment(GIT_UPDATE_SPLIT_BRAIN_PREVENTED);
   }
 
+  /**
+   * Increment the "git_update_split_brain" metric counter to signal that the current gerrit
+   * instance is in split-brain.
+   */
   public void incrementSplitBrain() {
     splitBrainCounter.increment(GIT_UPDATE_SPLIT_BRAIN);
   }

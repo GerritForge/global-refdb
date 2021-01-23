@@ -17,8 +17,18 @@ package com.gerritforge.gerrit.globalrefdb.validation;
 import com.google.gerrit.common.Nullable;
 import com.google.gerrit.extensions.common.GitPerson;
 
+/**
+ * Rather than allowing free form logging of operations, this class provides the types of possible
+ * entries being logged.
+ */
 public class SharedRefLogEntry {
 
+  /**
+   * Types of log entries
+   *
+   * <p>{@link #UPDATE_REF} {@link #DELETE_REF} {@link #DELETE_PROJECT} {@link #LOCK_ACQUIRE} {@link
+   * #LOCK_RELEASE}
+   */
   public enum Type {
     UPDATE_REF,
     DELETE_REF,
@@ -30,6 +40,7 @@ public class SharedRefLogEntry {
   public String projectName;
   public Type type;
 
+  /** A ref update log entry */
   public static class UpdateRef extends SharedRefLogEntry {
 
     public String refName;
@@ -38,6 +49,18 @@ public class SharedRefLogEntry {
     public GitPerson committer;
     public String comment;
 
+    /**
+     * Constructs a new {@code SharedRefLogEntry.UpdateRef} to represent the logging of an update
+     * ref operation.
+     *
+     * @param projectName the name of the project being updated
+     * @param refName the name of the ref being updated
+     * @param oldId the old value of the ref
+     * @param newId the new value of the ref
+     * @param committer the committer of the ref update. Nullable to allow logging of blob updates.
+     * @param comment the comment associated to this commit. Nullabloe to allow logging of blob
+     *     updates.
+     */
     UpdateRef(
         String projectName,
         String refName,
@@ -55,19 +78,35 @@ public class SharedRefLogEntry {
     }
   }
 
+  /** A delete project log entry */
   public static class DeleteProject extends SharedRefLogEntry {
 
+    /**
+     * Constructs a new {@code SharedRefLogEntry.DeleteProject} to represent the logging of a
+     * project deletion operation.
+     *
+     * @param projectName the name of the project being deleted from the shared ref-db.
+     */
     DeleteProject(String projectName) {
       this.type = Type.DELETE_PROJECT;
       this.projectName = projectName;
     }
   }
 
+  /** A delete ref log entry */
   public static class DeleteRef extends SharedRefLogEntry {
 
     public String refName;
     public String oldId;
 
+    /**
+     * Constructs a new {@code SharedRefLogEntry.DeleteRef} to represent the logging of a ref
+     * deletion operation.
+     *
+     * @param projectName the name of the project containing the ref being deleted.
+     * @param refName the ref being deleted.
+     * @param oldId the id value of the ref before being deleted.
+     */
     DeleteRef(String projectName, String refName, String oldId) {
       this.type = Type.DELETE_REF;
       this.projectName = projectName;
@@ -76,10 +115,18 @@ public class SharedRefLogEntry {
     }
   }
 
+  /** A lock acquisition log entry */
   public static class LockAcquire extends SharedRefLogEntry {
 
     public String refName;
 
+    /**
+     * Constructs a new {@code SharedRefLogEntry.LockAcquire} to represent the logging of a lock
+     * acquisition
+     *
+     * @param projectName the name of the project containing the ref being locked.
+     * @param refName the ref being locked.
+     */
     LockAcquire(String projectName, String refName) {
       this.type = Type.LOCK_ACQUIRE;
       this.projectName = projectName;
@@ -87,10 +134,18 @@ public class SharedRefLogEntry {
     }
   }
 
+  /** A lock release log entry */
   public static class LockRelease extends SharedRefLogEntry {
 
     public String refName;
 
+    /**
+     * Constructs a new {@code SharedRefLogEntry.LockAcquire} to represent the release of a lock
+     * previously acquired.
+     *
+     * @param projectName the name of the project containing the ref being released.
+     * @param refName the ref being released.
+     */
     LockRelease(String projectName, String refName) {
       this.type = Type.LOCK_RELEASE;
       this.projectName = projectName;

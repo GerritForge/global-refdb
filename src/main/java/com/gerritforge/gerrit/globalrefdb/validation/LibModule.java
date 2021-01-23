@@ -22,6 +22,21 @@ import com.google.inject.Scopes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Binds {@link GlobalRefDatabase} to the {@link NoopSharedRefDatabase}. This can be overridden by
+ * consumers of this library by binding other implementations, for example:
+ *
+ * <pre>
+ * public class FooBarModule extends AbstractModule {
+ *   @Override
+ *   protected void configure() {
+ *     DynamicItem.bind(binder(), GlobalRefDatabase.class)
+ *         .to(FooBarRefDatabase.class)
+ *         .in(Scopes.SINGLETON);
+ *   }
+ * }
+ * </pre>
+ */
 public class LibModule extends LifecycleModule {
   private static final Logger log = LoggerFactory.getLogger(LibModule.class);
 
