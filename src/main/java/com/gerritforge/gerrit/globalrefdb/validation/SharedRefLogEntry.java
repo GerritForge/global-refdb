@@ -17,7 +17,7 @@ package com.gerritforge.gerrit.globalrefdb.validation;
 import com.google.gerrit.common.Nullable;
 import com.google.gerrit.extensions.common.GitPerson;
 
-public class SharedRefLogEntry {
+class SharedRefLogEntry {
 
   public enum Type {
     UPDATE_REF,
