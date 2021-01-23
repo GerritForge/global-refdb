@@ -17,6 +17,7 @@ package com.gerritforge.gerrit.globalrefdb.validation;
 import static com.google.common.base.Suppliers.memoize;
 import static com.google.common.base.Suppliers.ofInstance;
 
+import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedRefEnforcement;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedRefEnforcement.EnforcePolicy;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Supplier;
@@ -31,22 +32,37 @@ import org.eclipse.jgit.storage.file.FileBasedConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Represents a configuration for the shared ref-database. This configuration is retrieved from the
+ * configuration file of the plugin is consuming the library.
+ */
 public class SharedRefDbConfiguration {
   private static final Logger log = LoggerFactory.getLogger(SharedRefDbConfiguration.class);
 
   private final Supplier<Projects> projects;
   private final Supplier<SharedRefDatabase> sharedRefDb;
 
+  /**
+   * Constructs a {@code SharedRefDbConfiguration} by providing the plugin name and a {@param
+   * Config} object
+   *
+   * @param config the plugin configuration
+   * @param pluginName the name of the plugin consuming this library
+   */
   public SharedRefDbConfiguration(Config config, String pluginName) {
     Supplier<Config> lazyCfg = lazyLoad(config);
     projects = memoize(() -> new Projects(lazyCfg));
     sharedRefDb = memoize(() -> new SharedRefDatabase(lazyCfg, pluginName));
   }
 
+  /**
+   * @return the {@link SharedRefDatabase} computed from the configuration plugin configuration file
+   */
   public SharedRefDatabase getSharedRefDb() {
     return sharedRefDb.get();
   }
 
+  /** @return Getter of projects checked against the shared ref-db */
   public Projects projects() {
     return projects.get();
   }
@@ -69,6 +85,12 @@ public class SharedRefDbConfiguration {
     return ofInstance(config);
   }
 
+  /**
+   * Represents the shared ref-db configuration, which is computed by reading the 'ref-database'
+   * section from the configuration file of this library's consumers. It allows to specify whether
+   * it is enabled, specific {@link SharedRefEnforcement}s and to tune other parameters that define
+   * specific behaviours of the shared ref-db.
+   */
   public static class SharedRefDatabase {
     public static final String SECTION = "ref-database";
     public static final String ENABLE_KEY = "enabled";
@@ -90,14 +112,34 @@ public class SharedRefDbConfiguration {
       }
     }
 
+    /**
+     * Whether the use of the shared ref-db is enabled. Defaults 'false'
+     *
+     * @return true when enabled, false otherwise
+     */
     public boolean isEnabled() {
       return enabled;
     }
 
+    /**
+     * Getter for the map of {@link EnforcePolicy} to a specific "project:refs". Each entry can be
+     * either be {@link SharedRefEnforcement.EnforcePolicy#IGNORED} or {@link *
+     * SharedRefEnforcement.EnforcePolicy#REQUIRED} and it represents the level of consistency
+     * enforcements for that specific "project:refs". If the project or ref is omitted, apply the
+     * policy to all projects or all refs.
+     *
+     * @return Map of "project:refs" policies
+     */
     public Multimap<EnforcePolicy, String> getEnforcementRules() {
       return enforcementRules;
     }
 
+    /**
+     * String to prefix all metrics created and exposed by this library. Defaults to the name of the
+     * plugin consuming this library.
+     *
+     * @return prefix for all metrics
+     */
     public String getMetricsRoot() {
       return metricsRoot;
     }
@@ -108,15 +150,31 @@ public class SharedRefDbConfiguration {
     }
   }
 
+  /**
+   * Represents a set of projects for which ref updates operations should be validated against the
+   * shared ref-db. The list is computed from the consuming plugin's configuration file by looking
+   * at the "project.pattern" section. By defaults all projects are matched.
+   */
   public static class Projects {
     public static final String SECTION = "projects";
     public static final String PATTERN_KEY = "pattern";
     public List<String> patterns;
 
+    /**
+     * Constructs a {@code Projects} object by reading the list of "projects.pattern" possibly
+     * specified in the consuming plugin's configuration file.
+     *
+     * @param cfg the plugin's configuration supplier
+     */
     public Projects(Supplier<Config> cfg) {
       patterns = ImmutableList.copyOf(cfg.get().getStringList(SECTION, null, PATTERN_KEY));
     }
 
+    /**
+     * The list of project patterns read from the consuming plugin's configuration file.
+     *
+     * @return list of project patterns.
+     */
     public List<String> getPatterns() {
       return patterns;
     }

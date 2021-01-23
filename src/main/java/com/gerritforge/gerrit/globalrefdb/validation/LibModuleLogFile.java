@@ -20,8 +20,17 @@ import org.apache.log4j.Layout;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
+/** Abstract class to be extended by lib modules willing to create file loggers. */
 public abstract class LibModuleLogFile {
 
+  /**
+   * Constructs an instance of {@code LibModuleLogFile} which creates an asynchronous appender with
+   * the provided {@param logName} and {@param layout}
+   *
+   * @param systemLog
+   * @param logName
+   * @param layout
+   */
   public LibModuleLogFile(SystemLog systemLog, String logName, Layout layout) {
     AsyncAppender asyncAppender = systemLog.createAsyncAppender(logName, layout, true, true);
     Logger logger = LogManager.getLogger(logName);
