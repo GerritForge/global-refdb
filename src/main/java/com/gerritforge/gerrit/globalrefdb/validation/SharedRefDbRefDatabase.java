@@ -27,6 +27,11 @@ import org.eclipse.jgit.lib.RefDatabase;
 import org.eclipse.jgit.lib.RefRename;
 import org.eclipse.jgit.lib.RefUpdate;
 
+/**
+ * Wraps an instance of {@link RefDatabase} with the intent of wrapping {@link RefUpdate} operations
+ * to instances of {@link SharedRefDbRefUpdate} in order to allow validation of those operation
+ * against a shared ref-database before actually executing them.
+ */
 public class SharedRefDbRefDatabase extends RefDatabase {
   private final SharedRefDbRefUpdate.Factory refUpdateFactory;
   private final SharedRefDbBatchRefUpdate.Factory batchRefUpdateFactory;
@@ -34,11 +39,22 @@ public class SharedRefDbRefDatabase extends RefDatabase {
   private final RefDatabase refDatabase;
   private final ImmutableSet<String> ignoredRefs;
 
+  /** {@code SharedRefDbRefDatabase} Factory for Guice assisted injection. */
   public interface Factory {
     SharedRefDbRefDatabase create(
         String projectName, RefDatabase refDatabase, ImmutableSet<String> ignoredRefs);
   }
 
+  /**
+   * Constructs a {@code SharedRefDbRefDatabase} by wrapping an underlying {@param refDatabase}, so
+   * that update refs operations can be validated against a shared ref-database.
+   *
+   * @param refUpdateFactory a factory to provide a {@link SharedRefDbRefUpdate}
+   * @param batchRefUpdateFactory a factory to provide a {@link SharedRefDbBatchRefUpdate}
+   * @param projectName the name of the project to perform Git operations on
+   * @param refDatabase the wrapped {@link RefDatabase}
+   * @param ignoredRefs a set of reference for which ref-db validation should not be executed.
+   */
   @Inject
   public SharedRefDbRefDatabase(
       SharedRefDbRefUpdate.Factory refUpdateFactory,
@@ -83,6 +99,13 @@ public class SharedRefDbRefDatabase extends RefDatabase {
     return refDatabase.getConflictingNames(name);
   }
 
+  /**
+   * Wrap a {@link RefUpdate} obtained by calling the underlying {@link RefDatabase} in a {@link
+   * SharedRefDbRefUpdate}
+   *
+   * @see RefDatabase#newUpdate(String, boolean)
+   * @throws IOException
+   */
   @Override
   public RefUpdate newUpdate(String name, boolean detach) throws IOException {
     return wrapRefUpdate(refDatabase.newUpdate(name, detach));
@@ -93,6 +116,14 @@ public class SharedRefDbRefDatabase extends RefDatabase {
     return refDatabase.newRename(fromName, toName);
   }
 
+  /**
+   * Obtains a {@link SharedRefDbBatchRefUpdate} via the {@code BatchRefUpdate.Factory} invoked on
+   * the underlying {@link RefDatabase}, so that batch updates can be validated against the shared
+   * ref-db.
+   *
+   * @see RefDatabase#newUpdate(String, boolean)
+   * @throws IOException
+   */
   @Override
   public BatchRefUpdate newBatchUpdate() {
     return batchRefUpdateFactory.create(projectName, refDatabase, ignoredRefs);

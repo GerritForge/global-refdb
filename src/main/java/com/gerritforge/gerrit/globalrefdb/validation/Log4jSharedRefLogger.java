@@ -41,7 +41,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Singleton
-public class Log4jSharedRefLogger extends LibModuleLogFile implements SharedRefLogger {
+class Log4jSharedRefLogger extends LibModuleLogFile implements SharedRefLogger {
   private static final String LOG_NAME = "sharedref_log";
   private Logger sharedRefDBLog;
   private final GitRepositoryManager gitRepositoryManager;

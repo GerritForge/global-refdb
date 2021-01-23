@@ -26,7 +26,7 @@ import java.util.Optional;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
 
-public class SharedRefDatabaseWrapper implements GlobalRefDatabase {
+class SharedRefDatabaseWrapper implements GlobalRefDatabase {
   private static final GlobalRefDatabase NOOP_REFDB = new NoopSharedRefDatabase();
 
   @Inject(optional = true)

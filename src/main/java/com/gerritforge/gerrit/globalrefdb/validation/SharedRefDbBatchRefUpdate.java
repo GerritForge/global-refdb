@@ -29,6 +29,10 @@ import org.eclipse.jgit.transport.PushCertificate;
 import org.eclipse.jgit.transport.ReceiveCommand;
 import org.eclipse.jgit.util.time.ProposedTimestamp;
 
+/**
+ * Batch of reference updates to be applied to a repository prior having checked the validity of
+ * those operations against the global refdb.
+ */
 public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
 
   private final BatchRefUpdate batchRefUpdate;
@@ -37,11 +41,22 @@ public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
   private final RefDatabase refDb;
   private final ImmutableSet<String> ignoredRefs;
 
+  /** {@code SharedRefDbBatchRefUpdate} Factory for Guice assisted injection. */
   public interface Factory {
     SharedRefDbBatchRefUpdate create(
         String project, RefDatabase refDb, ImmutableSet<String> ignoredRefs);
   }
 
+  /**
+   * Constructs an instance of {@code SharedRefDbBatchRefUpdate} able to validate ref updates via a
+   * {@link BatchRefUpdateValidator}. It is basically a thin wrapper around {@link BatchRefUpdate},
+   * where the validity of the update operation is checked first against the global refdb instance.
+   *
+   * @param batchRefValidatorFactory Factory to provide {@link BatchRefUpdateValidator}
+   * @param project the project this batch update is for
+   * @param refDb a ref-database instance to create the underlying {@link BatchRefUpdate}
+   * @param ignoredRefs a set of refs that should not be validated against the global refdb
+   */
   @Inject
   public SharedRefDbBatchRefUpdate(
       BatchRefUpdateValidator.Factory batchRefValidatorFactory,
@@ -166,6 +181,21 @@ public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
     return batchRefUpdate.addProposedTimestamp(ts);
   }
 
+  /**
+   * Execute this batch update by delegating to the underlying {@link BatchRefUpdate} after checking
+   * first the validity of the operation via a {@link BatchRefUpdateValidator}.
+   *
+   * @param walk a RevWalk to parse tags in case the storage system wants to store them pre-peeled,
+   *     a common performance optimization.
+   * @param monitor progress monitor to receive update status on.
+   * @param options a list of option strings; set null to execute without
+   * @throws IOException the database is unable to accept the update. This could be either caused by
+   *     one of the underlying update command or by the batch ref validator proving that the current
+   *     ref-db is not up-to-date with the global refdb
+   * @see BatchRefUpdate
+   * @see BatchRefUpdateValidator#executeBatchUpdateWithValidation(BatchRefUpdate,
+   *     RefUpdateValidator.NoParameterVoidFunction)
+   */
   @Override
   public void execute(RevWalk walk, ProgressMonitor monitor, List<String> options)
       throws IOException {
@@ -175,6 +205,20 @@ public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
             batchRefUpdate, () -> batchRefUpdate.execute(walk, monitor, options));
   }
 
+  /**
+   * Execute this batch update by delegating to the underlying {@link BatchRefUpdate} after checking
+   * first the validity of the operation via a {@link BatchRefUpdateValidator}.
+   *
+   * @param walk a RevWalk to parse tags in case the storage system wants to store them pre-peeled,
+   *     a common performance optimization.
+   * @param monitor progress monitor to receive update status on.
+   * @throws IOException the database is unable to accept the update. This could be either caused by
+   *     one of the underlying update command or by the batch ref validator proving that the current
+   *     ref-db is not up-to-date with the global refdb
+   * @see BatchRefUpdate
+   * @see BatchRefUpdateValidator#executeBatchUpdateWithValidation(BatchRefUpdate,
+   *     RefUpdateValidator.NoParameterVoidFunction)
+   */
   @Override
   public void execute(RevWalk walk, ProgressMonitor monitor) throws IOException {
     batchRefValidatorFactory
