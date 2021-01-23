@@ -26,11 +26,21 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * Implementation of the {@link SharedRefEnforcement} interface which derives project and
+ * project/ref enforcement policy from the configuration of the plugin consuming this library
+ */
 public class CustomSharedRefEnforcementByProject implements SharedRefEnforcement {
   private static final String ALL = ".*";
 
   private final Supplier<Map<String, Map<String, EnforcePolicy>>> predefEnforcements;
 
+  /**
+   * Constructs a {@code CustomSharedRefEnforcementByProject} with the values specified in the
+   * configuration of the plugin consuming this library
+   *
+   * @param config the plugin configuration
+   */
   @Inject
   public CustomSharedRefEnforcementByProject(SharedRefDbConfiguration config) {
     this.predefEnforcements = memoize(() -> parseDryRunEnforcementsToMap(config));
@@ -71,6 +81,25 @@ public class CustomSharedRefEnforcementByProject implements SharedRefEnforcement
     return value.trim().isEmpty() ? ALL : value;
   }
 
+  /**
+   * The enforcement policy for {@param refName} in {@param projectName} as computed from the
+   * plugin's configuration file.
+   *
+   * <p>The projec/ref will not be validate against the shared ref-db if it one to be ignored by
+   * default ({@link SharedRefEnforcement#isRefToBeIgnoredBySharedRefDb(String)} or if it has been
+   * configured so, for example:
+   *
+   * <pre>
+   *     [ref-database "enforcementRules"]
+   *    IGNORED = AProject:/refs/heads/feature
+   * </pre>
+   *
+   * By default all projects are REQUIRED to be consistent on all refs.
+   *
+   * @param projectName project to be enforced
+   * @param refName ref name to be enforced
+   * @return
+   */
   @Override
   public EnforcePolicy getPolicy(String projectName, String refName) {
     if (isRefToBeIgnoredBySharedRefDb(refName)) {
@@ -91,6 +120,15 @@ public class CustomSharedRefEnforcementByProject implements SharedRefEnforcement
         orDefault.getOrDefault(refName, orDefault.get(ALL)), EnforcePolicy.REQUIRED);
   }
 
+  /**
+   * The enforcement policy for {@param projectName} as computed from the plugin's configuration
+   * file.
+   *
+   * <p>By default all projects are REQUIRED to be consistent on all refs.
+   *
+   * @param projectName
+   * @return
+   */
   @Override
   public EnforcePolicy getPolicy(String projectName) {
     Map<String, EnforcePolicy> policiesForProject =
