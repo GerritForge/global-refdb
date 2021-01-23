@@ -28,6 +28,10 @@ import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevWalk;
 import org.eclipse.jgit.transport.PushCertificate;
 
+/**
+ * Creates, updates or deletes any reference after having checked the validity of this operation
+ * against the global refdb.
+ */
 public class SharedRefDbRefUpdate extends RefUpdate {
 
   protected final RefUpdate refUpdateBase;
@@ -35,6 +39,7 @@ public class SharedRefDbRefUpdate extends RefUpdate {
   private final RefUpdateValidator.Factory refValidatorFactory;
   private final RefUpdateValidator refUpdateValidator;
 
+  /** {@code SharedRefDbRefUpdate} Factory for Guice assisted injection. */
   public interface Factory {
     SharedRefDbRefUpdate create(
         String projectName,
@@ -43,6 +48,17 @@ public class SharedRefDbRefUpdate extends RefUpdate {
         ImmutableSet<String> ignoredRefs);
   }
 
+  /**
+   * Constructs a {@code SharedRefDbRefUpdate} to create, update or delete a reference in project
+   * projectName after validating the validity of the operation by an instance of {@code
+   * RefUpdateValidator}, which is {@link Inject}ed by Guice.
+   *
+   * @param refValidatorFactory factory for {@link RefUpdateValidator}
+   * @param projectName the name of the project being updated
+   * @param refUpdate the wrapped ref update operation
+   * @param refDb the mapping between refs and object ids
+   * @param ignoredRefs a list of refs for which to ignore validation for.
+   */
   @Inject
   public SharedRefDbRefUpdate(
       RefUpdateValidator.Factory refValidatorFactory,
@@ -96,21 +112,55 @@ public class SharedRefDbRefUpdate extends RefUpdate {
     return notImplementedException();
   }
 
+  /**
+   * Update the ref to the new value, after checking its validity via {@link RefUpdateValidator}
+   *
+   * @return the result status of the update
+   * @throws IOException an error occurred when attempting to write the change, either for an
+   *     unexpected cause or because the validation failed and a split-brain was encountered or
+   *     prevented.
+   */
   @Override
   public Result update() throws IOException {
     return refUpdateValidator.executeRefUpdate(refUpdateBase, refUpdateBase::update);
   }
 
+  /**
+   * Update the ref to the new value, after checking its validity via {@link RefUpdateValidator}
+   *
+   * @param rev a RevWalk instance this update command can borrow to perform the merge test. The
+   *     walk will be reset to perform the test.
+   * @return the result status of the update
+   * @throws IOException an error occurred when attempting to write the change, either for an
+   *     unexpected cause or because the validation failed and a split-brain was encountered or
+   *     prevented.
+   */
   @Override
   public Result update(RevWalk rev) throws IOException {
     return refUpdateValidator.executeRefUpdate(refUpdateBase, () -> refUpdateBase.update(rev));
   }
 
+  /**
+   * Delete the ref after checking its validity via {@link RefUpdateValidator}
+   *
+   * @return the result status of the delete
+   * @throws IOException an error occurred when attempting to write the change, either for an
+   *     unexpected cause or because the validation failed and a split-brain was encountered or
+   *     prevented.
+   */
   @Override
   public Result delete() throws IOException {
     return refUpdateValidator.executeRefUpdate(refUpdateBase, refUpdateBase::delete);
   }
 
+  /**
+   * Delete the ref after checking its validity via {@link RefUpdateValidator}
+   *
+   * @param walk a RevWalk instance this delete command can borrow to perform the merge test. The
+   *     walk will be reset to perform the test.
+   * @return the result status of the delete
+   * @throws IOException deletion failed
+   */
   @Override
   public Result delete(RevWalk walk) throws IOException {
     return refUpdateValidator.executeRefUpdate(refUpdateBase, () -> refUpdateBase.delete(walk));
