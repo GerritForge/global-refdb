@@ -14,7 +14,10 @@
 
 package com.gerritforge.gerrit.globalrefdb.validation;
 
+import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.CustomSharedRefEnforcementByProject;
+import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.DefaultSharedRefEnforcement;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.OutOfSyncException;
+import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedDbSplitBrainException;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedRefEnforcement;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedRefEnforcement.EnforcePolicy;
 import com.google.common.collect.ImmutableSet;
@@ -33,9 +36,13 @@ import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.RefDatabase;
 import org.eclipse.jgit.transport.ReceiveCommand;
 
+/**
+ * Enables the detection of out-of-sync by validating batch ref updates against the shared ref-db
+ */
 public class BatchRefUpdateValidator extends RefUpdateValidator {
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
+  /** {@code BatchRefUpdateValidator} Factory for Guice assisted injection. */
   public interface Factory {
     BatchRefUpdateValidator create(
         String projectName, RefDatabase refDb, ImmutableSet<String> ignoredRefs);
@@ -45,6 +52,23 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
     void apply(BatchRefUpdate batchRefUpdate, NoParameterVoidFunction arg) throws IOException;
   }
 
+  /**
+   * Constructs a {@code BatchRefUpdateValidator} able to check the validity of batch ref-updates
+   * against shared ref-db before execution.
+   *
+   * @param sharedRefDb an instance of the shared ref-db to check for out-of-sync refs.
+   * @param validationMetrics to update validation results, such as split-brains.
+   * @param refEnforcement Specific ref enforcements for this project. Either a {@link
+   *     CustomSharedRefEnforcementByProject} when custom policies are provided via configuration *
+   *     file or a {@link DefaultSharedRefEnforcement} for defaults.
+   * @param lockWrapperFactory factory providing a {@link LockWrapper}
+   * @param projectsFilter filter to match whether the project being updated should be validated
+   *     against shared ref-db
+   * @param projectName the name of the project being updated.
+   * @param refDb for ref operations
+   * @param ignoredRefs A set of refs for which updates should not be checked against the shared
+   *     ref-db
+   */
   @Inject
   public BatchRefUpdateValidator(
       SharedRefDatabaseWrapper sharedRefDb,
@@ -66,6 +90,24 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
         ignoredRefs);
   }
 
+  /**
+   * Checks whether the provided {@param batchRefUpdate} should be validated first against the
+   * shared ref-db. If not it just execute the provided {@param batchRefUpdateFunction}. Upon
+   * success the {@param batchRefUpdate} is returned, upon failure split brain metrics are
+   * incremented and a {@link SharedDbSplitBrainException} is thrown.
+   *
+   * <ul>
+   *   Validation is performed when either of these condition is true
+   *   <li>The project being updated is a global project ({@link
+   *       RefUpdateValidator#isGlobalProject(String)}
+   *   <li>The enforcement policy for the project being updated is {@link EnforcePolicy#IGNORED}
+   * </ul>
+   *
+   * @param batchRefUpdate
+   * @param batchRefUpdateFunction
+   * @return
+   * @throws IOException
+   */
   public void executeBatchUpdateWithValidation(
       BatchRefUpdate batchRefUpdate, NoParameterVoidFunction batchRefUpdateFunction)
       throws IOException {

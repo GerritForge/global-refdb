@@ -39,7 +39,15 @@ public interface SharedRefEnforcement {
   public EnforcePolicy getPolicy(String projectName);
 
   /**
-   * Check if a refName should be ignored by shared Ref-Db
+   * Check if a refName should be ignored by shared Ref-Db.
+   *
+   * <ul>
+   *   The Default behaviour is to ignore:
+   * </ul>
+   *
+   * <li>refs/draft-comments
+   * <li>non meta refs changes
+   * <li>refs/cache-automerge
    *
    * @param refName
    * @return true if ref should be ignored; false otherwise

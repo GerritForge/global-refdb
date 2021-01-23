@@ -14,10 +14,21 @@
 
 package com.gerritforge.gerrit.globalrefdb;
 
-/** Unable to lock a project/ref resource. */
+/**
+ * {@code GlobalRefDbLockException} is an exception that can be thrown when interacting with the
+ * global-refdb to represent the inability to lock or acquire a resource.
+ */
 public class GlobalRefDbLockException extends RuntimeException {
   private static final long serialVersionUID = 1L;
 
+  /**
+   * Constructs a new {@code GlobalRefDbLockException} with the specified project, refName and
+   * cause.
+   *
+   * @param project the project containing {@param refName}
+   * @param refName the specific ref for which the locking failed
+   * @param cause the cause of the locking failure
+   */
   public GlobalRefDbLockException(String project, String refName, Exception cause) {
     super(String.format("Unable to lock ref %s on project %s", refName, project), cause);
   }
