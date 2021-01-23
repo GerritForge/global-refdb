@@ -14,9 +14,19 @@
 
 package com.gerritforge.gerrit.globalrefdb;
 
+/**
+ * {@code GlobalRefDbSystemError} is an exception that can be thrown when interacting with the
+ * global-refdb to represent any error in performing operations such as creating or deleting a ref.
+ */
 public class GlobalRefDbSystemError extends RuntimeException {
   private static final long serialVersionUID = 1L;
 
+  /**
+   * Constructs a new {@code GlobalRefDbSystemError} with the specified detail message and cause.
+   *
+   * @param msg the detail message
+   * @param cause the cause
+   */
   public GlobalRefDbSystemError(String msg, Exception cause) {
     super(msg, cause);
   }

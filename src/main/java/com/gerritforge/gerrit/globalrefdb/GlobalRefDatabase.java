@@ -65,6 +65,7 @@ public interface GlobalRefDatabase {
    * @param refName to store the value for.
    * @param currValue current expected value in the DB.
    * @param newValue new value to store.
+   * @param <T> Type of the current and new value
    * @return true if the put was successful; false otherwise.
    * @throws GlobalRefDbSystemError the reference cannot be put due to a system error.
    */
@@ -84,8 +85,8 @@ public interface GlobalRefDatabase {
   /**
    * Verify if the DB contains a value for the specific project and ref name
    *
-   * @param project
-   * @param refName
+   * @param project name of the project containing the ref
+   * @param refName the name of the ref to check existence for
    * @return true if the ref exists on the project
    */
   boolean exists(Project.NameKey project, String refName);
@@ -104,6 +105,7 @@ public interface GlobalRefDatabase {
    * @param project project name
    * @param refName reference name
    * @param clazz wanted Class of the returned value
+   * @param <T> Type of the object associate to project and ref
    * @return {@link java.util.Optional} of the value
    * @throws GlobalRefDbSystemError value cannot be returned due to a system error.
    */

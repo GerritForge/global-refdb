@@ -26,11 +26,21 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * Implementation of the {@link SharedRefEnforcement} interface which derives project and
+ * project/ref enforcement policy from the configuration of the libModule consuming this library
+ */
 public class CustomSharedRefEnforcementByProject implements SharedRefEnforcement {
   private static final String ALL = ".*";
 
   private final Supplier<Map<String, Map<String, EnforcePolicy>>> predefEnforcements;
 
+  /**
+   * Constructs a {@code CustomSharedRefEnforcementByProject} with the values specified in the
+   * configuration of the libModule consuming this library
+   *
+   * @param config the libModule configuration
+   */
   @Inject
   public CustomSharedRefEnforcementByProject(SharedRefDbConfiguration config) {
     this.predefEnforcements = memoize(() -> parseDryRunEnforcementsToMap(config));
@@ -71,6 +81,16 @@ public class CustomSharedRefEnforcementByProject implements SharedRefEnforcement
     return value.trim().isEmpty() ? ALL : value;
   }
 
+  /**
+   * The enforcement policy for 'refName' in 'projectName' as computed from the libModule's
+   * configuration file.
+   *
+   * <p>By default all projects are REQUIRED to be consistent on all refs.
+   *
+   * @param projectName project to be enforced
+   * @param refName ref name to be enforced
+   * @return the enforcement policy for this project/ref
+   */
   @Override
   public EnforcePolicy getPolicy(String projectName, String refName) {
     if (isRefToBeIgnoredBySharedRefDb(refName)) {
@@ -91,6 +111,14 @@ public class CustomSharedRefEnforcementByProject implements SharedRefEnforcement
         orDefault.getOrDefault(refName, orDefault.get(ALL)), EnforcePolicy.REQUIRED);
   }
 
+  /**
+   * The enforcement policy for 'projectName' as computed from the libModule's configuration file.
+   *
+   * <p>By default all projects are REQUIRED to be consistent on all refs.
+   *
+   * @param projectName the name of the project to get the policy for
+   * @return the enforcement policy for the project
+   */
   @Override
   public EnforcePolicy getPolicy(String projectName) {
     Map<String, EnforcePolicy> policiesForProject =
