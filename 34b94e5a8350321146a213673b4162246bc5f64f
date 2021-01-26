@@ -41,6 +41,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ed5ba8c_881f5c3e",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/Log4jSharedRefLogger.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-26T18:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc0d1a7e_cae735f9",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 6
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "650ed1d2_a2931afb",
@@ -77,6 +101,54 @@
       "writtenOn": "2021-01-26T00:47:55Z",
       "side": 1,
       "message": "associated with the project",
+      "range": {
+        "startLine": 89,
+        "startChar": 83,
+        "endLine": 90,
+        "endChar": 8
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b113d3e_e5ffe340",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/ProjectsFilter.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-26T18:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "650ed1d2_a2931afb",
+      "range": {
+        "startLine": 90,
+        "startChar": 10,
+        "endLine": 90,
+        "endChar": 50
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5009d9a0_79c0daf8",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/ProjectsFilter.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-26T18:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e8c6730_ec2233f9",
       "range": {
         "startLine": 89,
         "startChar": 83,
@@ -133,6 +205,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ae20555_bd98c359",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbGitRepositoryManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-26T18:30:48Z",
+      "side": 1,
+      "message": "Thanks, leftover from a rebase",
+      "parentUuid": "ebf19d70_625e7b74",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 77
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45051ce6_05912c21",
@@ -146,6 +242,30 @@
       "writtenOn": "2021-01-26T00:47:55Z",
       "side": 1,
       "message": "Repository",
+      "range": {
+        "startLine": 65,
+        "startChar": 21,
+        "endLine": 65,
+        "endChar": 50
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4148273b_317a8513",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbGitRepositoryManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-26T18:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45051ce6_05912c21",
       "range": {
         "startLine": 65,
         "startChar": 21,
@@ -179,6 +299,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efbb63c1_9a24a090",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbGitRepositoryManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-26T18:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90816b4e_8d4cb9b5",
+      "range": {
+        "startLine": 79,
+        "startChar": 25,
+        "endLine": 79,
+        "endChar": 54
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34859798_292ff295",
@@ -192,6 +336,30 @@
       "writtenOn": "2021-01-26T00:47:55Z",
       "side": 1,
       "message": "Missing return value",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 12
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90eeb6f8_150d43f1",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbGitRepositoryManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-26T18:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34859798_292ff295",
       "range": {
         "startLine": 82,
         "startChar": 5,
@@ -221,6 +389,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d195a6e_be2e10a9",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefDatabase.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-26T18:30:48Z",
+      "side": 1,
+      "message": "Throughout the documentation process I have used the following approach (or at least I tried):\n\n- Document only public method/classes.\n- If they override methods from super classes:\n   * Document them if they provide an actual different implementation.\n   * Do not document if all they do is to delegate to a wrapped object (javadocs will be inherited anyway, when not provided)\n   * used {@inheritDocs} + specific doc. when the inherited doc is still valid, but the overridden method does something additionally.\n\n\nWDYT?",
+      "parentUuid": "cba9a3eb_50ef8278",
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4912c33_c08dd578",
         "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefDatabase.java",
         "patchSetId": 4
@@ -238,6 +424,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2322a382_5742eb02",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefDatabase.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-26T18:30:48Z",
+      "side": 1,
+      "message": "See my other reply",
+      "parentUuid": "b4912c33_c08dd578",
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70629842_b0b2de1d",
         "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefDatabase.java",
         "patchSetId": 4
@@ -249,6 +453,24 @@
       "writtenOn": "2021-01-26T00:47:55Z",
       "side": 1,
       "message": "Missing JavaDoc",
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d937d87c_4507d5cd",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefDatabase.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-26T18:30:48Z",
+      "side": 1,
+      "message": "The javaDoc will be inherited from the parent class.\nI didn\u0027t write any documentation for overridden methods that just delegate to the wrapped object.\n\nWDYT?",
+      "parentUuid": "70629842_b0b2de1d",
       "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
@@ -276,6 +498,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93126d39_59f31a28",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefLogEntry.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-26T18:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c56f3912_869cc784",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 6
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "368c70d0_4d154605",
@@ -289,6 +535,30 @@
       "writtenOn": "2021-01-26T00:47:55Z",
       "side": 1,
       "message": "Optional: should this be package-protected.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 6
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18cbca81_384b80ac",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefLogger.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-26T18:30:48Z",
+      "side": 1,
+      "message": "Done. \nHowever I think it would make sense to leave interfaces documented, so that they make clear what is expected from their implementation.",
+      "parentUuid": "368c70d0_4d154605",
       "range": {
         "startLine": 24,
         "startChar": 0,
