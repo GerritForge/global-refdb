@@ -1,0 +1,302 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e275bf8_1ed80ae1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Thanks, @Tony, for writing this up.\nOverall looks good; one general comment on many JavaDocs of classes that are part of the internal details of the implementation and not really on the API layer: would it make more sense to make them package-protected and avoid documenting their details? Is the user supposed to have a reference to them in order to use the global refdb?",
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc0d1a7e_cae735f9",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/Log4jSharedRefLogger.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Optional: should this be package-protected?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 6
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "650ed1d2_a2931afb",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/ProjectsFilter.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Returns false for all other events.",
+      "range": {
+        "startLine": 90,
+        "startChar": 10,
+        "endLine": 90,
+        "endChar": 50
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e8c6730_ec2233f9",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/ProjectsFilter.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "associated with the project",
+      "range": {
+        "startLine": 89,
+        "startChar": 83,
+        "endLine": 90,
+        "endChar": 8
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fc07f6e_851a1325",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbGitRepositoryManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "This public constant is very important and should be documented as named injection to be provided.",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 59
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebf19d70_625e7b74",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbGitRepositoryManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "This parameter doesn\u0027t exist",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 77
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45051ce6_05912c21",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbGitRepositoryManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Repository",
+      "range": {
+        "startLine": 65,
+        "startChar": 21,
+        "endLine": 65,
+        "endChar": 50
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90816b4e_8d4cb9b5",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbGitRepositoryManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Repository",
+      "range": {
+        "startLine": 79,
+        "startChar": 25,
+        "endLine": 79,
+        "endChar": 54
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34859798_292ff295",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbGitRepositoryManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Missing return value",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 12
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cba9a3eb_50ef8278",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefDatabase.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "General comment: as we are just extending an existing class, why not referring to the JavaDoc of the parent class instead?",
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4912c33_c08dd578",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefDatabase.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Missing JavaDoc",
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70629842_b0b2de1d",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefDatabase.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Missing JavaDoc",
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c56f3912_869cc784",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefLogEntry.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "optional: should this be package protected? Are the users supposed to refer to it directly?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 6
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "368c70d0_4d154605",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefLogger.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Optional: should this be package-protected.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 6
+      },
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

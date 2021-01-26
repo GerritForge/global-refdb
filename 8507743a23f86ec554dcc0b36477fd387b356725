@@ -1,0 +1,642 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc7d348c_eacaf47d",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "its libModules",
+      "range": {
+        "startLine": 5,
+        "startChar": 40,
+        "endLine": 5,
+        "endChar": 47
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9da41e13_4137a45b",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Would it be better instead to refer to the multi-site design? The global-refdb design wasn\u0027t approved and therefore shelved.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c482ef9_c9572b25",
+        "filename": "bindings.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Gerrit libModule.\n(global-refdb cannot be bound through a plugin, as it needs to replace bindings in the Gerrit\u0027s dbModule)",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d94849_76f53858",
+        "filename": "bindings.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "libModules",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 21
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40a2455a_9ea2326e",
+        "filename": "bindings.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "FooModule",
+      "range": {
+        "startLine": 16,
+        "startChar": 13,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73e7ee1c_cf4c72a0",
+        "filename": "bindings.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Unrelated: would make sense to provide a factory module to perform all of them?\nThose are not likely to change in any way, isn\u0027t it?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70d2d0c0_935a8172",
+        "filename": "config.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "\u003clibModule\u003e",
+      "range": {
+        "startLine": 5,
+        "startChar": 57,
+        "endLine": 5,
+        "endChar": 65
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf08e9bc_8a5dda76",
+        "filename": "config.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "libModule",
+      "range": {
+        "startLine": 6,
+        "startChar": 4,
+        "endLine": 6,
+        "endChar": 10
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd3debca_5ef27ca5",
+        "filename": "config.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "have",
+      "range": {
+        "startLine": 19,
+        "startChar": 21,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63ac59dd_860a17d9",
+        "filename": "config.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "This is not part of the global-refdb library: we can simply say what exception we raised but we cannot foresee what Gerrit will do as a consequence.",
+      "range": {
+        "startLine": 23,
+        "startChar": 39,
+        "endLine": 24,
+        "endChar": 48
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "217d17cf_ca94c048",
+        "filename": "config.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "global refdb",
+      "range": {
+        "startLine": 34,
+        "startChar": 34,
+        "endLine": 34,
+        "endChar": 53
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef375dae_9208c275",
+        "filename": "config.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Prefix for all global-refdb",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 36
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "999950fb_1b20a43f",
+        "filename": "config.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "global refdb",
+      "range": {
+        "startLine": 43,
+        "startChar": 61,
+        "endLine": 43,
+        "endChar": 80
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "541c2656_f7d98b46",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/BatchRefUpdateValidator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "How can extra documentation add additional imports? I may be missing something ...",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 90
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b9e79d5_4cf2e12e",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/BatchRefUpdateValidator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Here and all around the docs: global refdb. As a follow-up for master we should also rename the classes.",
+      "range": {
+        "startLine": 57,
+        "startChar": 13,
+        "endLine": 57,
+        "endChar": 26
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89251811_c15d1a58",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/LibModule.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Isn\u0027t this already part of the binding.md documentation?",
+      "range": {
+        "startLine": 26,
+        "startChar": 73,
+        "endLine": 38,
+        "endChar": 9
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97c72eb9_c59e809a",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/LibModuleLogFile.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "nit: missing short descriptions",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e450172_887b79e7",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Missing short description.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 12
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07e58977_5573fdb3",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "This method is protected: is shouldn\u0027t require JavaDoc.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 5
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c050c836_486a36ee",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDatabaseWrapper.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "optional: should this class be instead package-protected?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e43a498_cd66115c",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/dfsrefdb/CustomSharedRefEnforcementByProject.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Isn\u0027t that something that the JavaDoc of the SharedRefDbConfiguration should have? I am a bit concerned that his may become stale.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 11
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6477f230_18c538c8",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/dfsrefdb/NoopSharedRefDatabase.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Is this relevant? The method returns true regardless.",
+      "range": {
+        "startLine": 51,
+        "startChar": 45,
+        "endLine": 53,
+        "endChar": 22
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95360582_7690e3e1",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/dfsrefdb/NoopSharedRefDatabase.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "Unsuccessful? It always return false, isn\u0027t it?",
+      "range": {
+        "startLine": 65,
+        "startChar": 30,
+        "endLine": 65,
+        "endChar": 40
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec218dcf_69696550",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/dfsrefdb/NoopSharedRefDatabase.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "@return false",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 12
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61523348_66e3764b",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/dfsrefdb/NoopSharedRefDatabase.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "a dummy {@link java.io.Closeable}",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 12
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96101cf7_5d6156af",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/dfsrefdb/NoopSharedRefDatabase.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "@return false",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 12
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d312840_b58bcc0a",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/dfsrefdb/NoopSharedRefDatabase.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 123,
+        "endChar": 15
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21460fb2_86ea511f",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/dfsrefdb/SharedRefEnforcement.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-26T00:47:55Z",
+      "side": 1,
+      "message": "optional: it would be useful to explain why they are ignored:\n- refs/draft-comments: they are user-specific temporary storage that do not need to be seen by other users/sites\n- refs/changes/\u003cnon-meta\u003e: those refs are immutable\n- refs/cache-automerge: these refs would be never replicated anyway",
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
