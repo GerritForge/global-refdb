@@ -84,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4822edc4_048f4914",
+        "filename": "bindings.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-27T09:01:00Z",
+      "side": 1,
+      "message": "True, it could be inside the README.md?",
+      "parentUuid": "fb682f6a_ee5cc2f4",
+      "revId": "cbcb47c6529d9b22fc52597d84eab3138bb9ce30",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8a53433_d3d8656a",
         "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/ProjectsFilter.java",
         "patchSetId": 5
