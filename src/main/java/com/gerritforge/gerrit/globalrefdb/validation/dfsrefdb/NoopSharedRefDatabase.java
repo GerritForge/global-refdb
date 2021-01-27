@@ -60,20 +60,20 @@ public class NoopSharedRefDatabase implements GlobalRefDatabase {
   }
 
   /**
-   * Put is always considered unsuccessful
+   * Put is always considered successful
    *
    * @param project project name of the ref.
    * @param refName to store the value for.
    * @param currValue current expected value in the DB.
    * @param newValue new value to store.
    * @param <T> Type of the current and new value
-   * @return false
+   * @return true
    * @throws GlobalRefDbSystemError Never thrown by this implementation
    */
   @Override
   public <T> boolean compareAndPut(Project.NameKey project, String refName, T currValue, T newValue)
       throws GlobalRefDbSystemError {
-    return false;
+    return true;
   }
 
   /**
