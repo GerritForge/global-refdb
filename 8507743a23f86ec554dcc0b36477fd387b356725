@@ -307,6 +307,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0288359b_1c55b674",
+        "filename": "bindings.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-27T08:39:53Z",
+      "side": 1,
+      "message": "\u003e Yes, I believe we had that and we decided that it should not be here:\n\u003e https://review.gerrithub.io/c/GerritForge/global-refdb/+/503713/comment/cd811cca_47a1654c/\n\nI agree with the whole module not being here: I was referring to just the factory part. Anyway, it should be a separate follow-up change I believe.",
+      "parentUuid": "430dbb23_4eb4b847",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70d2d0c0_935a8172",
@@ -673,6 +697,30 @@
       "side": 1,
       "message": "Unresolved references inside java docs offend the \"JavaDocReference\" inspection (an intellij inspection).\nSo when {@link}ing to a class from the docs for example, it has to be resolvable (i.e. imported).\n\nOptions are\n- import the reference (the one I chose)\n\n\n```\nimport com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedDbSplitBrainException;\n...\n{@link SharedDbSplitBrainException}\n```\n\n- Link to the fully qualified name: \n\n```\n{@link com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedDbSplitBrainException}\n```\n\n- Suppress the warning:\n\n```\n  @SuppressWarnings(\"JavadocReference\")\n  public void executeBatchUpdateWithValidation(\n```\n\n\nWhat do you think?",
       "parentUuid": "541c2656_f7d98b46",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 90
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "443b7def_1c711b5a",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/BatchRefUpdateValidator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-27T08:39:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "34a63c83_fe371d5b",
       "range": {
         "startLine": 16,
         "startChar": 0,
@@ -1096,6 +1144,30 @@
       "side": 1,
       "message": "mmm, good point I haven\u0027t noticed that before.\n\nIs this the right value though? I would expect the compareAndPut to always be considered successful in a Noop implementation of the global ref-db.\n\nIn fact this is the behavior of its polymorphic sibling at L59.\n\nCould this be a bug?",
       "parentUuid": "95360582_7690e3e1",
+      "range": {
+        "startLine": 65,
+        "startChar": 30,
+        "endLine": 65,
+        "endChar": 40
+      },
+      "revId": "8507743a23f86ec554dcc0b36477fd387b356725",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5420966e_9043f095",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/dfsrefdb/NoopSharedRefDatabase.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-27T08:39:53Z",
+      "side": 1,
+      "message": "Yes, I believe so. Can you raise it? It should be a separate change anyway.",
+      "parentUuid": "9c797b96_822b4639",
       "range": {
         "startLine": 65,
         "startChar": 30,
