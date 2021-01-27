@@ -429,6 +429,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e354dd3e_db6ab053",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefDatabase.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-27T15:18:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8d195a6e_be2e10a9",
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4912c33_c08dd578",
@@ -513,6 +531,24 @@
       "side": 1,
       "message": "The javaDoc will be inherited from the parent class.\nI didn\u0027t write any documentation for overridden methods that just delegate to the wrapped object.\n\nWDYT?",
       "parentUuid": "70629842_b0b2de1d",
+      "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4524365_48051c23",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefDatabase.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-27T15:18:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d937d87c_4507d5cd",
       "revId": "34b94e5a8350321146a213673b4162246bc5f64f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },

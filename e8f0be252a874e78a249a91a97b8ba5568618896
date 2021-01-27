@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae7683e_0aa5b43c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-27T15:18:24Z",
+      "side": 1,
+      "message": "mvn install shows some javaDocs failures.\nI am going to fix those.",
+      "revId": "e8f0be252a874e78a249a91a97b8ba5568618896",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
