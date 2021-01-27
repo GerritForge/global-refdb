@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fad0967d_8b6b6882",
+        "filename": "bindings.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-27T15:57:37Z",
+      "side": 1,
+      "message": "Good point, let me do that",
+      "parentUuid": "ce857a2d_0570622e",
+      "revId": "a6eeb82e75c52680dc422cba82026c6c06eb9b4d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf084e39_9248bb0a",
         "filename": "config.md",
         "patchSetId": 10
