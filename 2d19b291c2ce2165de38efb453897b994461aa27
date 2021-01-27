@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7c8ae4a_13d0061f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-27T15:47:20Z",
+      "side": 1,
+      "message": "One change \u003d one thing: do we really need to bump the version here? Can this wait a follow-up change?",
+      "revId": "2d19b291c2ce2165de38efb453897b994461aa27",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
