@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7c90f80f_8b12d7fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-27T08:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e11ac455_05ea3ac2",
+      "range": {
+        "startLine": 9,
+        "startChar": 30,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "cbcb47c6529d9b22fc52597d84eab3138bb9ce30",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e1d02171_d507f43e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -81,6 +105,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "832db1b8_32e30f94",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/ProjectsFilter.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-27T08:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8a53433_d3d8656a",
+      "range": {
+        "startLine": 89,
+        "startChar": 55,
+        "endLine": 89,
+        "endChar": 62
+      },
+      "revId": "cbcb47c6529d9b22fc52597d84eab3138bb9ce30",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f6fe263_88d24c78",
@@ -94,6 +142,54 @@
       "writtenOn": "2021-01-26T20:35:18Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 77,
+        "startChar": 44,
+        "endLine": 77,
+        "endChar": 45
+      },
+      "revId": "cbcb47c6529d9b22fc52597d84eab3138bb9ce30",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e719511_5af5dcd2",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-27T08:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f6fe263_88d24c78",
+      "range": {
+        "startLine": 77,
+        "startChar": 44,
+        "endLine": 77,
+        "endChar": 45
+      },
+      "revId": "cbcb47c6529d9b22fc52597d84eab3138bb9ce30",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0768f27_ac3233b0",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-27T08:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f6fe263_88d24c78",
       "range": {
         "startLine": 77,
         "startChar": 44,
@@ -127,6 +223,54 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b105f5f_37a6df7b",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbConfiguration.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-27T08:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71735579_728b4c09",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 3
+      },
+      "revId": "cbcb47c6529d9b22fc52597d84eab3138bb9ce30",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e133f37_4754f744",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbConfiguration.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-27T08:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71735579_728b4c09",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 3
+      },
+      "revId": "cbcb47c6529d9b22fc52597d84eab3138bb9ce30",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54d10446_b2bf9aa4",
@@ -144,6 +288,42 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1504a83c_66761063",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbGitRepositoryManager.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-27T08:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54d10446_b2bf9aa4",
+      "revId": "cbcb47c6529d9b22fc52597d84eab3138bb9ce30",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a19c3f91_931aeeff",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbGitRepositoryManager.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-27T08:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54d10446_b2bf9aa4",
+      "revId": "cbcb47c6529d9b22fc52597d84eab3138bb9ce30",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8147b574_af71a518",
@@ -157,6 +337,30 @@
       "writtenOn": "2021-01-26T20:35:18Z",
       "side": 1,
       "message": "we are returning false so I\u0027m not sure if this is considered as successful",
+      "range": {
+        "startLine": 63,
+        "startChar": 30,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "revId": "cbcb47c6529d9b22fc52597d84eab3138bb9ce30",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0e91b7e_9e4a2a1a",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/dfsrefdb/NoopSharedRefDatabase.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-27T08:43:59Z",
+      "side": 1,
+      "message": "See my comment to luca\u0027s comment:\n\n```mmm, good point I haven\u0027t noticed that before.\n\nIs this the right value though? I would expect the compareAndPut to always be considered successful in a Noop implementation of the global ref-db.\n\nIn fact this is the behavior of its polymorphic sibling at L59.\n\nCould this be a bug?\n```\n\nWhat do you think @marcin, @luca?",
+      "parentUuid": "8147b574_af71a518",
       "range": {
         "startLine": 63,
         "startChar": 30,
