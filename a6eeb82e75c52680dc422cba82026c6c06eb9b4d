@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44c2d598_52eace0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-01-27T15:50:56Z",
+      "side": 1,
+      "message": "Thanks, @Tony, for the quick fix. LGTM",
+      "revId": "a6eeb82e75c52680dc422cba82026c6c06eb9b4d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
