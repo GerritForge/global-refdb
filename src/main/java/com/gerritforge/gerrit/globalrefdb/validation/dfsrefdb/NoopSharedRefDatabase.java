@@ -60,7 +60,7 @@ public class NoopSharedRefDatabase implements GlobalRefDatabase {
   }
 
   /**
-   * Put is always considered unsuccessful
+   * Put is always considered successful
    *
    * @param project project name of the ref.
    * @param refName to store the value for.
@@ -73,7 +73,7 @@ public class NoopSharedRefDatabase implements GlobalRefDatabase {
   @Override
   public <T> boolean compareAndPut(Project.NameKey project, String refName, T currValue, T newValue)
       throws GlobalRefDbSystemError {
-    return false;
+    return true;
   }
 
   /**
