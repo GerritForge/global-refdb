@@ -36,6 +36,14 @@ public class NoopSharedRefDatabaseTest implements RefFixture {
   }
 
   @Test
+  public void compareAndPutWithRefNameShouldAlwaysReturnTrue() {
+    assertThat(
+            objectUnderTest.compareAndPut(
+                A_TEST_PROJECT_NAME_KEY, A_TEST_REF_NAME, AN_OBJECT_ID_1, AN_OBJECT_ID_2))
+        .isTrue();
+  }
+
+  @Test
   public void existsShouldAlwaysReturnFalse() {
     assertThat(objectUnderTest.exists(A_TEST_PROJECT_NAME_KEY, A_TEST_REF_NAME)).isFalse();
   }
