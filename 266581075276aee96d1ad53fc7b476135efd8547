@@ -22,6 +22,30 @@
       },
       "revId": "266581075276aee96d1ad53fc7b476135efd8547",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ae20b8a_8b99b97c",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/dfsrefdb/NoopSharedRefDatabase.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-28T20:30:41Z",
+      "side": 1,
+      "message": "Yes exactly, Noop does exactly that: nothing 😊\nsame as L59, this one was forgotten I believe.",
+      "parentUuid": "8365d532_c88e0638",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "revId": "266581075276aee96d1ad53fc7b476135efd8547",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
