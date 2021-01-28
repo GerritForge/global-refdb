@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "177516ee_3d792fb5",
+        "filename": "pom.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2021-01-28T20:34:45Z",
+      "side": 1,
+      "message": "It wasn\u0027t officially announced yet.",
+      "revId": "b404fc74bb57ebd46ab205b907e6076dbf86d7f1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
