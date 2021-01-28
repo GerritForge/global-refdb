@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8365d532_c88e0638",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/dfsrefdb/NoopSharedRefDatabase.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2021-01-28T20:07:01Z",
+      "side": 1,
+      "message": "It is always successful regardless currValue and newValue ?\nI.e.:\nif currValue !\u003d newValue \u003d\u003e true\nif currValue \u003d\u003d newValue \u003d\u003e true",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "revId": "266581075276aee96d1ad53fc7b476135efd8547",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
