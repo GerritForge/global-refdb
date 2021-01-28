@@ -22,6 +22,30 @@
       },
       "revId": "42c58171e9e3149366c9dbc6f3113d2916a053b7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9618f013_109ce8a2",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/dfsrefdb/NoopSharedRefDatabase.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-28T19:57:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03ac6dda_f8d308c1",
+      "range": {
+        "startLine": 70,
+        "startChar": 13,
+        "endLine": 70,
+        "endChar": 18
+      },
+      "revId": "42c58171e9e3149366c9dbc6f3113d2916a053b7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
