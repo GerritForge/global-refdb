@@ -1,0 +1,9 @@
+Formatting+1: Jenkins at Gerrit-CI <jenkins@gerritforge.com>
+Verified+1: Jenkins at Gerrit-CI <jenkins@gerritforge.com>
+Code-Review+2: Fabio Ponciroli <ponch78@gmail.com>
+Code-Review+2: David Ostrovsky <david.ostrovsky@gmail.com>
+Submitted-by: Antonio Barone <syntonyze@gmail.com>
+Submitted-at: Fri, 29 Jan 2021 13:30:06 +0000
+Reviewed-on: https://review.gerrithub.io/c/GerritForge/global-refdb/+/509794
+Project: GerritForge/global-refdb
+Branch: refs/heads/master
