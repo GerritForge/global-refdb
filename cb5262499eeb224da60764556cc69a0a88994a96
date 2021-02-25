@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cefbbeb9_95d14bea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-02-25T15:48:19Z",
+      "side": 1,
+      "message": "I\u0027ll wait for Saša/Matthias to confirm that it works E2E",
+      "revId": "cb5262499eeb224da60764556cc69a0a88994a96",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
