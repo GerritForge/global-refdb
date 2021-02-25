@@ -39,6 +39,30 @@
       },
       "revId": "cb5262499eeb224da60764556cc69a0a88994a96",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49ae12f8_b0cf556a",
+        "filename": "pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-02-25T16:48:18Z",
+      "side": 1,
+      "message": "\u003e How this supposed to work?\n\u003e \n\u003e If I build it with JDK 11, it works, and it produces Java 11 byte code:\n\u003e \n\u003e   $ javap -v -cp target/global-refdb-3.3.2.1.jar com.gerritforge.gerrit.globalrefdb.validation.SharedRefLogger | grep major\n\u003e   major version: 55\n\u003e \n\u003e If I try to build it with Java 8, it would fail:\n\u003e \n\u003e   $ java -fullversion\n\u003e   openjdk full version \"1.8.0_275-b01\"\n\u003e \n\u003e   $ mvn package\n\u003e   [...]\n\u003e   [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.1:compile (default-compile) on project global-refdb: Compilation failure\n\u003e   [ERROR] /home/davido/projects/global-refdb/src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRepository.java:[18,36] cannot access com.google.gerrit.server.git.DelegateRepository\n\u003e   [ERROR]   bad class file: /home/davido/.m2/repository/com/google/gerrit/gerrit-plugin-api/3.3.2/gerrit-plugin-api-3.3.2.jar(com/google/gerrit/server/git/DelegateRepository.class)\n\u003e   [ERROR]     class file has wrong version 55.0, should be 52.0\n\u003e \n\u003e That\u0027s because Gerrit Plugin API:\n\u003e \n\u003e   \u003cgerrit.version\u003e3.3.0\u003c/gerrit.version\u003e\n\u003e \n\u003e ony Central only available that is built with JDK 11.\n\nYes, exactly. I believe we should publish the Java 8 artifacts to Maven Central for Gerrit too, using the \u0027qualifier\u003djdk8\u0027 as I did for global-refdb.\n\n\u003e So the only how that build that produces Java 8 could work is to produce custom build of Gerrit plugin API locally, and enforce creation of Java 8 byte code and publish this version into local Maven repository, or what I am missing?\n\nNo, see above. Maven already supports the ability to publish artifacts for different runtimes (jdk8 and jdk11) using the qualifier attribute. We just did not use it on Gerrit whilst we shuould.\n\n\u003e Should this be documented somewhere?\n\n+1, the README.md should contain a note on the qualifier.",
+      "parentUuid": "900ac4bb_b131c4c4",
+      "range": {
+        "startLine": 77,
+        "startChar": 16,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "cb5262499eeb224da60764556cc69a0a88994a96",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
