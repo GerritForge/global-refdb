@@ -63,6 +63,30 @@
       },
       "revId": "cb5262499eeb224da60764556cc69a0a88994a96",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b0a3e20_03fa9816",
+        "filename": "pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2021-02-25T16:59:23Z",
+      "side": 1,
+      "message": "Alternatively, just stop using Maven entirely. We build JGit from source as submodule. With my change: [1] global-refdb would be built from source as Gerrit Module (like JGit), and that would immediately fix JDK mismatch:\n\n* If you build gerrit + modules from source with JDK 11 it would produce JDK 11 byte code.\n* If you build gerrit + modules from source with JDK 8 it would produce JDK 8 byte code.\n\n[1] https://gerrit-review.googlesource.com/c/plugins/multi-site/+/241634",
+      "parentUuid": "49ae12f8_b0cf556a",
+      "range": {
+        "startLine": 77,
+        "startChar": 16,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "cb5262499eeb224da60764556cc69a0a88994a96",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
