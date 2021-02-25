@@ -38,7 +38,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <gerrit.version>3.3.0</gerrit.version>
+        <gerrit.version>3.3.2</gerrit.version>
     </properties>
 
     <dependencies>
