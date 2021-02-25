@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c268a5aa_53fd387d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-02-25T15:47:00Z",
+      "side": 1,
+      "message": "Isn\u0027t that duplicate of https://review.gerrithub.io/c/GerritForge/global-refdb/+/511408",
+      "revId": "4efa177997eea562cb466d488843600673d94716",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
