@@ -16,6 +16,29 @@
       "message": "I\u0027ll wait for Saša/Matthias to confirm that it works E2E",
       "revId": "cb5262499eeb224da60764556cc69a0a88994a96",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "900ac4bb_b131c4c4",
+        "filename": "pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2021-02-25T15:59:53Z",
+      "side": 1,
+      "message": "How this supposed to work?\n\nIf I build it with JDK 11, it works, and it produces Java 11 byte code:\n\n  $ javap -v -cp target/global-refdb-3.3.2.1.jar com.gerritforge.gerrit.globalrefdb.validation.SharedRefLogger | grep major\n  major version: 55\n\nIf I try to build it with Java 8, it would fail:\n\n  $ java -fullversion\n  openjdk full version \"1.8.0_275-b01\"\n\n  $ mvn package\n  [...]\n  [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.1:compile (default-compile) on project global-refdb: Compilation failure\n  [ERROR] /home/davido/projects/global-refdb/src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRepository.java:[18,36] cannot access com.google.gerrit.server.git.DelegateRepository\n  [ERROR]   bad class file: /home/davido/.m2/repository/com/google/gerrit/gerrit-plugin-api/3.3.2/gerrit-plugin-api-3.3.2.jar(com/google/gerrit/server/git/DelegateRepository.class)\n  [ERROR]     class file has wrong version 55.0, should be 52.0\n\nThat\u0027s because Gerrit Plugin API:\n\n  \u003cgerrit.version\u003e3.3.0\u003c/gerrit.version\u003e\n\nony Central only available that is built with JDK 11.\n\nSo the only how that build that produces Java 8 could work is to produce custom build of Gerrit plugin API locally, and enforce creation of Java 8 byte code and publish this version into local Maven repository, or what I am missing?\n\nShould this be documented somewhere?",
+      "range": {
+        "startLine": 77,
+        "startChar": 16,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "cb5262499eeb224da60764556cc69a0a88994a96",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
