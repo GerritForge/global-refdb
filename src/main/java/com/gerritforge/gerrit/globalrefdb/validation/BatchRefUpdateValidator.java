@@ -14,6 +14,8 @@
 
 package com.gerritforge.gerrit.globalrefdb.validation;
 
+import com.gerritforge.gerrit.globalrefdb.GlobalRefDbLockException;
+import com.gerritforge.gerrit.globalrefdb.GlobalRefDbSystemError;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.CustomSharedRefEnforcementByProject;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.DefaultSharedRefEnforcement;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.OutOfSyncException;
@@ -106,7 +108,9 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
    */
   @SuppressWarnings("JavadocReference")
   public void executeBatchUpdateWithValidation(
-      BatchRefUpdate batchRefUpdate, NoParameterVoidFunction batchRefUpdateFunction)
+      BatchRefUpdate batchRefUpdate,
+      NoParameterVoidFunction batchRefUpdateFunction,
+      OneParameterVoidFunction<List<ReceiveCommand>> batchRefUpdateRollbackFunction)
       throws IOException {
     if (refEnforcement.getPolicy(projectName) == EnforcePolicy.IGNORED
         || !isGlobalProject(projectName)) {
@@ -115,7 +119,7 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
     }
 
     try {
-      doExecuteBatchUpdate(batchRefUpdate, batchRefUpdateFunction);
+      doExecuteBatchUpdate(batchRefUpdate, batchRefUpdateFunction, batchRefUpdateRollbackFunction);
     } catch (IOException e) {
       logger.atWarning().withCause(e).log(
           "Failed to execute Batch Update on project %s", projectName);
@@ -126,7 +130,10 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
   }
 
   private void doExecuteBatchUpdate(
-      BatchRefUpdate batchRefUpdate, NoParameterVoidFunction delegateUpdate) throws IOException {
+      BatchRefUpdate batchRefUpdate,
+      NoParameterVoidFunction delegateUpdate,
+      OneParameterVoidFunction<List<ReceiveCommand>> delegateUpdateRollback)
+      throws IOException {
 
     List<ReceiveCommand> commands = batchRefUpdate.getCommands();
     if (commands.isEmpty()) {
@@ -148,9 +155,18 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
     }
 
     try (CloseableSet<AutoCloseable> locks = new CloseableSet<>()) {
-      refsToUpdate = compareAndGetLatestLocalRefs(refsToUpdate, locks);
+      final List<RefPair> finalRefsToUpdate = compareAndGetLatestLocalRefs(refsToUpdate, locks);
       delegateUpdate.invoke();
-      updateSharedRefDb(batchRefUpdate.getCommands().stream(), refsToUpdate);
+      try {
+        updateSharedRefDb(batchRefUpdate.getCommands().stream(), finalRefsToUpdate);
+      } catch (GlobalRefDbSystemError | GlobalRefDbLockException e) {
+        List<ReceiveCommand> receiveCommands = batchRefUpdate.getCommands();
+        logger.atWarning().withCause(e).log(
+            String.format(
+                "Batch ref-update failing because of failure during the global refdb update. Set all commands Result to LOCK_FAILURE [%d]",
+                receiveCommands.size()));
+        rollback(delegateUpdateRollback, finalRefsToUpdate, receiveCommands);
+      }
     } catch (OutOfSyncException e) {
       List<ReceiveCommand> receiveCommands = batchRefUpdate.getCommands();
       logger.atWarning().withCause(e).log(
@@ -159,6 +175,24 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
               receiveCommands.size()));
       receiveCommands.forEach((command) -> command.setResult(ReceiveCommand.Result.LOCK_FAILURE));
     }
+  }
+
+  private void rollback(
+      OneParameterVoidFunction<List<ReceiveCommand>> delegateUpdateRollback,
+      List<RefPair> refsBeforeUpdate,
+      List<ReceiveCommand> receiveCommands)
+      throws IOException {
+    List<ReceiveCommand> rollbackCommands =
+        refsBeforeUpdate.stream()
+            .map(
+                refBeforeUpdate ->
+                    new ReceiveCommand(
+                        refBeforeUpdate.putValue,
+                        refBeforeUpdate.compareRef.getObjectId(),
+                        refBeforeUpdate.getName()))
+            .collect(Collectors.toList());
+    delegateUpdateRollback.invoke(rollbackCommands);
+    receiveCommands.forEach(command -> command.setResult(ReceiveCommand.Result.LOCK_FAILURE));
   }
 
   private void updateSharedRefDb(Stream<ReceiveCommand> commandStream, List<RefPair> refsToUpdate)

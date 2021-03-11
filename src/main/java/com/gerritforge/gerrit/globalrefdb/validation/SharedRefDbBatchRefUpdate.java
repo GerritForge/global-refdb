@@ -36,6 +36,7 @@ import org.eclipse.jgit.util.time.ProposedTimestamp;
 public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
 
   private final BatchRefUpdate batchRefUpdate;
+  private final BatchRefUpdate batchRefUpdateRollback;
   private final String project;
   private final BatchRefUpdateValidator.Factory batchRefValidatorFactory;
   private final RefDatabase refDb;
@@ -67,6 +68,7 @@ public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
     this.refDb = refDb;
     this.project = project;
     this.batchRefUpdate = refDb.newBatchUpdate();
+    this.batchRefUpdateRollback = refDb.newBatchUpdate();
     this.batchRefValidatorFactory = batchRefValidatorFactory;
     this.ignoredRefs = ignoredRefs;
   }
@@ -88,6 +90,7 @@ public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
 
   @Override
   public BatchRefUpdate setAllowNonFastForwards(boolean allow) {
+    batchRefUpdateRollback.setAllowNonFastForwards(allow);
     return batchRefUpdate.setAllowNonFastForwards(allow);
   }
 
@@ -98,6 +101,7 @@ public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
 
   @Override
   public BatchRefUpdate setRefLogIdent(PersonIdent pi) {
+    batchRefUpdateRollback.setRefLogIdent(pi);
     return batchRefUpdate.setRefLogIdent(pi);
   }
 
@@ -113,6 +117,7 @@ public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
 
   @Override
   public BatchRefUpdate setRefLogMessage(String msg, boolean appendStatus) {
+    batchRefUpdateRollback.setRefLogMessage(msg, appendStatus);
     return batchRefUpdate.setRefLogMessage(msg, appendStatus);
   }
 
@@ -123,6 +128,7 @@ public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
 
   @Override
   public BatchRefUpdate setForceRefLog(boolean force) {
+    batchRefUpdateRollback.setForceRefLog(force);
     return batchRefUpdate.setForceRefLog(force);
   }
 
@@ -202,7 +208,10 @@ public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
     batchRefValidatorFactory
         .create(project, refDb, ignoredRefs)
         .executeBatchUpdateWithValidation(
-            batchRefUpdate, () -> batchRefUpdate.execute(walk, monitor, options));
+            batchRefUpdate,
+            () -> batchRefUpdate.execute(walk, monitor, options),
+            (commands) ->
+                batchRefUpdateRollback.addCommand(commands).execute(walk, monitor, options));
   }
 
   /**
@@ -224,7 +233,9 @@ public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
     batchRefValidatorFactory
         .create(project, refDb, ignoredRefs)
         .executeBatchUpdateWithValidation(
-            batchRefUpdate, () -> batchRefUpdate.execute(walk, monitor));
+            batchRefUpdate,
+            () -> batchRefUpdate.execute(walk, monitor),
+            (commands) -> batchRefUpdateRollback.addCommand(commands).execute(walk, monitor));
   }
 
   @Override
