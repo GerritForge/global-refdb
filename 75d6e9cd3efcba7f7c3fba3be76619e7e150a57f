@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60a0d227_5ae03b64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-03-11T16:15:51Z",
+      "side": 1,
+      "message": "I would like to check if I\u0027m following correct path before I will spend extra time on writing unit tests and porting this code to multi-site(validation framework is in the global-refdb from v3.3)",
+      "revId": "75d6e9cd3efcba7f7c3fba3be76619e7e150a57f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
