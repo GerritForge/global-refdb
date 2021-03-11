@@ -16,6 +16,23 @@
       "message": "I would like to check if I\u0027m following correct path before I will spend extra time on writing unit tests and porting this code to multi-site(validation framework is in the global-refdb from v3.3)",
       "revId": "75d6e9cd3efcba7f7c3fba3be76619e7e150a57f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d41fae4_a23cd417",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-03-11T19:33:34Z",
+      "side": 1,
+      "message": "I am not sure I understand the approach correctly.\n\n1 - Let\u0027s say we are updating ref refs/foo/bar from $current to $new, generating a new commit $X:\n\nX \u003d update(current, new, \"refs/foo/bar\")\n\nrefs/foo/bar is now: current -\u003e X\n\n2 - Then we go to ZK and we want to update refs/foo/bar from $current to the value $X, but we find that we are in split brain.\n\n3 - We throw an exception\n\n4 - We rollback \n\nY \u003d update(new, current, \"refs/foo/bar\")\n\n\nQuestions:\nIf I get this right, doesn\u0027t step 4 now add an *extra* commit on top of the ref?\n\nrefs/foo/bar is now: current -\u003e X -\u003e Y\n\nOr is doing update(new, current, \"refs/foo/bar\") effectively doing a force update back to $current?\n",
+      "revId": "75d6e9cd3efcba7f7c3fba3be76619e7e150a57f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
