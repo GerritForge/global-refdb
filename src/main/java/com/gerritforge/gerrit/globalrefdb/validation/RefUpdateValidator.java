@@ -14,6 +14,7 @@
 
 package com.gerritforge.gerrit.globalrefdb.validation;
 
+import com.gerritforge.gerrit.globalrefdb.GlobalRefDbLockException;
 import com.gerritforge.gerrit.globalrefdb.GlobalRefDbSystemError;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.CustomSharedRefEnforcementByProject;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.DefaultSharedRefEnforcement;
@@ -35,6 +36,7 @@ import org.eclipse.jgit.lib.ObjectIdRef;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.RefDatabase;
 import org.eclipse.jgit.lib.RefUpdate;
+import org.eclipse.jgit.lib.RefUpdate.Result;
 
 /** Enables the detection of out-of-sync by validating ref updates against the global refdb. */
 public class RefUpdateValidator {
@@ -71,6 +73,14 @@ public class RefUpdateValidator {
 
   public interface NoParameterVoidFunction {
     void invoke() throws IOException;
+  }
+
+  public interface OneParameterFunction<F, T> {
+    T invoke(F f) throws IOException;
+  }
+
+  public interface OneParameterVoidFunction<T> {
+    void invoke(T f) throws IOException;
   }
 
   /**
@@ -114,9 +124,10 @@ public class RefUpdateValidator {
    * Checks whether the provided refUpdate should be validated first against the shared ref-db. If
    * not it just execute the provided refUpdateFunction. If it should be validated against the
    * global refdb then it does so by executing the {@link
-   * RefUpdateValidator#doExecuteRefUpdate(RefUpdate, NoParameterFunction)} first. Upon success the
-   * refUpdate is returned, upon failure split brain metrics are incremented and a {@link
-   * SharedDbSplitBrainException} is thrown.
+   * RefUpdateValidator#doExecuteRefUpdate(RefUpdate, NoParameterFunction,
+   * OneParameterFunction<ObjectId, Result>)} first. Upon success the refUpdate is returned, upon
+   * failure split brain metrics are incremented and a {@link SharedDbSplitBrainException} is
+   * thrown.
    *
    * <p>Validation is performed when either of these condition is true
    *
@@ -135,7 +146,9 @@ public class RefUpdateValidator {
    * @throws IOException Execution of ref update failed
    */
   public RefUpdate.Result executeRefUpdate(
-      RefUpdate refUpdate, NoParameterFunction<RefUpdate.Result> refUpdateFunction)
+      RefUpdate refUpdate,
+      NoParameterFunction<RefUpdate.Result> refUpdateFunction,
+      OneParameterFunction<ObjectId, Result> rollbackFunction)
       throws IOException {
     if (isRefToBeIgnored(refUpdate.getName())
         || !isGlobalProject(projectName)
@@ -144,7 +157,7 @@ public class RefUpdateValidator {
     }
 
     try {
-      return doExecuteRefUpdate(refUpdate, refUpdateFunction);
+      return doExecuteRefUpdate(refUpdate, refUpdateFunction, rollbackFunction);
     } catch (SharedDbSplitBrainException e) {
       validationMetrics.incrementSplitBrain();
 
@@ -182,14 +195,27 @@ public class RefUpdateValidator {
   }
 
   protected RefUpdate.Result doExecuteRefUpdate(
-      RefUpdate refUpdate, NoParameterFunction<RefUpdate.Result> refUpdateFunction)
+      RefUpdate refUpdate,
+      NoParameterFunction<Result> refUpdateFunction,
+      OneParameterFunction<ObjectId, Result> rollbackFunction)
       throws IOException {
     try (CloseableSet<AutoCloseable> locks = new CloseableSet<>()) {
       RefPair refPairForUpdate = newRefPairFrom(refUpdate);
       compareAndGetLatestLocalRef(refPairForUpdate, locks);
       RefUpdate.Result result = refUpdateFunction.invoke();
-      if (isSuccessful(result)) {
-        updateSharedDbOrThrowExceptionFor(refPairForUpdate);
+      try {
+        if (isSuccessful(result)) {
+          updateSharedDbOrThrowExceptionFor(refPairForUpdate);
+        }
+      } catch (GlobalRefDbSystemError | GlobalRefDbLockException e) {
+        result = rollbackFunction.invoke(refPairForUpdate.compareRef.getObjectId());
+        if (isSuccessful(result)) {
+          result = RefUpdate.Result.LOCK_FAILURE;
+        }
+        logger.atSevere().withCause(e).log(
+            String.format(
+                "Failed to update global refdb, the local refdb has been rolled back: %s",
+                e.getMessage()));
       }
       return result;
     } catch (OutOfSyncException e) {
@@ -223,7 +249,7 @@ public class RefUpdateValidator {
           projectName,
           refPair.getName(),
           e.getMessage());
-      throw new SharedDbSplitBrainException(errorMessage, e);
+      throw e;
     }
 
     if (!succeeded) {

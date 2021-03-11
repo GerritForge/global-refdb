@@ -122,7 +122,8 @@ public class SharedRefDbRefUpdate extends RefUpdate {
    */
   @Override
   public Result update() throws IOException {
-    return refUpdateValidator.executeRefUpdate(refUpdateBase, refUpdateBase::update);
+    return refUpdateValidator.executeRefUpdate(
+        refUpdateBase, refUpdateBase::update, this::rollback);
   }
 
   /**
@@ -137,7 +138,13 @@ public class SharedRefDbRefUpdate extends RefUpdate {
    */
   @Override
   public Result update(RevWalk rev) throws IOException {
-    return refUpdateValidator.executeRefUpdate(refUpdateBase, () -> refUpdateBase.update(rev));
+    return refUpdateValidator.executeRefUpdate(
+        refUpdateBase,
+        () -> refUpdateBase.update(rev),
+        (objectId) -> {
+          refUpdateBase.setNewObjectId(objectId);
+          return refUpdateBase.update(rev);
+        });
   }
 
   /**
@@ -150,7 +157,8 @@ public class SharedRefDbRefUpdate extends RefUpdate {
    */
   @Override
   public Result delete() throws IOException {
-    return refUpdateValidator.executeRefUpdate(refUpdateBase, refUpdateBase::delete);
+    return refUpdateValidator.executeRefUpdate(
+        refUpdateBase, refUpdateBase::delete, this::rollback);
   }
 
   /**
@@ -163,7 +171,8 @@ public class SharedRefDbRefUpdate extends RefUpdate {
    */
   @Override
   public Result delete(RevWalk walk) throws IOException {
-    return refUpdateValidator.executeRefUpdate(refUpdateBase, () -> refUpdateBase.delete(walk));
+    return refUpdateValidator.executeRefUpdate(
+        refUpdateBase, () -> refUpdateBase.delete(walk), this::rollback);
   }
 
   @Override
@@ -278,7 +287,13 @@ public class SharedRefDbRefUpdate extends RefUpdate {
 
   @Override
   public Result forceUpdate() throws IOException {
-    return refUpdateValidator.executeRefUpdate(refUpdateBase, refUpdateBase::forceUpdate);
+    return refUpdateValidator.executeRefUpdate(
+        refUpdateBase,
+        refUpdateBase::forceUpdate,
+        (objectId) -> {
+          refUpdateBase.setNewObjectId(objectId);
+          return refUpdateBase.forceUpdate();
+        });
   }
 
   @Override
@@ -289,5 +304,10 @@ public class SharedRefDbRefUpdate extends RefUpdate {
   @Override
   public void setCheckConflicting(boolean check) {
     refUpdateBase.setCheckConflicting(check);
+  }
+
+  private Result rollback(ObjectId objectId) throws IOException {
+    refUpdateBase.setNewObjectId(objectId);
+    return refUpdateBase.update();
   }
 }
