@@ -139,7 +139,7 @@ public class SharedRefDbBatchRefUpdateTest implements RefFixture {
     sharedRefDbRefUpdate = getSharedRefDbBatchRefUpdateWithMockedValidator();
     doThrow(new IOException("IO Test Exception"))
         .when(batchRefUpdateValidator)
-        .executeBatchUpdateWithValidation(any(), any());
+        .executeBatchUpdateWithValidation(any(), any(), any());
 
     sharedRefDbRefUpdate.execute(revWalk, progressMonitor, EMPTY_LIST);
   }

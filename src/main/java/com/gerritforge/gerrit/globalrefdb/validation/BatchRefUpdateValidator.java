@@ -14,6 +14,8 @@
 
 package com.gerritforge.gerrit.globalrefdb.validation;
 
+import com.gerritforge.gerrit.globalrefdb.GlobalRefDbLockException;
+import com.gerritforge.gerrit.globalrefdb.GlobalRefDbSystemError;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.CustomSharedRefEnforcementByProject;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.DefaultSharedRefEnforcement;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.OutOfSyncException;
@@ -106,7 +108,9 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
    */
   @SuppressWarnings("JavadocReference")
   public void executeBatchUpdateWithValidation(
-      BatchRefUpdate batchRefUpdate, NoParameterVoidFunction batchRefUpdateFunction)
+      BatchRefUpdate batchRefUpdate,
+      NoParameterVoidFunction batchRefUpdateFunction,
+      NoParameterVoidFunction batchRefUpdateRollbackFunction)
       throws IOException {
     if (refEnforcement.getPolicy(projectName) == EnforcePolicy.IGNORED
         || !isGlobalProject(projectName)) {
@@ -115,7 +119,7 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
     }
 
     try {
-      doExecuteBatchUpdate(batchRefUpdate, batchRefUpdateFunction);
+      doExecuteBatchUpdate(batchRefUpdate, batchRefUpdateFunction, batchRefUpdateRollbackFunction);
     } catch (IOException e) {
       logger.atWarning().withCause(e).log(
           "Failed to execute Batch Update on project %s", projectName);
@@ -126,7 +130,10 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
   }
 
   private void doExecuteBatchUpdate(
-      BatchRefUpdate batchRefUpdate, NoParameterVoidFunction delegateUpdate) throws IOException {
+      BatchRefUpdate batchRefUpdate,
+      NoParameterVoidFunction delegateUpdate,
+      NoParameterVoidFunction delegateUpdateRollback)
+      throws IOException {
 
     List<ReceiveCommand> commands = batchRefUpdate.getCommands();
     if (commands.isEmpty()) {
@@ -150,7 +157,14 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
     try (CloseableSet<AutoCloseable> locks = new CloseableSet<>()) {
       refsToUpdate = compareAndGetLatestLocalRefs(refsToUpdate, locks);
       delegateUpdate.invoke();
-      updateSharedRefDb(batchRefUpdate.getCommands().stream(), refsToUpdate);
+      try {
+        updateSharedRefDb(batchRefUpdate.getCommands().stream(), refsToUpdate);
+      } catch (GlobalRefDbSystemError | GlobalRefDbLockException e) {
+        delegateUpdateRollback.invoke();
+        batchRefUpdate
+            .getCommands()
+            .forEach((command) -> command.setResult(ReceiveCommand.Result.LOCK_FAILURE));
+      }
     } catch (OutOfSyncException e) {
       List<ReceiveCommand> receiveCommands = batchRefUpdate.getCommands();
       logger.atWarning().withCause(e).log(
