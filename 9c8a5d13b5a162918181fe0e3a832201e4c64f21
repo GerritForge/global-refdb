@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10caf225_7a9d6e20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-16T11:18:57Z",
+      "side": 1,
+      "message": "mitigate the problem,",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1a7cf98_ec216d8f",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/BatchRefUpdateValidator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-16T11:18:57Z",
+      "side": 1,
+      "message": "What is the rational behind catching only these exception? What if another problem happens? Do we still have to rollback the ref-update, because if we arrived here it means L159 was successful.",
+      "range": {
+        "startLine": 162,
+        "startChar": 15,
+        "endLine": 162,
+        "endChar": 66
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b80bf79c_0e6f129d",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/BatchRefUpdateValidator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-16T11:18:57Z",
+      "side": 1,
+      "message": "I believe we would also need to log the exception in the error_log and say what has happened.",
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eda2683_b43ec383",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-16T11:18:57Z",
+      "side": 1,
+      "message": "What is the rational behind catching only these exception? What if another problem happens? Do we still have to rollback the ref-update, because if we arrived here it means L159 was successful.",
+      "range": {
+        "startLine": 201,
+        "startChar": 15,
+        "endLine": 201,
+        "endChar": 66
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "009eb642_f346923b",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-16T11:18:57Z",
+      "side": 1,
+      "message": "This message is now stale: it should be something like \u0027Failed to update global refdb, the local refdb has been rolled back\u0027",
+      "range": {
+        "startLine": 203,
+        "startChar": 27,
+        "endLine": 203,
+        "endChar": 69
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf9e6e0e_5eab3ad0",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbBatchRefUpdate.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-16T11:18:57Z",
+      "side": 1,
+      "message": "Are we sure this is correct?\n\nLook at the following sample scenario:\n\nServer(T0): repo1:refs/heads/master \u003d\u003e SHA1-0\n\nClientA(T1): git clone repo1 \u0026\u0026 git checkout master (SHA1-0)\n             echo foo1 \u003e foo1 \u0026\u0026 git add foo1 \u0026\u0026 git commit -m \u0027foo1\u0027\n             repo1:refs/heads/master \u003d\u003e SHA1-1\n\nClientB(T2): git clone repo1 \u0026\u0026 git checkout master (SHA1-0)\n             echo foo2 \u003e foo2 \u0026\u0026 git add foo2 \u0026\u0026 git commit -m \u0027foo2\u0027\n             repo1:refs/heads/master \u003d\u003e SHA1-2\n\nClientB(T3): git push -f origin master\n             repo1:refs/heads/master \u003d\u003e oldId\u003dSHA1-0 newId\u003dSHA1-2\nServer(T3):  repo1:refs/heads/master \u003d\u003e SHA1-2\n\nClientA(T4): git push -f origin master\n             repo1:refs/heads/master \u003d\u003e oldId\u003dSHA1-0 newId\u003dSHA1-1\n             ** FAILS TO UPDATE GLOBAL REF-DB **\n             repo1:refs/heads/master \u003d\u003e ????\n\nFrom your code, the ???? becomes SHA1-0 (the oldId) whilst I believe it should leave the repo as the operation didn\u0027t happen, so it should stay with SHA1-2.",
+      "range": {
+        "startLine": 250,
+        "startChar": 43,
+        "endLine": 250,
+        "endChar": 58
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f0d545b_8c31c02e",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefUpdate.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-16T11:18:57Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be the value of the ref *before* running the update?",
+      "range": {
+        "startLine": 129,
+        "startChar": 39,
+        "endLine": 129,
+        "endChar": 69
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1e93a3c_19146686",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefUpdate.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-16T11:18:57Z",
+      "side": 1,
+      "message": "Do we need this?",
+      "range": {
+        "startLine": 130,
+        "startChar": 10,
+        "endLine": 130,
+        "endChar": 79
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6125d896_a49239af",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefUpdate.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-16T11:18:57Z",
+      "side": 1,
+      "message": "Same comments as above. Does it make sense to have a \u0027rollback\u0027 method instead of duplicating the logic across methods?",
+      "range": {
+        "startLine": 151,
+        "startChar": 10,
+        "endLine": 152,
+        "endChar": 79
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2dcafeb_98dc50e0",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefUpdate.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-16T11:18:57Z",
+      "side": 1,
+      "message": "If the delete was executed, I believe we would need to restore the ref, isn\u0027t it?",
+      "range": {
+        "startLine": 168,
+        "startChar": 46,
+        "endLine": 168,
+        "endChar": 68
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "533d559d_4272cbd3",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefUpdate.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-16T11:18:57Z",
+      "side": 1,
+      "message": "Same comment as above.",
+      "range": {
+        "startLine": 182,
+        "startChar": 57,
+        "endLine": 182,
+        "endChar": 79
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d713ac_2611be3e",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefUpdate.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-16T11:18:57Z",
+      "side": 1,
+      "message": "Same comments as above, plus we should not duplicate the logic across the code.",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 45
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ba8758b_a9984e5c",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/validation/BatchRefUpdateValidatorTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-16T11:18:57Z",
+      "side": 1,
+      "message": "We should also test a forced update rollback.",
+      "range": {
+        "startLine": 152,
+        "startChar": 14,
+        "endLine": 152,
+        "endChar": 60
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
