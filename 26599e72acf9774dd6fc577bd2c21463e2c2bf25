@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64bede6d_7d0abc97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-03-19T13:30:43Z",
+      "side": 1,
+      "message": "I\u0027ve tested rollback e2e for change creation, patch set creation, tag deletion",
+      "revId": "26599e72acf9774dd6fc577bd2c21463e2c2bf25",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

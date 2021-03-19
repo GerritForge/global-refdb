@@ -382,6 +382,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "096b86a0_15abd09e",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefUpdate.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-03-19T13:30:43Z",
+      "side": 1,
+      "message": "Yes we need that if old and new object is the same update will be skipped",
+      "parentUuid": "548bb743_df8a29ed",
+      "range": {
+        "startLine": 130,
+        "startChar": 10,
+        "endLine": 130,
+        "endChar": 79
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6125d896_a49239af",
