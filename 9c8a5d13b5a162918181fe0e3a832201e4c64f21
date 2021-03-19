@@ -615,6 +615,30 @@
       },
       "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29c4dff1_eb3f1af4",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/validation/BatchRefUpdateValidatorTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-03-19T14:18:23Z",
+      "side": 1,
+      "message": "I\u0027m not sure what we want to test here. In both ref update and batch ref update we are using the same settings so if to make the update force is required it will be used for rollback as well. \n\nI\u0027ve checked and force update is actually set for both type of update",
+      "parentUuid": "8ba8758b_a9984e5c",
+      "range": {
+        "startLine": 152,
+        "startChar": 14,
+        "endLine": 152,
+        "endChar": 60
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
