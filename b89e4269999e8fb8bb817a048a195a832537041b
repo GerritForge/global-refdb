@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d7af9d0_5d231308",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-03-19T08:54:38Z",
+      "side": 1,
+      "message": "I want to do some e2e testing so -1 for verification",
+      "revId": "b89e4269999e8fb8bb817a048a195a832537041b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7cef704_29d70276",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/BatchRefUpdateValidator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-03-19T08:54:38Z",
+      "side": 1,
+      "message": "I\u0027ve checked the GlobalRefDatabase interface and the javadoc for GlobalRefDBSystemError:\n * {@code GlobalRefDbSystemError} is an exception that can be thrown when interacting with the\n * global-refdb to represent any error in performing operations such as creating or deleting a ref.\nAnd actually  they are:\n\nhttps://gerrit.googlesource.com/plugins/zookeeper-refdb/+/refs/heads/master/src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkSharedRefDatabase.java#140\n\nWe could catch generic Exception but then we have to decide if we want to rollback on SharedDbSplitBrainException.  SharedDbSplitBrainException is thrown when com.gerritforge.gerrit.globalrefdb.GlobalRefDatabase.compareAndPut() returns false. \nhttps://github.com/GerritForge/global-refdb/blob/master/src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java#L230\nWhich is typical split brain situation.\n\nIf we decide to not rollback on SharedDbSplitBrainException we still can catch Exception but this require a bit of refactoring",
+      "parentUuid": "b1a7cf98_ec216d8f",
+      "range": {
+        "startLine": 162,
+        "startChar": 15,
+        "endLine": 162,
+        "endChar": 66
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b80bf79c_0e6f129d",
         "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/BatchRefUpdateValidator.java",
         "patchSetId": 3
@@ -77,6 +101,24 @@
       "writtenOn": "2021-03-16T11:18:57Z",
       "side": 1,
       "message": "I believe we would also need to log the exception in the error_log and say what has happened.",
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df480c55_33cb8230",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/BatchRefUpdateValidator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-03-19T08:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b80bf79c_0e6f129d",
       "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
@@ -94,6 +136,30 @@
       "writtenOn": "2021-03-16T11:18:57Z",
       "side": 1,
       "message": "What is the rational behind catching only these exception? What if another problem happens? Do we still have to rollback the ref-update, because if we arrived here it means L159 was successful.",
+      "range": {
+        "startLine": 201,
+        "startChar": 15,
+        "endLine": 201,
+        "endChar": 66
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27681ae5_d47d23e0",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-03-19T08:54:38Z",
+      "side": 1,
+      "message": "same as above",
+      "parentUuid": "4eda2683_b43ec383",
       "range": {
         "startLine": 201,
         "startChar": 15,
@@ -127,6 +193,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89f9f2ca_ab86fc98",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-03-19T08:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "009eb642_f346923b",
+      "range": {
+        "startLine": 203,
+        "startChar": 27,
+        "endLine": 203,
+        "endChar": 69
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf9e6e0e_5eab3ad0",
@@ -140,6 +230,30 @@
       "writtenOn": "2021-03-16T11:18:57Z",
       "side": 1,
       "message": "Are we sure this is correct?\n\nLook at the following sample scenario:\n\nServer(T0): repo1:refs/heads/master \u003d\u003e SHA1-0\n\nClientA(T1): git clone repo1 \u0026\u0026 git checkout master (SHA1-0)\n             echo foo1 \u003e foo1 \u0026\u0026 git add foo1 \u0026\u0026 git commit -m \u0027foo1\u0027\n             repo1:refs/heads/master \u003d\u003e SHA1-1\n\nClientB(T2): git clone repo1 \u0026\u0026 git checkout master (SHA1-0)\n             echo foo2 \u003e foo2 \u0026\u0026 git add foo2 \u0026\u0026 git commit -m \u0027foo2\u0027\n             repo1:refs/heads/master \u003d\u003e SHA1-2\n\nClientB(T3): git push -f origin master\n             repo1:refs/heads/master \u003d\u003e oldId\u003dSHA1-0 newId\u003dSHA1-2\nServer(T3):  repo1:refs/heads/master \u003d\u003e SHA1-2\n\nClientA(T4): git push -f origin master\n             repo1:refs/heads/master \u003d\u003e oldId\u003dSHA1-0 newId\u003dSHA1-1\n             ** FAILS TO UPDATE GLOBAL REF-DB **\n             repo1:refs/heads/master \u003d\u003e ????\n\nFrom your code, the ???? becomes SHA1-0 (the oldId) whilst I believe it should leave the repo as the operation didn\u0027t happen, so it should stay with SHA1-2.",
+      "range": {
+        "startLine": 250,
+        "startChar": 43,
+        "endLine": 250,
+        "endChar": 58
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0fc48fc_ea03aea9",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbBatchRefUpdate.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-03-19T08:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf9e6e0e_5eab3ad0",
       "range": {
         "startLine": 250,
         "startChar": 43,
@@ -173,6 +287,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40804af5_77176402",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefUpdate.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-03-19T08:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f0d545b_8c31c02e",
+      "range": {
+        "startLine": 129,
+        "startChar": 39,
+        "endLine": 129,
+        "endChar": 69
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1e93a3c_19146686",
@@ -186,6 +324,30 @@
       "writtenOn": "2021-03-16T11:18:57Z",
       "side": 1,
       "message": "Do we need this?",
+      "range": {
+        "startLine": 130,
+        "startChar": 10,
+        "endLine": 130,
+        "endChar": 79
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "548bb743_df8a29ed",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefUpdate.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-03-19T08:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1e93a3c_19146686",
       "range": {
         "startLine": 130,
         "startChar": 10,
@@ -219,6 +381,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44f1e44_22144e86",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefUpdate.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-03-19T08:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6125d896_a49239af",
+      "range": {
+        "startLine": 151,
+        "startChar": 10,
+        "endLine": 152,
+        "endChar": 79
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2dcafeb_98dc50e0",
@@ -232,6 +418,30 @@
       "writtenOn": "2021-03-16T11:18:57Z",
       "side": 1,
       "message": "If the delete was executed, I believe we would need to restore the ref, isn\u0027t it?",
+      "range": {
+        "startLine": 168,
+        "startChar": 46,
+        "endLine": 168,
+        "endChar": 68
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab501d75_a4d54818",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefUpdate.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-03-19T08:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2dcafeb_98dc50e0",
       "range": {
         "startLine": 168,
         "startChar": 46,
@@ -265,6 +475,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef19b83c_ef6428db",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefUpdate.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-03-19T08:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "533d559d_4272cbd3",
+      "range": {
+        "startLine": 182,
+        "startChar": 57,
+        "endLine": 182,
+        "endChar": 79
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0d713ac_2611be3e",
@@ -278,6 +512,30 @@
       "writtenOn": "2021-03-16T11:18:57Z",
       "side": 1,
       "message": "Same comments as above, plus we should not duplicate the logic across the code.",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 45
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59161d81_de69c436",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDbRefUpdate.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-03-19T08:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0d713ac_2611be3e",
       "range": {
         "startLine": 301,
         "startChar": 0,
