@@ -16,6 +16,29 @@
       "message": "I\u0027ve tested rollback e2e for change creation, patch set creation, tag deletion",
       "revId": "26599e72acf9774dd6fc577bd2c21463e2c2bf25",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3659b050_a1a48abc",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-03-22T21:17:13Z",
+      "side": 1,
+      "message": "Very good point, well done. Can you also mention this in the commit message? The REQUIRED policy no more tollerate the split-brain conditions that instead are always triggering the rollback of the ref-update.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 7
+      },
+      "revId": "26599e72acf9774dd6fc577bd2c21463e2c2bf25",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
