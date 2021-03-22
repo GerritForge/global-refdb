@@ -136,6 +136,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94c94eb8_00474a7b",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/BatchRefUpdateValidator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-03-22T12:04:39Z",
+      "side": 1,
+      "message": "Good point! I will catch Exception",
+      "parentUuid": "a5d31e9d_8612b023",
+      "range": {
+        "startLine": 162,
+        "startChar": 15,
+        "endLine": 162,
+        "endChar": 66
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b80bf79c_0e6f129d",
@@ -208,6 +232,30 @@
       "side": 1,
       "message": "same as above",
       "parentUuid": "4eda2683_b43ec383",
+      "range": {
+        "startLine": 201,
+        "startChar": 15,
+        "endLine": 201,
+        "endChar": 66
+      },
+      "revId": "9c8a5d13b5a162918181fe0e3a832201e4c64f21",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ece371e3_21686c78",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2021-03-22T12:04:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27681ae5_d47d23e0",
       "range": {
         "startLine": 201,
         "startChar": 15,
