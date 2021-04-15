@@ -199,8 +199,7 @@ public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
    *     one of the underlying update command or by the batch ref validator proving that the current
    *     ref-db is not up-to-date with the global refdb
    * @see BatchRefUpdate
-   * @see BatchRefUpdateValidator#executeBatchUpdateWithValidation(BatchRefUpdate,
-   *     RefUpdateValidator.NoParameterVoidFunction)
+   * @see BatchRefUpdateValidator#executeBatchUpdateWithValidation
    */
   @Override
   public void execute(RevWalk walk, ProgressMonitor monitor, List<String> options)
@@ -225,8 +224,7 @@ public class SharedRefDbBatchRefUpdate extends BatchRefUpdate {
    *     one of the underlying update command or by the batch ref validator proving that the current
    *     ref-db is not up-to-date with the global refdb
    * @see BatchRefUpdate
-   * @see BatchRefUpdateValidator#executeBatchUpdateWithValidation(BatchRefUpdate,
-   *     RefUpdateValidator.NoParameterVoidFunction)
+   * @see BatchRefUpdateValidator#executeBatchUpdateWithValidation
    */
   @Override
   public void execute(RevWalk walk, ProgressMonitor monitor) throws IOException {
