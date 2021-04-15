@@ -102,6 +102,8 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
    *
    * @param batchRefUpdate batchRefUpdate object
    * @param batchRefUpdateFunction batchRefUpdate function to execute upon validation
+   * @param batchRefUpdateRollbackFunction function to invoke when the ref-update needs to be rolled
+   *     back
    * @throws IOException batch update failed
    */
   @SuppressWarnings("JavadocReference")

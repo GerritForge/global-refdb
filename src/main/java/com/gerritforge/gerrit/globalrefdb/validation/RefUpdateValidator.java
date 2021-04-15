@@ -122,11 +122,9 @@ public class RefUpdateValidator {
   /**
    * Checks whether the provided refUpdate should be validated first against the shared ref-db. If
    * not it just execute the provided refUpdateFunction. If it should be validated against the
-   * global refdb then it does so by executing the {@link
-   * RefUpdateValidator#doExecuteRefUpdate(RefUpdate, NoParameterFunction,
-   * OneParameterFunction<ObjectId, Result>)} first. Upon success the refUpdate is returned, upon
-   * failure split brain metrics are incremented and a {@link SharedDbSplitBrainException} is
-   * thrown.
+   * global refdb then it does so by executing the {@link RefUpdateValidator#doExecuteRefUpdate}
+   * first. Upon success the refUpdate is returned, upon failure split brain metrics are incremented
+   * and a {@link SharedDbSplitBrainException} is thrown.
    *
    * <p>Validation is performed when either of these condition is true
    *
@@ -140,6 +138,7 @@ public class RefUpdateValidator {
    *
    * @param refUpdate the refUpdate command
    * @param refUpdateFunction the refUpdate function to execute after validation
+   * @param rollbackFunction function to invoke when the ref-update needs to be rolled back
    * @return the result of the update, or "null" in case a split brain was detected but the policy
    *     enforcement was not REQUIRED
    * @throws IOException Execution of ref update failed

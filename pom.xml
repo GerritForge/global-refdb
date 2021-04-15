@@ -4,7 +4,7 @@
 
     <groupId>com.gerritforge</groupId>
     <artifactId>global-refdb</artifactId>
-    <version>3.3.3</version>
+    <version>3.4.0-rc1</version>
     <packaging>jar</packaging>
 
     <name>global-refdb</name>
@@ -38,7 +38,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <gerrit.version>3.3.2</gerrit.version>
+        <gerrit.version>3.4.0-rc1</gerrit.version>
     </properties>
 
     <dependencies>
@@ -46,6 +46,12 @@
             <groupId>com.google.gerrit</groupId>
             <artifactId>gerrit-plugin-api</artifactId>
             <version>${gerrit.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ryanharter.auto.value</groupId>
+            <artifactId>auto-value-gson</artifactId>
+            <version>1.3.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
