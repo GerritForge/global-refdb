@@ -4,7 +4,7 @@
 
     <groupId>com.gerritforge</groupId>
     <artifactId>global-refdb</artifactId>
-    <version>3.4.0-rc1</version>
+    <version>3.4.0</version>
     <packaging>jar</packaging>
 
     <name>global-refdb</name>
@@ -38,7 +38,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <gerrit.version>3.4.0-rc1</gerrit.version>
+        <gerrit.version>3.4.0</gerrit.version>
     </properties>
 
     <dependencies>
