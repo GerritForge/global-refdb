@@ -74,6 +74,12 @@ public class SharedRefDbGitRepositoryManager implements GitRepositoryManager {
     this.gitRepositoryManager = localDiskRepositoryManager;
   }
 
+  /** Get {@link Status} of the repository by name. */
+  @Override
+  public Status getRepositoryStatus(NameKey name) {
+    return gitRepositoryManager.getRepositoryStatus(name);
+  }
+
   /**
    * Get (or open) a {@link Repository} by name.
    *
