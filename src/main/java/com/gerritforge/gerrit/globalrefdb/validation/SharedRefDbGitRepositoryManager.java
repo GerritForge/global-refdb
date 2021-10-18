@@ -16,6 +16,7 @@ package com.gerritforge.gerrit.globalrefdb.validation;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.gerrit.entities.Project;
+import com.google.gerrit.entities.Project.NameKey;
 import com.google.gerrit.server.git.GitRepositoryManager;
 import com.google.gerrit.server.git.LocalDiskRepositoryManager;
 import com.google.gerrit.server.git.RepositoryCaseMismatchException;
@@ -106,6 +107,16 @@ public class SharedRefDbGitRepositoryManager implements GitRepositoryManager {
   @Override
   public SortedSet<Project.NameKey> list() {
     return gitRepositoryManager.list();
+  }
+
+  @Override
+  public Boolean canPerformGC() {
+    return gitRepositoryManager.canPerformGC();
+  }
+
+  @Override
+  public Status getRepositoryStatus(NameKey name) {
+    return gitRepositoryManager.getRepositoryStatus(name);
   }
 
   private Repository wrap(Project.NameKey projectName, Repository projectRepo) {
