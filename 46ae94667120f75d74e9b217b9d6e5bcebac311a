@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5cae123_6e5d88d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-11-30T20:22:55Z",
+      "side": 1,
+      "message": "The build is failing:\n\n[ERROR] Failed to execute goal on project global-refdb: Could not resolve dependencies for project com.gerritforge:global-refdb:jar:3.5.0-alpha-202104150207: The following artifacts could not be resolved: com.google.gerrit:gerrit-plugin-api:jar:3.5.0-SNAPSHOT, com.google.gerrit:gerrit-acceptance-framework:jar:3.5.0-SNAPSHOT: Could not find artifact com.google.gerrit:gerrit-plugin-api:jar:3.5.0-SNAPSHOT -\u003e [Help 1]\n\nShould it probably be dependent on 3.5.0-rc4 instead? [1]\n\n[1] https://mvnrepository.com/artifact/com.google.gerrit/gerrit-plugin-api",
+      "revId": "46ae94667120f75d74e9b217b9d6e5bcebac311a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
