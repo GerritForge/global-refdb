@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c84ded94_6455c117",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-12-17T18:46:30Z",
+      "side": 1,
+      "message": "This is needed to allow publishing and using it in the Gerrit plugins",
+      "revId": "401ff6fcf22ecb8e0b85fa44d55cb64b43543f3e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
