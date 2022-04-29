@@ -29,6 +29,8 @@ import com.google.gson.Gson;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.io.IOException;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
 import org.eclipse.jgit.errors.IncorrectObjectTypeException;
 import org.eclipse.jgit.lib.Constants;
@@ -37,8 +39,6 @@ import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevWalk;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Implementation of SharedRefLogger for Log4j. Logs to 'sharedref_log' file
@@ -66,7 +66,7 @@ public class Log4jSharedRefLogger extends LibModuleLogFile implements SharedRefL
   public Log4jSharedRefLogger(SystemLog systemLog, GitRepositoryManager gitRepositoryManager) {
     super(systemLog, LOG_NAME, new PatternLayout("[%d{ISO8601}] [%t] %-5p : %m%n"));
     this.gitRepositoryManager = gitRepositoryManager;
-    sharedRefDBLog = LoggerFactory.getLogger(LOG_NAME);
+    sharedRefDBLog = LogManager.getLogger(LOG_NAME);
   }
 
   /**
