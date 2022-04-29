@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9036155f_c7ee8dea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-29T11:09:40Z",
+      "side": 1,
+      "message": "Actually, the issue was in the test code NOT in the global-ref db actual code.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "717fdbc0bb80e5d376b3f27c7305f63b14489ef9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7971a08a_f37ecdd1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-29T11:09:40Z",
+      "side": 1,
+      "message": "This should be a separate change IMHO.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 47
+      },
+      "revId": "717fdbc0bb80e5d376b3f27c7305f63b14489ef9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b5c47b2_8e337370",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-29T11:09:40Z",
+      "side": 1,
+      "message": "I see that the tests are passing now with the fix, I am not sure though we understood the problem fully.\n\nWe basically get the logger from Log4J instead of SLF4J, however, that worked until stable-3.5 and also it works nicely for all the rest of Gerrit.",
+      "revId": "717fdbc0bb80e5d376b3f27c7305f63b14489ef9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62db626d_17d298f9",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/Log4jSharedRefLogger.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-29T11:09:40Z",
+      "side": 1,
+      "message": "This is weird: why SLF4J factor won\u0027t instantiate anymore the right loggers? Why do we need to go at Log4J level instead?",
+      "range": {
+        "startLine": 69,
+        "startChar": 21,
+        "endLine": 69,
+        "endChar": 52
+      },
+      "revId": "717fdbc0bb80e5d376b3f27c7305f63b14489ef9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
