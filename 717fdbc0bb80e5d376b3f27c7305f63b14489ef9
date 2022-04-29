@@ -48,6 +48,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f73f540_6255804a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-29T12:12:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b5385ad5_81f0ba95",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "717fdbc0bb80e5d376b3f27c7305f63b14489ef9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7971a08a_f37ecdd1",
@@ -102,6 +126,24 @@
       "side": 1,
       "message": "I\u0027m trying to understand as well what happened. But I\u0027ve checked the Gerrit Code source code and we are not using org.slf4j.LoggerFactory class anywhere beside the plugins which stopped working",
       "parentUuid": "3b5c47b2_8e337370",
+      "revId": "717fdbc0bb80e5d376b3f27c7305f63b14489ef9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3207df3a_4d36f838",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-29T12:12:06Z",
+      "side": 1,
+      "message": "\u003e I\u0027m trying to understand as well what happened. But I\u0027ve checked the Gerrit Code source code and we are not using org.slf4j.LoggerFactory class anywhere beside the plugins which stopped working\n\nGood point: actually, we should then just use Flogger instead?",
+      "parentUuid": "dfd24eac_9a568826",
       "revId": "717fdbc0bb80e5d376b3f27c7305f63b14489ef9",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
