@@ -24,7 +24,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
 import java.io.IOException;
-import java.util.SortedSet;
+import java.util.NavigableSet;
 import org.eclipse.jgit.errors.RepositoryNotFoundException;
 import org.eclipse.jgit.lib.Repository;
 
@@ -105,7 +105,7 @@ public class SharedRefDbGitRepositoryManager implements GitRepositoryManager {
   }
 
   @Override
-  public SortedSet<Project.NameKey> list() {
+  public NavigableSet<NameKey> list() {
     return gitRepositoryManager.list();
   }
 
