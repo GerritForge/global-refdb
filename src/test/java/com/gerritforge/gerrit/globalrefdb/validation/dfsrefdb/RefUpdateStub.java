@@ -15,7 +15,7 @@
 package com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb;
 
 import java.io.IOException;
-import org.apache.commons.lang.NotImplementedException;
+import org.apache.commons.lang3.NotImplementedException;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.RefDatabase;
