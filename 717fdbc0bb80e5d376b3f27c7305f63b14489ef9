@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5385ad5_81f0ba95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2022-04-29T12:08:48Z",
+      "side": 1,
+      "message": "I was in the Log4jSharedRefLogger as well. I had to switch from slf4j to log4j",
+      "parentUuid": "9036155f_c7ee8dea",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "717fdbc0bb80e5d376b3f27c7305f63b14489ef9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7971a08a_f37ecdd1",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -64,6 +88,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfd24eac_9a568826",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2022-04-29T12:08:48Z",
+      "side": 1,
+      "message": "I\u0027m trying to understand as well what happened. But I\u0027ve checked the Gerrit Code source code and we are not using org.slf4j.LoggerFactory class anywhere beside the plugins which stopped working",
+      "parentUuid": "3b5c47b2_8e337370",
+      "revId": "717fdbc0bb80e5d376b3f27c7305f63b14489ef9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62db626d_17d298f9",
@@ -77,6 +119,30 @@
       "writtenOn": "2022-04-29T11:09:40Z",
       "side": 1,
       "message": "This is weird: why SLF4J factor won\u0027t instantiate anymore the right loggers? Why do we need to go at Log4J level instead?",
+      "range": {
+        "startLine": 69,
+        "startChar": 21,
+        "endLine": 69,
+        "endChar": 52
+      },
+      "revId": "717fdbc0bb80e5d376b3f27c7305f63b14489ef9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff3534ef_7e142263",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/Log4jSharedRefLogger.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2022-04-29T12:08:48Z",
+      "side": 1,
+      "message": "exactly, now I\u0027m trying to understand why is that",
+      "parentUuid": "62db626d_17d298f9",
       "range": {
         "startLine": 69,
         "startChar": 21,
