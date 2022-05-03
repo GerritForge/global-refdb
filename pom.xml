@@ -4,7 +4,7 @@
 
     <groupId>com.gerritforge</groupId>
     <artifactId>global-refdb</artifactId>
-    <version>3.5.1</version>
+    <version>3.5.1.1</version>
     <packaging>jar</packaging>
 
     <name>global-refdb</name>
@@ -45,7 +45,7 @@
         <dependency>
             <groupId>com.google.gerrit</groupId>
             <artifactId>gerrit-plugin-api</artifactId>
-            <version>${gerrit.version}</version>
+            <version>3.5.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
