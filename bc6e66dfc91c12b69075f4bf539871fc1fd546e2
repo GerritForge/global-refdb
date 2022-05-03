@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fbbe9f7_11ccc722",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2022-05-03T19:23:38Z",
+      "side": 1,
+      "message": "Is this a merge commit? It doesn\u0027t look from the commit message",
+      "revId": "bc6e66dfc91c12b69075f4bf539871fc1fd546e2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
