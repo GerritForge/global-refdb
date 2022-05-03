@@ -29,6 +29,7 @@ import java.io.StringWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
 import org.apache.log4j.WriterAppender;
 import org.eclipse.jgit.lib.ObjectId;
@@ -36,8 +37,6 @@ import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class Log4jSharedRefLoggerTest extends AbstractDaemonTest {
 
@@ -152,9 +151,9 @@ public class Log4jSharedRefLoggerTest extends AbstractDaemonTest {
   }
 
   private Logger logWriterLogger() {
-    org.apache.log4j.Logger logger = LogManager.getLogger("logWriterLogger");
+    Logger logger = LogManager.getLogger("logWriterLogger");
     logger.addAppender(new WriterAppender(new PatternLayout("%m"), logWriter));
-    return LoggerFactory.getLogger("logWriterLogger");
+    return logger;
   }
 
   private static Path newPath() throws IOException {
