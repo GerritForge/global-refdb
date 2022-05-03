@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7577a280_c6694650",
+        "filename": "pom.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2022-05-03T19:20:22Z",
+      "side": 1,
+      "message": "nice 👍",
+      "range": {
+        "startLine": 41,
+        "startChar": 24,
+        "endLine": 41,
+        "endChar": 42
+      },
+      "revId": "89a2f82c5fd01c793b829e1f27935bfad46d3b8d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9624580d_29a8eeed",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2022-05-03T19:20:22Z",
+      "side": 1,
+      "message": "nit: unrelated reformatting?",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 58
+      },
+      "revId": "89a2f82c5fd01c793b829e1f27935bfad46d3b8d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
