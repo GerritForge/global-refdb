@@ -97,6 +97,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "85c9c7bd_beb5bc94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-05-03T17:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7971a08a_f37ecdd1",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 47
+      },
+      "revId": "717fdbc0bb80e5d376b3f27c7305f63b14489ef9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3b5c47b2_8e337370",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -185,6 +209,30 @@
       "side": 1,
       "message": "exactly, now I\u0027m trying to understand why is that",
       "parentUuid": "62db626d_17d298f9",
+      "range": {
+        "startLine": 69,
+        "startChar": 21,
+        "endLine": 69,
+        "endChar": 52
+      },
+      "revId": "717fdbc0bb80e5d376b3f27c7305f63b14489ef9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2425c563_8ec69121",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/Log4jSharedRefLogger.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-05-03T17:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff3534ef_7e142263",
       "range": {
         "startLine": 69,
         "startChar": 21,
