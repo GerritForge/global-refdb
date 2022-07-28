@@ -263,7 +263,7 @@ public class RefUpdateValidator {
     }
 
     if (isNullRef(latestRefPair.compareRef)
-        || sharedRefDb.exists(Project.nameKey(projectName), refName)) {
+        || existsInSharedRefDb(Project.nameKey(projectName), refName)) {
       validationMetrics.incrementSplitBrainPrevention();
 
       softFailBasedOnEnforcement(
@@ -285,6 +285,13 @@ public class RefUpdateValidator {
 
   private Ref nullRef(String name) {
     return new ObjectIdRef.Unpeeled(Ref.Storage.NETWORK, name, ObjectId.zeroId());
+  }
+
+  private Boolean existsInSharedRefDb(Project.NameKey project, String refName) {
+    return sharedRefDb
+        .get(project, refName, String.class)
+        .filter(value -> !ObjectId.zeroId().getName().equals(value))
+        .isPresent();
   }
 
   protected boolean isSuccessful(RefUpdate.Result result) {
