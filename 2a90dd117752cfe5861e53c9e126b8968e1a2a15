@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd4557aa_6f652e7c",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-07-28T23:43:01Z",
+      "side": 1,
+      "message": "I\u0027m not entirely sure this is correct: I believe the fact that the ref is there and is equal to zero means that a branch is removed.\n\nInstead, if the ref does not exist at all in the global-refdb, it may mean that it never existed before, which is a different use-case.\n\nWhy not calling `existsNonZeroedInSharedRefDb`?",
+      "range": {
+        "startLine": 278,
+        "startChar": 18,
+        "endLine": 278,
+        "endChar": 37
+      },
+      "revId": "2a90dd117752cfe5861e53c9e126b8968e1a2a15",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9374a682_7ecdb6b0",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidatorTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-07-28T23:43:01Z",
+      "side": 1,
+      "message": "Why `lenient` is here and not at L145?",
+      "range": {
+        "startLine": 141,
+        "startChar": 4,
+        "endLine": 141,
+        "endChar": 13
+      },
+      "revId": "2a90dd117752cfe5861e53c9e126b8968e1a2a15",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac66424f_33dc770c",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidatorTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-07-28T23:43:01Z",
+      "side": 1,
+      "message": "This test looks identical to the previous one: can you DRY them out and highlight the difference?",
+      "range": {
+        "startLine": 156,
+        "startChar": 14,
+        "endLine": 156,
+        "endChar": 79
+      },
+      "revId": "2a90dd117752cfe5861e53c9e126b8968e1a2a15",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
