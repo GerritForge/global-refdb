@@ -30,6 +30,7 @@ import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.DefaultSharedRefEn
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.RefFixture;
 import com.google.common.collect.ImmutableSet;
 import com.google.gerrit.entities.Project;
+import java.util.Optional;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.RefDatabase;
@@ -139,6 +140,49 @@ public class RefUpdateValidatorTest implements RefFixture {
   }
 
   @Test
+  public void sharedRefDbShouldBeUpdatedWithRefDeletedWhenRefIsZeroIdInSharedRefDb()
+      throws Exception {
+    doReturn(ObjectId.zeroId()).when(refUpdate).getNewObjectId();
+    doReturn(false).when(sharedRefDb).isUpToDate(any(Project.NameKey.class), any(Ref.class));
+    doReturn(Optional.of(ObjectId.zeroId().getName()))
+        .when(sharedRefDb)
+        .get(any(Project.NameKey.class), any(String.class), any(Class.class));
+    lenient()
+        .doReturn(false)
+        .when(sharedRefDb)
+        .compareAndPut(any(Project.NameKey.class), any(Ref.class), any(ObjectId.class));
+    doReturn(true)
+        .when(sharedRefDb)
+        .compareAndPut(A_TEST_PROJECT_NAME_KEY, localRef, ObjectId.zeroId());
+    doReturn(localRef).doReturn(null).when(localRefDb).findRef(refName);
+
+    Result result = refUpdateValidator.executeRefUpdate(refUpdate, () -> Result.FORCED);
+
+    assertThat(result).isEqualTo(Result.FORCED);
+  }
+
+  @Test
+  public void sharedRefDbShouldBeUpdatedWithRefDeletedWhenRefIsNotInSharedRefDb() throws Exception {
+    doReturn(ObjectId.zeroId()).when(refUpdate).getNewObjectId();
+    doReturn(false).when(sharedRefDb).isUpToDate(any(Project.NameKey.class), any(Ref.class));
+    doReturn(Optional.empty())
+        .when(sharedRefDb)
+        .get(any(Project.NameKey.class), any(String.class), any(Class.class));
+    lenient()
+        .doReturn(false)
+        .when(sharedRefDb)
+        .compareAndPut(any(Project.NameKey.class), any(Ref.class), any(ObjectId.class));
+    doReturn(true)
+        .when(sharedRefDb)
+        .compareAndPut(A_TEST_PROJECT_NAME_KEY, localRef, ObjectId.zeroId());
+    doReturn(localRef).doReturn(null).when(localRefDb).findRef(refName);
+
+    Result result = refUpdateValidator.executeRefUpdate(refUpdate, () -> Result.FORCED);
+
+    assertThat(result).isEqualTo(Result.FORCED);
+  }
+
+  @Test
   public void sharedRefDbShouldBeUpdatedWithNewRefCreated() throws Exception {
     Ref localNullRef = nullRef(refName);
 
@@ -164,7 +208,9 @@ public class RefUpdateValidatorTest implements RefFixture {
         .doReturn(true)
         .when(sharedRefDb)
         .isUpToDate(any(Project.NameKey.class), any(Ref.class));
-    doReturn(true).when(sharedRefDb).exists(A_TEST_PROJECT_NAME_KEY, refName);
+    doReturn(Optional.of(localRef.getObjectId().getName()))
+        .when(sharedRefDb)
+        .get(A_TEST_PROJECT_NAME_KEY, refName, String.class);
     doReturn(false).when(sharedRefDb).isUpToDate(A_TEST_PROJECT_NAME_KEY, localRef);
 
     Result result =
