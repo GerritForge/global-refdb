@@ -30,6 +30,7 @@ import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.DefaultSharedRefEn
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.RefFixture;
 import com.google.common.collect.ImmutableSet;
 import java.io.IOException;
+import java.util.Optional;
 import org.eclipse.jgit.lib.BatchRefUpdate;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.ObjectIdRef;
@@ -147,7 +148,9 @@ public class SharedRefDbBatchRefUpdateTest implements RefFixture {
   @Test
   public void executeSuccessfullyWithNoExceptionsWhenOutOfSync() throws IOException {
     setMockRequiredReturnValues();
-    doReturn(true).when(sharedRefDb).exists(A_TEST_PROJECT_NAME_KEY, A_TEST_REF_NAME);
+    doReturn(Optional.of(newRef.getObjectId().getName()))
+        .when(sharedRefDb)
+        .get(A_TEST_PROJECT_NAME_KEY, A_TEST_REF_NAME, String.class);
     doReturn(false).when(sharedRefDb).isUpToDate(A_TEST_PROJECT_NAME_KEY, oldRef);
 
     sharedRefDbRefUpdate.execute(revWalk, progressMonitor, EMPTY_LIST);
