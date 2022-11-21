@@ -17,7 +17,6 @@ package com.gerritforge.gerrit.globalrefdb.validation;
 import com.google.common.collect.ImmutableSet;
 import com.google.gerrit.entities.Project;
 import com.google.gerrit.server.git.GitRepositoryManager;
-import com.google.gerrit.server.git.LocalDiskRepositoryManager;
 import com.google.gerrit.server.git.RepositoryCaseMismatchException;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -49,6 +48,8 @@ public class SharedRefDbGitRepositoryManager implements GitRepositoryManager {
    */
   public static final String IGNORED_REFS = "ignored_refs";
 
+  public static final String LOCAL_DISK_REPOSITORY_MANAGER = "local_disk_repository_manager";
+
   private final GitRepositoryManager gitRepositoryManager;
   private final SharedRefDbRepository.Factory sharedRefDbRepoFactory;
 
@@ -68,7 +69,7 @@ public class SharedRefDbGitRepositoryManager implements GitRepositoryManager {
   @Inject
   public SharedRefDbGitRepositoryManager(
       SharedRefDbRepository.Factory sharedRefDbRepoFactory,
-      LocalDiskRepositoryManager localDiskRepositoryManager) {
+      @Named(LOCAL_DISK_REPOSITORY_MANAGER) GitRepositoryManager localDiskRepositoryManager) {
     this.sharedRefDbRepoFactory = sharedRefDbRepoFactory;
     this.gitRepositoryManager = localDiskRepositoryManager;
   }

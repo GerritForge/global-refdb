@@ -19,6 +19,7 @@ import static org.mockito.Mockito.verify;
 
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.RefFixture;
 import com.google.common.collect.ImmutableSet;
+import com.google.gerrit.server.git.GitRepositoryManager;
 import com.google.gerrit.server.git.LocalDiskRepositoryManager;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
@@ -120,7 +121,10 @@ public class SharedRefDbGitRepositoryManagerTest implements RefFixture {
                 .annotatedWith(Names.named(SharedRefDbGitRepositoryManager.IGNORED_REFS))
                 .toInstance(ignoredRefs);
             bind(SharedRefDbRepository.Factory.class).toInstance(sharedRefDbRepositoryFactoryMock);
-            bind(LocalDiskRepositoryManager.class).toInstance(localDiskRepositoryManagerMock);
+            bind(GitRepositoryManager.class)
+                .annotatedWith(
+                    Names.named(SharedRefDbGitRepositoryManager.LOCAL_DISK_REPOSITORY_MANAGER))
+                .toInstance(localDiskRepositoryManagerMock);
           }
         });
   }
