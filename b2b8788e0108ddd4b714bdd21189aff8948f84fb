@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec3f1ffd_3d829bc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2022-11-23T13:49:51Z",
+      "side": 1,
+      "message": "Code looks good but I would like to test it locally",
+      "revId": "b2b8788e0108ddd4b714bdd21189aff8948f84fb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e0b47bf_b9ae00d6",
