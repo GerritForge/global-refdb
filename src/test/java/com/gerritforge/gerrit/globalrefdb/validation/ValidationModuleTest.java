@@ -23,6 +23,8 @@ import com.google.gerrit.acceptance.LightweightPluginDaemonTest;
 import com.google.gerrit.acceptance.TestPlugin;
 import com.google.gerrit.extensions.config.FactoryModule;
 import com.google.gerrit.server.config.GerritServerConfig;
+import com.google.gerrit.server.git.GitRepositoryManager;
+import com.google.gerrit.server.git.LocalDiskRepositoryManager;
 import com.google.inject.*;
 import com.google.inject.name.Names;
 import java.util.Optional;
@@ -105,6 +107,9 @@ public class ValidationModuleTest extends LightweightPluginDaemonTest {
       bind(SharedRefDbConfiguration.class).toInstance(cfg);
       bind(ValidationMetrics.class);
 
+      bind(GitRepositoryManager.class)
+          .annotatedWith(Names.named(SharedRefDbGitRepositoryManager.LOCAL_DISK_REPOSITORY_MANAGER))
+          .to(LocalDiskRepositoryManager.class);
       bind(SharedRefDbGitRepositoryManager.class);
       bind(SharedRefEnforcement.class).to(DefaultSharedRefEnforcement.class).in(Scopes.SINGLETON);
     }
