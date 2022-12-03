@@ -14,9 +14,11 @@
 
 package com.gerritforge.gerrit.globalrefdb.validation;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.collect.ImmutableSet;
 import com.google.gerrit.entities.Project;
 import com.google.gerrit.server.git.GitRepositoryManager;
+import com.google.gerrit.server.git.LocalDiskRepositoryManager;
 import com.google.gerrit.server.git.RepositoryCaseMismatchException;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -48,9 +50,11 @@ public class SharedRefDbGitRepositoryManager implements GitRepositoryManager {
    */
   public static final String IGNORED_REFS = "ignored_refs";
 
-  public static final String LOCAL_DISK_REPOSITORY_MANAGER = "local_disk_repository_manager";
+  @Inject(optional = true)
+  @Named("LocalDiskRepositoryManager")
+  private GitRepositoryManager gitRepositoryManager;
 
-  private final GitRepositoryManager gitRepositoryManager;
+  private final LocalDiskRepositoryManager localDiskRepositoryManager;
   private final SharedRefDbRepository.Factory sharedRefDbRepoFactory;
 
   @Inject(optional = true)
@@ -69,9 +73,9 @@ public class SharedRefDbGitRepositoryManager implements GitRepositoryManager {
   @Inject
   public SharedRefDbGitRepositoryManager(
       SharedRefDbRepository.Factory sharedRefDbRepoFactory,
-      @Named(LOCAL_DISK_REPOSITORY_MANAGER) GitRepositoryManager localDiskRepositoryManager) {
+      LocalDiskRepositoryManager localDiskRepositoryManager) {
     this.sharedRefDbRepoFactory = sharedRefDbRepoFactory;
-    this.gitRepositoryManager = localDiskRepositoryManager;
+    this.localDiskRepositoryManager = localDiskRepositoryManager;
   }
 
   /**
@@ -85,7 +89,7 @@ public class SharedRefDbGitRepositoryManager implements GitRepositoryManager {
   @Override
   public Repository openRepository(Project.NameKey name)
       throws RepositoryNotFoundException, IOException {
-    return wrap(name, gitRepositoryManager.openRepository(name));
+    return wrap(name, repositoryManager().openRepository(name));
   }
 
   /**
@@ -101,15 +105,19 @@ public class SharedRefDbGitRepositoryManager implements GitRepositoryManager {
   @Override
   public Repository createRepository(Project.NameKey name)
       throws RepositoryCaseMismatchException, RepositoryNotFoundException, IOException {
-    return wrap(name, gitRepositoryManager.createRepository(name));
+    return wrap(name, repositoryManager().createRepository(name));
   }
 
   @Override
   public SortedSet<Project.NameKey> list() {
-    return gitRepositoryManager.list();
+    return repositoryManager().list();
   }
 
   private Repository wrap(Project.NameKey projectName, Repository projectRepo) {
     return sharedRefDbRepoFactory.create(projectName.get(), projectRepo, ignoredRefs);
+  }
+
+  private GitRepositoryManager repositoryManager() {
+    return MoreObjects.firstNonNull(gitRepositoryManager, localDiskRepositoryManager);
   }
 }
