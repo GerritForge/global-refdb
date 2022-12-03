@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31c7a46a_4db6e6d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-03T01:28:35Z",
+      "side": 1,
+      "message": "Works E2E and doesn\u0027t require any changes on multi-site or high-availability, apart from the lib version bump 😎",
+      "revId": "fe91b2bc5bfc5353677778e9912181368bff35e1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
