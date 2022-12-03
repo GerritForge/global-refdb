@@ -23,8 +23,6 @@ import com.google.common.base.Supplier;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;
-import com.google.gerrit.server.git.GitRepositoryManager;
-import com.google.gerrit.server.git.LocalDiskRepositoryManager;
 import java.io.IOException;
 import java.util.List;
 import org.eclipse.jgit.errors.ConfigInvalidException;
@@ -43,7 +41,6 @@ public class SharedRefDbConfiguration {
   private final Supplier<Projects> projects;
   private final Supplier<SharedRefDatabase> sharedRefDb;
   private final String pluginName;
-  private final String localDiskRepositoryManagerClassName;
 
   /**
    * Constructs a {@code SharedRefDbConfiguration} by providing the libModule name and a 'config'
@@ -57,13 +54,6 @@ public class SharedRefDbConfiguration {
     projects = memoize(() -> new Projects(lazyCfg));
     sharedRefDb = memoize(() -> new SharedRefDatabase(lazyCfg));
     this.pluginName = pluginName;
-    localDiskRepositoryManagerClassName =
-        lazyCfg
-            .get()
-            .getString(
-                SharedRefDatabase.SECTION,
-                null,
-                SharedRefDatabase.LOCAL_DISK_REPOSITORY_MANAGER_CLASS);
   }
 
   /**
@@ -102,15 +92,6 @@ public class SharedRefDbConfiguration {
     return ofInstance(config);
   }
 
-  public Class<? extends GitRepositoryManager> getLocalRepositoryManager()
-      throws ClassNotFoundException {
-    if (localDiskRepositoryManagerClassName != null) {
-      return (Class<? extends GitRepositoryManager>)
-          Class.forName(localDiskRepositoryManagerClassName);
-    }
-    return LocalDiskRepositoryManager.class;
-  }
-
   /**
    * Represents the global refdb configuration, which is computed by reading the 'ref-database'
    * section from the configuration file of this library's consumers. It allows to specify whether
@@ -121,8 +102,6 @@ public class SharedRefDbConfiguration {
     public static final String SECTION = "ref-database";
     public static final String ENABLE_KEY = "enabled";
     public static final String SUBSECTION_ENFORCEMENT_RULES = "enforcementRules";
-    public static final String LOCAL_DISK_REPOSITORY_MANAGER_CLASS =
-        "localDiskRepositoryManagerClass";
 
     private final boolean enabled;
     private final Multimap<EnforcePolicy, String> enforcementRules;
