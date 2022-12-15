@@ -16,6 +16,23 @@
       "message": "Tests added, this is now ready for review",
       "revId": "23a7dd50f66e0992c660778b69537d7ebd8f12cf",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9c248f6_d4246373",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2022-12-15T16:21:19Z",
+      "side": 1,
+      "message": "Note to us: Let\u0027s tag and publish this to maven once merged.",
+      "revId": "23a7dd50f66e0992c660778b69537d7ebd8f12cf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
