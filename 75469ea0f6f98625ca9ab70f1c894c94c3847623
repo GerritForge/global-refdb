@@ -34,6 +34,24 @@
       "parentUuid": "3ae9c39a_cacec40c",
       "revId": "75469ea0f6f98625ca9ab70f1c894c94c3847623",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66573f17_bea44c05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2022-12-15T08:49:27Z",
+      "side": 1,
+      "message": "It looks like also the `list`, `getRepositoryStatus` and `wrap` methods are not tested, maybe we can add tests for all of them in a followup change.",
+      "parentUuid": "ed106d63_049723e4",
+      "revId": "75469ea0f6f98625ca9ab70f1c894c94c3847623",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
