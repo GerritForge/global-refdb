@@ -116,12 +116,12 @@ public class SharedRefDbGitRepositoryManager implements GitRepositoryManager {
 
   @Override
   public Boolean canPerformGC() {
-    return gitRepositoryManager.canPerformGC();
+    return repositoryManager().canPerformGC();
   }
 
   @Override
   public Status getRepositoryStatus(NameKey name) {
-    return gitRepositoryManager.getRepositoryStatus(name);
+    return repositoryManager().getRepositoryStatus(name);
   }
 
   private Repository wrap(Project.NameKey projectName, Repository projectRepo) {
