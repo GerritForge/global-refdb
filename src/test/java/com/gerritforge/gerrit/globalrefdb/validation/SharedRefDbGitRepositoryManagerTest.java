@@ -14,17 +14,20 @@
 
 package com.gerritforge.gerrit.globalrefdb.validation;
 
+import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.RefFixture;
 import com.google.common.collect.ImmutableSet;
+import com.google.gerrit.server.git.GitRepositoryManager;
 import com.google.gerrit.server.git.LocalDiskRepositoryManager;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.TypeLiteral;
 import com.google.inject.name.Names;
+import java.util.Collections;
 import org.eclipse.jgit.lib.Repository;
 import org.junit.Before;
 import org.junit.Test;
@@ -108,6 +111,33 @@ public class SharedRefDbGitRepositoryManagerTest implements RefFixture {
         .createRepository(A_TEST_PROJECT_NAME_KEY);
 
     verifyThatSharedRefDbRepositoryWrapperHasBeenCreated(IGNORED_REFS);
+  }
+
+  @Test
+  public void canPerformGCShouldDelegateToLocalDiskRepositoryManager() {
+    doReturn(true).when(localDiskRepositoryManagerMock).canPerformGC();
+
+    assertThat(msRepoMgr.canPerformGC()).isTrue();
+    verify(localDiskRepositoryManagerMock).canPerformGC();
+  }
+
+  @Test
+  public void getRepositoryStatusShouldDelegateToLocalDiskRepositoryManager() {
+    doReturn(GitRepositoryManager.Status.ACTIVE)
+        .when(localDiskRepositoryManagerMock)
+        .getRepositoryStatus(A_TEST_PROJECT_NAME_KEY);
+
+    assertThat(msRepoMgr.getRepositoryStatus(A_TEST_PROJECT_NAME_KEY))
+        .isEqualTo(GitRepositoryManager.Status.ACTIVE);
+    verify(localDiskRepositoryManagerMock).getRepositoryStatus(A_TEST_PROJECT_NAME_KEY);
+  }
+
+  @Test
+  public void listShouldDelegateToLocalDiskRepositoryManager() {
+    doReturn(Collections.emptySortedSet()).when(localDiskRepositoryManagerMock).list();
+
+    assertThat(msRepoMgr.list()).isEqualTo(Collections.emptySortedSet());
+    verify(localDiskRepositoryManagerMock).list();
   }
 
   private Injector getInjector(ImmutableSet<String> ignoredRefs) {
