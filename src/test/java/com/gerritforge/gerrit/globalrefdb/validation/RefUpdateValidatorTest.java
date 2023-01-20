@@ -50,6 +50,8 @@ public class RefUpdateValidatorTest implements RefFixture {
 
   @Mock SharedRefLogger sharedRefLogger;
 
+  @Mock SharedRefDBMetrics sharedRefDBMetrics;
+
   @Mock RefDatabase localRefDb;
 
   @Mock ValidationMetrics validationMetrics;
@@ -90,7 +92,8 @@ public class RefUpdateValidatorTest implements RefFixture {
 
   @Test
   public void validationShouldSucceedWhenSharedRefDbIsNoop() throws Exception {
-    SharedRefDatabaseWrapper noopSharedRefDbWrapper = new SharedRefDatabaseWrapper(sharedRefLogger);
+    SharedRefDatabaseWrapper noopSharedRefDbWrapper =
+        new SharedRefDatabaseWrapper(sharedRefLogger, sharedRefDBMetrics);
 
     Result result =
         newRefUpdateValidator(noopSharedRefDbWrapper)
