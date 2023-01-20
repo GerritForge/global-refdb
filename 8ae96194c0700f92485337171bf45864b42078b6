@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fd9e4f7_90d670ab",
+        "filename": "metrics.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-20T18:46:52Z",
+      "side": 1,
+      "message": "Here and below: in which unit? `seconds`? `millis`?",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 15
+      },
+      "revId": "8ae96194c0700f92485337171bf45864b42078b6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
