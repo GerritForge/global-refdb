@@ -21,6 +21,7 @@ import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.NoopSharedRefDatab
 import com.google.common.annotations.VisibleForTesting;
 import com.google.gerrit.entities.Project;
 import com.google.gerrit.extensions.registration.DynamicItem;
+import com.google.gerrit.metrics.Timer0.Context;
 import com.google.inject.Inject;
 import java.util.Optional;
 import org.eclipse.jgit.lib.ObjectId;
@@ -38,6 +39,7 @@ public class SharedRefDatabaseWrapper implements GlobalRefDatabase {
   private DynamicItem<GlobalRefDatabase> sharedRefDbDynamicItem;
 
   private final SharedRefLogger sharedRefLogger;
+  private SharedRefDBMetrics metrics;
 
   /**
    * Constructs a {@code SharedRefDatabaseWrapper} wrapping an optional {@link GlobalRefDatabase},
@@ -46,69 +48,87 @@ public class SharedRefDatabaseWrapper implements GlobalRefDatabase {
    * @param sharedRefLogger logger of shared ref-db operations.
    */
   @Inject
-  public SharedRefDatabaseWrapper(SharedRefLogger sharedRefLogger) {
+  public SharedRefDatabaseWrapper(SharedRefLogger sharedRefLogger, SharedRefDBMetrics metrics) {
     this.sharedRefLogger = sharedRefLogger;
+    this.metrics = metrics;
   }
 
   @VisibleForTesting
   public SharedRefDatabaseWrapper(
-      DynamicItem<GlobalRefDatabase> sharedRefDbDynamicItem, SharedRefLogger sharedRefLogger) {
+      DynamicItem<GlobalRefDatabase> sharedRefDbDynamicItem,
+      SharedRefLogger sharedRefLogger,
+      SharedRefDBMetrics metrics) {
     this.sharedRefLogger = sharedRefLogger;
     this.sharedRefDbDynamicItem = sharedRefDbDynamicItem;
+    this.metrics = metrics;
   }
 
   @Override
   public boolean isUpToDate(Project.NameKey project, Ref ref) throws GlobalRefDbLockException {
-    return sharedRefDb().isUpToDate(project, ref);
+    try (Context context = metrics.startIsUpToDateExecutionTime()) {
+      return sharedRefDb().isUpToDate(project, ref);
+    }
   }
 
   /** {@inheritDoc}. The operation is logged upon success. */
   @Override
   public boolean compareAndPut(Project.NameKey project, Ref currRef, ObjectId newRefValue)
       throws GlobalRefDbSystemError {
-    boolean succeeded = sharedRefDb().compareAndPut(project, currRef, newRefValue);
-    if (succeeded) {
-      sharedRefLogger.logRefUpdate(project.get(), currRef, newRefValue);
+    try (Context context = metrics.startCompareAndPutExecutionTime()) {
+      boolean succeeded = sharedRefDb().compareAndPut(project, currRef, newRefValue);
+      if (succeeded) {
+        sharedRefLogger.logRefUpdate(project.get(), currRef, newRefValue);
+      }
+      return succeeded;
     }
-    return succeeded;
   }
 
   /** {@inheritDoc} the operation is logged upon success. */
   @Override
   public <T> boolean compareAndPut(Project.NameKey project, String refName, T currValue, T newValue)
       throws GlobalRefDbSystemError {
-    boolean succeeded = sharedRefDb().compareAndPut(project, refName, currValue, newValue);
-    if (succeeded) {
-      sharedRefLogger.logRefUpdate(project.get(), refName, currValue, newValue);
+    try (Context context = metrics.startCompareAndPutExecutionTime()) {
+      boolean succeeded = sharedRefDb().compareAndPut(project, refName, currValue, newValue);
+      if (succeeded) {
+        sharedRefLogger.logRefUpdate(project.get(), refName, currValue, newValue);
+      }
+      return succeeded;
     }
-    return succeeded;
   }
 
   /** {@inheritDoc}. The operation is logged. */
   @Override
   public AutoCloseable lockRef(Project.NameKey project, String refName)
       throws GlobalRefDbLockException {
-    AutoCloseable locker = sharedRefDb().lockRef(project, refName);
-    sharedRefLogger.logLockAcquisition(project.get(), refName);
-    return locker;
+    try (Context context = metrics.startLockRefExecutionTime()) {
+      AutoCloseable locker = sharedRefDb().lockRef(project, refName);
+      sharedRefLogger.logLockAcquisition(project.get(), refName);
+      return locker;
+    }
   }
 
   @Override
   public boolean exists(Project.NameKey project, String refName) {
-    return sharedRefDb().exists(project, refName);
+    try (Context context = metrics.startExistsExecutionTime()) {
+      return sharedRefDb().exists(project, refName);
+    }
   }
 
   /** {@inheritDoc}. The operation is logged. */
   @Override
   public void remove(Project.NameKey project) throws GlobalRefDbSystemError {
-    sharedRefDb().remove(project);
-    sharedRefLogger.logProjectDelete(project.get());
+    try (Context context = metrics.startRemoveExecutionTime()) {
+      sharedRefDb().remove(project);
+      sharedRefLogger.logProjectDelete(project.get());
+    }
   }
 
   @Override
   public <T> Optional<T> get(Project.NameKey nameKey, String s, Class<T> clazz)
       throws GlobalRefDbSystemError {
-    return sharedRefDb().get(nameKey, s, clazz);
+    try (Context context = metrics.startGetExecutionTime()) {
+      return sharedRefDb().get(nameKey, s, clazz);
+    }
   }
 
   private GlobalRefDatabase sharedRefDb() {
