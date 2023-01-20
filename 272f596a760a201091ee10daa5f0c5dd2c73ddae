@@ -41,6 +41,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1851549c_891dcaa8",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDatabaseWrapper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2023-01-20T18:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bb9d2bf_ff921139",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 10
+      },
+      "revId": "272f596a760a201091ee10daa5f0c5dd2c73ddae",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "490625a9_1033e87b",
@@ -58,6 +82,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8ea0eb5_8950fcc1",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDatabaseWrapper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2023-01-20T18:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "490625a9_1033e87b",
+      "revId": "272f596a760a201091ee10daa5f0c5dd2c73ddae",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17b911f4_1d54be23",
@@ -71,6 +113,30 @@
       "writtenOn": "2023-01-20T17:38:54Z",
       "side": 1,
       "message": "`times(1)` can be omitted, here and everywhere in the tests.",
+      "range": {
+        "startLine": 57,
+        "startChar": 18,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "272f596a760a201091ee10daa5f0c5dd2c73ddae",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c049bc8_61547254",
+        "filename": "src/test/java/com/gerritforge/gerrit/globalrefdb/validation/SharedRefDatabaseWrapperTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2023-01-20T18:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17b911f4_1d54be23",
       "range": {
         "startLine": 57,
         "startChar": 18,
