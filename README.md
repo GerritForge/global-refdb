@@ -15,3 +15,8 @@ originated and was approved by the community.
 
 In order to consume this library, some Guice bindings need to be registered
 appropriately. More information in the relevant [documentation](./bindings.md).
+
+## Metrics
+
+Global ref-database expose metrics to measure the global ref-database operation latency.
+List of the available metrics can be found [here](./metrics.md).
