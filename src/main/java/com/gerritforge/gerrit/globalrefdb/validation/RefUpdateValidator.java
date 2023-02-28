@@ -159,16 +159,15 @@ public class RefUpdateValidator {
 
   private Boolean isRefToBeIgnored(String refName) {
     Boolean isRefToBeIgnored = ignoredRefs.contains(refName);
-    logger.atFine().log("Is project version update? " + isRefToBeIgnored);
+    logger.atFine().log("Is project version update? %s", isRefToBeIgnored);
     return isRefToBeIgnored;
   }
 
   private <T extends Throwable> void softFailBasedOnEnforcement(T e, EnforcePolicy policy)
       throws T {
     logger.atWarning().withCause(e).log(
-        String.format(
-            "Failure while running with policy enforcement %s. Error message: %s",
-            policy, e.getMessage()));
+        "Failure while running with policy enforcement %s. Error message: %s",
+        policy, e.getMessage());
     if (policy == EnforcePolicy.REQUIRED) {
       throw e;
     }
@@ -176,7 +175,7 @@ public class RefUpdateValidator {
 
   protected Boolean isGlobalProject(String projectName) {
     Boolean isGlobalProject = projectsFilter.matches(projectName);
-    logger.atFine().log("Is global project? " + isGlobalProject);
+    logger.atFine().log("Is global project? %s", isGlobalProject);
     return isGlobalProject;
   }
 
@@ -199,14 +198,13 @@ public class RefUpdateValidator {
           result = RefUpdate.Result.LOCK_FAILURE;
         }
         logger.atSevere().withCause(e).log(
-            String.format(
-                "Failed to update global refdb, the local refdb has been rolled back: %s",
-                e.getMessage()));
+            "Failed to update global refdb, the local refdb has been rolled back: %s",
+            e.getMessage());
       }
       return result;
     } catch (OutOfSyncException e) {
       logger.atWarning().withCause(e).log(
-          String.format("Local node is out of sync with ref-db: %s", e.getMessage()));
+          "Local node is out of sync with ref-db: %s", e.getMessage());
 
       return RefUpdate.Result.LOCK_FAILURE;
     }
