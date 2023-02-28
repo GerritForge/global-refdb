@@ -149,8 +149,6 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
               .map(refPair -> String.format("Failed to fetch ref %s", refPair.compareRef.getName()))
               .collect(Collectors.joining(", "));
       Exception firstFailureException = refsFailures.get(0).exception;
-
-      logger.atSevere().withCause(firstFailureException).log(allFailuresMessage);
       throw new IOException(allFailuresMessage, firstFailureException);
     }
 
@@ -162,17 +160,17 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
       } catch (Exception e) {
         List<ReceiveCommand> receiveCommands = batchRefUpdate.getCommands();
         logger.atWarning().withCause(e).log(
-            String.format(
-                "Batch ref-update failing because of failure during the global refdb update. Set all commands Result to LOCK_FAILURE [%d]",
-                receiveCommands.size()));
+            "Batch ref-update failing because of failure during the global refdb update. Set"
+                + " all commands Result to LOCK_FAILURE [%d]",
+            receiveCommands.size());
         rollback(delegateUpdateRollback, finalRefsToUpdate, receiveCommands);
       }
     } catch (OutOfSyncException e) {
       List<ReceiveCommand> receiveCommands = batchRefUpdate.getCommands();
       logger.atWarning().withCause(e).log(
-          String.format(
-              "Batch ref-update failing because node is out of sync with the shared ref-db. Set all commands Result to LOCK_FAILURE [%d]",
-              receiveCommands.size()));
+          "Batch ref-update failing because node is out of sync with the shared ref-db. Set all"
+              + " commands Result to LOCK_FAILURE [%d]",
+          receiveCommands.size());
       receiveCommands.forEach((command) -> command.setResult(ReceiveCommand.Result.LOCK_FAILURE));
     }
   }
