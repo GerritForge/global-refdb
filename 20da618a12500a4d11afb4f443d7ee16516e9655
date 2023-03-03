@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2782252_d7476b4a",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1020922
+      },
+      "writtenOn": "2023-03-03T11:15:19Z",
+      "side": 1,
+      "message": "The variable is returned in the function though, so that would need to be calculated in any case.",
+      "parentUuid": "2283aa0e_3c0f788e",
+      "revId": "20da618a12500a4d11afb4f443d7ee16516e9655",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9013b91_3fdb7405",
         "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2023-03-03T10:33:50Z",
       "side": 1,
       "message": "I think withCause(e) already logs the error message, so this seems unnecessary duplication",
+      "range": {
+        "startLine": 169,
+        "startChar": 59,
+        "endLine": 169,
+        "endChar": 76
+      },
+      "revId": "20da618a12500a4d11afb4f443d7ee16516e9655",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83415956_dc3d6c2b",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1020922
+      },
+      "writtenOn": "2023-03-03T11:15:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9013b91_3fdb7405",
       "range": {
         "startLine": 169,
         "startChar": 59,
@@ -64,6 +106,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f84d34bb_88c10dde",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1020922
+      },
+      "writtenOn": "2023-03-03T11:15:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c3d8857_5611d1b0",
+      "range": {
+        "startLine": 202,
+        "startChar": 12,
+        "endLine": 202,
+        "endChar": 26
+      },
+      "revId": "20da618a12500a4d11afb4f443d7ee16516e9655",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43fc0eb7_bf68df6c",
@@ -77,6 +143,30 @@
       "writtenOn": "2023-03-03T10:33:50Z",
       "side": 1,
       "message": "I think withCause(e) already logs the error message, so this seems unnecessary duplication",
+      "range": {
+        "startLine": 207,
+        "startChar": 55,
+        "endLine": 207,
+        "endChar": 69
+      },
+      "revId": "20da618a12500a4d11afb4f443d7ee16516e9655",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e84b4686_09ee4798",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1020922
+      },
+      "writtenOn": "2023-03-03T11:15:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43fc0eb7_bf68df6c",
       "range": {
         "startLine": 207,
         "startChar": 55,
