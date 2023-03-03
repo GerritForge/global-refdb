@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2283aa0e_3c0f788e",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000671
+      },
+      "writtenOn": "2023-03-03T10:33:50Z",
+      "side": 1,
+      "message": "This way the formatting effort is already spent here and it\u0027s not skipped if the logger is off. Use one of the approaches described in https://google.github.io/flogger/best_practice.html#avoid-work to avoid this unnecessary work in case the logger is off.",
+      "revId": "20da618a12500a4d11afb4f443d7ee16516e9655",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9013b91_3fdb7405",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000671
+      },
+      "writtenOn": "2023-03-03T10:33:50Z",
+      "side": 1,
+      "message": "I think withCause(e) already logs the error message, so this seems unnecessary duplication",
+      "range": {
+        "startLine": 169,
+        "startChar": 59,
+        "endLine": 169,
+        "endChar": 76
+      },
+      "revId": "20da618a12500a4d11afb4f443d7ee16516e9655",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c3d8857_5611d1b0",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000671
+      },
+      "writtenOn": "2023-03-03T10:33:50Z",
+      "side": 1,
+      "message": "I think withCause(e) already logs the error message, so this seems unnecessary duplication",
+      "range": {
+        "startLine": 202,
+        "startChar": 12,
+        "endLine": 202,
+        "endChar": 26
+      },
+      "revId": "20da618a12500a4d11afb4f443d7ee16516e9655",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43fc0eb7_bf68df6c",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/RefUpdateValidator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000671
+      },
+      "writtenOn": "2023-03-03T10:33:50Z",
+      "side": 1,
+      "message": "I think withCause(e) already logs the error message, so this seems unnecessary duplication",
+      "range": {
+        "startLine": 207,
+        "startChar": 55,
+        "endLine": 207,
+        "endChar": 69
+      },
+      "revId": "20da618a12500a4d11afb4f443d7ee16516e9655",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
