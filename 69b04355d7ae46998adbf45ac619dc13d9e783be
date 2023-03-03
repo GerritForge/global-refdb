@@ -51,6 +51,24 @@
       "message": "This is tricking errorprone to not report the problem but not fixing it, instead avoid computing the formatted string in line 147 but put the format string as first parameter of this call to log() and add the parameters as additional parameters.\n\nAlternatively you can use lazy invocation using a lambda to avoid computing the formatted string if the logger is switched off, see https://google.github.io/flogger/best_practice.html\nwith that you can use the code from lines 148-150 without incurring the overhead if the logger is off.",
       "revId": "69b04355d7ae46998adbf45ac619dc13d9e783be",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99ce49b4_e7d28d52",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/BatchRefUpdateValidator.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1020922
+      },
+      "writtenOn": "2023-03-03T09:21:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c2baf63_8bbb1f06",
+      "revId": "69b04355d7ae46998adbf45ac619dc13d9e783be",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
