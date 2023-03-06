@@ -150,7 +150,6 @@ public class BatchRefUpdateValidator extends RefUpdateValidator {
               .collect(Collectors.joining(", "));
       Exception firstFailureException = refsFailures.get(0).exception;
 
-      logger.atSevere().withCause(firstFailureException).log(allFailuresMessage);
       throw new IOException(allFailuresMessage, firstFailureException);
     }
 
