@@ -216,12 +216,6 @@ public class RefUpdateValidator {
         refEnforcement.getPolicy(projectName, refPair.getName());
     if (refEnforcementPolicy == EnforcePolicy.IGNORED) return;
 
-    String errorMessage =
-        String.format(
-            "Not able to persist the data in Zookeeper for project '%s' and ref '%s',"
-                + "the cluster is now in Split Brain since the commit has been "
-                + "persisted locally but not in SharedRef the value %s",
-            projectName, refPair.getName(), refPair.putValue);
     boolean succeeded;
     try {
       succeeded =
@@ -235,6 +229,12 @@ public class RefUpdateValidator {
     }
 
     if (!succeeded) {
+      String errorMessage =
+          String.format(
+              "Not able to persist the data in Zookeeper for project '%s' and ref '%s',"
+                  + "the cluster is now in Split Brain since the commit has been "
+                  + "persisted locally but not in SharedRef the value %s",
+              projectName, refPair.getName(), refPair.putValue);
       throw new SharedDbSplitBrainException(errorMessage);
     }
   }
