@@ -22,6 +22,29 @@
       },
       "revId": "c601d3a2582b220b0b1b420b50ed1a66157a9740",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1912b640_552dd6f7",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/BatchRefUpdateValidator.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000671
+      },
+      "writtenOn": "2023-03-06T20:25:08Z",
+      "side": 0,
+      "message": "I don\u0027t understand, the same message is set for the IOException and firstFailureException is wrapped, so which information logged in line 153 is not available in this IOException ?",
+      "range": {
+        "startLine": 154,
+        "startChar": 28,
+        "endLine": 154,
+        "endChar": 46
+      },
+      "revId": "c601d3a2582b220b0b1b420b50ed1a66157a9740",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
