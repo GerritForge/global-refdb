@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7aebfd7_e3cada90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-03-06T17:51:52Z",
+      "side": 1,
+      "message": "I\u0027d prefer to silent error-prone on this: the information logged is useful and it is not just logging the exception.",
+      "revId": "f671f8ca4adb923bb80a11c4aba0c93eef4877e5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

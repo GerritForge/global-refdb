@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8cbb8c6_a00d7bd9",
+        "filename": "src/main/java/com/gerritforge/gerrit/globalrefdb/validation/BatchRefUpdateValidator.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-03-06T17:51:52Z",
+      "side": 0,
+      "message": "This is useful information to log and is not part of the exception thrown.",
+      "range": {
+        "startLine": 153,
+        "startChar": 61,
+        "endLine": 153,
+        "endChar": 79
+      },
+      "revId": "c601d3a2582b220b0b1b420b50ed1a66157a9740",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
