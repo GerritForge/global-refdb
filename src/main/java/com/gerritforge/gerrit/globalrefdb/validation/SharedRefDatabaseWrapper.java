@@ -19,6 +19,7 @@ import com.gerritforge.gerrit.globalrefdb.GlobalRefDbLockException;
 import com.gerritforge.gerrit.globalrefdb.GlobalRefDbSystemError;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.NoopSharedRefDatabase;
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.entities.Project;
 import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.gerrit.metrics.Timer0.Context;
@@ -33,6 +34,7 @@ import org.eclipse.jgit.lib.Ref;
  * {@link NoopSharedRefDatabase} instance is wrapped instead.
  */
 public class SharedRefDatabaseWrapper implements GlobalRefDatabase {
+  private static final FluentLogger log = FluentLogger.forEnclosingClass();
   private static final GlobalRefDatabase NOOP_REFDB = new NoopSharedRefDatabase();
 
   @Inject(optional = true)
@@ -131,6 +133,16 @@ public class SharedRefDatabaseWrapper implements GlobalRefDatabase {
   }
 
   private GlobalRefDatabase sharedRefDb() {
-    return Optional.ofNullable(sharedRefDbDynamicItem).map(di -> di.get()).orElse(NOOP_REFDB);
+    if (sharedRefDbDynamicItem == null) {
+      log.atWarning().log("DynamicItem<GlobalRefDatabase> has not been injected");
+    }
+
+    return Optional.ofNullable(sharedRefDbDynamicItem)
+        .map(di -> di.get())
+        .orElseGet(
+            () -> {
+              log.atWarning().log("Using NOOP_REFDB");
+              return NOOP_REFDB;
+            });
   }
 }
