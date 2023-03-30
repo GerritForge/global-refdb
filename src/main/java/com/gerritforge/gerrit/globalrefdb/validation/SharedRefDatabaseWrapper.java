@@ -24,6 +24,7 @@ import com.google.gerrit.entities.Project;
 import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.gerrit.metrics.Timer0.Context;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import java.util.Optional;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
@@ -33,6 +34,7 @@ import org.eclipse.jgit.lib.Ref;
  * binding. Such instance is bound optionally and, in case no explicit binding is registered a
  * {@link NoopSharedRefDatabase} instance is wrapped instead.
  */
+@Singleton
 public class SharedRefDatabaseWrapper implements GlobalRefDatabase {
   private static final FluentLogger log = FluentLogger.forEnclosingClass();
   private static final GlobalRefDatabase NOOP_REFDB = new NoopSharedRefDatabase();
