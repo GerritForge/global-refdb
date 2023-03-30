@@ -93,7 +93,7 @@ public class RefUpdateValidatorTest implements RefFixture {
   @Test
   public void validationShouldSucceedWhenSharedRefDbIsNoop() throws Exception {
     SharedRefDatabaseWrapper noopSharedRefDbWrapper =
-        new SharedRefDatabaseWrapper(sharedRefLogger, sharedRefDBMetrics);
+        new SharedRefDatabaseWrapper(null, sharedRefLogger, sharedRefDBMetrics);
 
     Result result =
         newRefUpdateValidator(noopSharedRefDbWrapper)

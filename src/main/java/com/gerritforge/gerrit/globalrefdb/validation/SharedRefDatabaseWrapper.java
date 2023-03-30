@@ -18,7 +18,6 @@ import com.gerritforge.gerrit.globalrefdb.GlobalRefDatabase;
 import com.gerritforge.gerrit.globalrefdb.GlobalRefDbLockException;
 import com.gerritforge.gerrit.globalrefdb.GlobalRefDbSystemError;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.NoopSharedRefDatabase;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.entities.Project;
 import com.google.gerrit.extensions.registration.DynamicItem;
@@ -52,17 +51,12 @@ public class SharedRefDatabaseWrapper implements GlobalRefDatabase {
    * @param sharedRefLogger logger of shared ref-db operations.
    */
   @Inject
-  public SharedRefDatabaseWrapper(SharedRefLogger sharedRefLogger, SharedRefDBMetrics metrics) {
-    this.sharedRefLogger = sharedRefLogger;
-    this.metrics = metrics;
-  }
-
-  @VisibleForTesting
   public SharedRefDatabaseWrapper(
       DynamicItem<GlobalRefDatabase> sharedRefDbDynamicItem,
       SharedRefLogger sharedRefLogger,
       SharedRefDBMetrics metrics) {
-    this(sharedRefLogger, metrics);
+    this.sharedRefLogger = sharedRefLogger;
+    this.metrics = metrics;
     this.sharedRefDbDynamicItem = sharedRefDbDynamicItem;
   }
 

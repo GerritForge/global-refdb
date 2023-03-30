@@ -83,6 +83,7 @@ public class ValidationModuleTest extends LightweightPluginDaemonTest {
 
     @Override
     protected void configure() {
+      install(new LibModule());
       ignoredRefs.ifPresent(
           ir ->
               bind(new TypeLiteral<Set<String>>() {})

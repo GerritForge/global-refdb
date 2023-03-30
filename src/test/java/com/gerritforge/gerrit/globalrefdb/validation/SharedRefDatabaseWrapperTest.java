@@ -47,7 +47,7 @@ public class SharedRefDatabaseWrapperTest {
     when(metrics.startExistsExecutionTime()).thenReturn(context);
     when(metrics.startIsUpToDateExecutionTime()).thenReturn(context);
     when(metrics.startRemoveExecutionTime()).thenReturn(context);
-    objectUnderTest = new SharedRefDatabaseWrapper(sharedRefLogger, metrics);
+    objectUnderTest = new SharedRefDatabaseWrapper(null, sharedRefLogger, metrics);
   }
 
   @Test
