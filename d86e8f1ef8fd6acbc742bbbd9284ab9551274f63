@@ -16,6 +16,24 @@
       "message": "Why there is no verification on this project? Can this be fixed?",
       "revId": "d86e8f1ef8fd6acbc742bbbd9284ab9551274f63",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d07d5ca_7aabc260",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-04-22T15:00:32Z",
+      "side": 1,
+      "message": "I\u0027ll propose to move the project to gerrit-review.googlesource.com so that we have proper visibility and validation.",
+      "parentUuid": "22a92347_408d9408",
+      "revId": "d86e8f1ef8fd6acbc742bbbd9284ab9551274f63",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
