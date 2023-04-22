@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22a92347_408d9408",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2023-04-22T14:58:33Z",
+      "side": 1,
+      "message": "Why there is no verification on this project? Can this be fixed?",
+      "revId": "d86e8f1ef8fd6acbc742bbbd9284ab9551274f63",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
