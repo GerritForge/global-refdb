@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2ae61f0_314d798b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-26T20:21:06Z",
+      "side": 1,
+      "message": "nit: line wrap.",
+      "range": {
+        "startLine": 9,
+        "startChar": 72,
+        "endLine": 9,
+        "endChar": 74
+      },
+      "revId": "1bdf1092eedeeea18b037eb65efb32e30318a7b2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d41bf65e_847ec71e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-26T20:21:06Z",
+      "side": 1,
+      "message": "Is it possible that we would end up in a split brain scenario for these refs that we\u0027re ignoring? Is the idea that sandbox and backup branches aren\u0027t important, so\nif split brain does happen then it can be dealt with separately?\n\nDo we want to schedule any clean-up activites for entries that are already in the global-ref-db but shouldn\u0027t be anymore? Just as a separate housekeeping activity.",
+      "revId": "1bdf1092eedeeea18b037eb65efb32e30318a7b2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
