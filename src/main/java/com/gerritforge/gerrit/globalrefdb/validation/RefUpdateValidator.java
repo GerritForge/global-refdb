@@ -158,8 +158,9 @@ public class RefUpdateValidator {
   }
 
   private Boolean isRefToBeIgnored(String refName) {
-    Boolean isRefToBeIgnored = ignoredRefs.contains(refName);
-    logger.atFine().log("Is project version update? " + isRefToBeIgnored);
+    Boolean isRefToBeIgnored =
+        ignoredRefs.stream().anyMatch(ignoredRefPrefix -> refName.startsWith(ignoredRefPrefix));
+    logger.atFine().log("Is ref to be ignored? " + isRefToBeIgnored);
     return isRefToBeIgnored;
   }
 
