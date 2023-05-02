@@ -4,7 +4,7 @@
 
     <groupId>com.gerritforge</groupId>
     <artifactId>global-refdb</artifactId>
-    <version>3.7.2</version>
+    <version>3.7.2.1</version>
     <packaging>jar</packaging>
 
     <name>global-refdb</name>
