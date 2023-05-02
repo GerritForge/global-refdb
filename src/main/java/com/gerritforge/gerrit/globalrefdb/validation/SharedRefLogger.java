@@ -14,9 +14,11 @@
 
 package com.gerritforge.gerrit.globalrefdb.validation;
 
+import com.google.inject.ImplementedBy;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
 
+@ImplementedBy(Log4jSharedRefLogger.class)
 public interface SharedRefLogger {
 
   /**
