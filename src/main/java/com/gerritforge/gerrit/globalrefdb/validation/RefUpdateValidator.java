@@ -158,17 +158,17 @@ public class RefUpdateValidator {
   }
 
   private Boolean isRefToBeIgnored(String refName) {
-    Boolean isRefToBeIgnored = ignoredRefs.contains(refName);
-    logger.atFine().log("Is project version update? " + isRefToBeIgnored);
+    Boolean isRefToBeIgnored =
+        ignoredRefs.stream().anyMatch(ignoredRefPrefix -> refName.startsWith(ignoredRefPrefix));
+    logger.atFine().log("Is project version update? %b", isRefToBeIgnored);
     return isRefToBeIgnored;
   }
 
   private <T extends Throwable> void softFailBasedOnEnforcement(T e, EnforcePolicy policy)
       throws T {
     logger.atWarning().withCause(e).log(
-        String.format(
-            "Failure while running with policy enforcement %s. Error message: %s",
-            policy, e.getMessage()));
+        "Failure while running with policy enforcement %s. Error message: %s",
+        policy, e.getMessage());
     if (policy == EnforcePolicy.REQUIRED) {
       throw e;
     }
@@ -176,7 +176,7 @@ public class RefUpdateValidator {
 
   protected Boolean isGlobalProject(String projectName) {
     Boolean isGlobalProject = projectsFilter.matches(projectName);
-    logger.atFine().log("Is global project? " + isGlobalProject);
+    logger.atFine().log("Is global project? %b", isGlobalProject);
     return isGlobalProject;
   }
 
@@ -199,14 +199,13 @@ public class RefUpdateValidator {
           result = RefUpdate.Result.LOCK_FAILURE;
         }
         logger.atSevere().withCause(e).log(
-            String.format(
-                "Failed to update global refdb, the local refdb has been rolled back: %s",
-                e.getMessage()));
+            "Failed to update global refdb, the local refdb has been rolled back: %s",
+            e.getMessage());
       }
       return result;
     } catch (OutOfSyncException e) {
       logger.atWarning().withCause(e).log(
-          String.format("Local node is out of sync with ref-db: %s", e.getMessage()));
+          "Local node is out of sync with ref-db: %s", e.getMessage());
 
       return RefUpdate.Result.LOCK_FAILURE;
     }
@@ -218,12 +217,6 @@ public class RefUpdateValidator {
         refEnforcement.getPolicy(projectName, refPair.getName());
     if (refEnforcementPolicy == EnforcePolicy.IGNORED) return;
 
-    String errorMessage =
-        String.format(
-            "Not able to persist the data in Zookeeper for project '%s' and ref '%s',"
-                + "the cluster is now in Split Brain since the commit has been "
-                + "persisted locally but not in SharedRef the value %s",
-            projectName, refPair.getName(), refPair.putValue);
     boolean succeeded;
     try {
       succeeded =
@@ -237,6 +230,12 @@ public class RefUpdateValidator {
     }
 
     if (!succeeded) {
+      String errorMessage =
+          String.format(
+              "Not able to persist the data in Zookeeper for project '%s' and ref '%s',"
+                  + "the cluster is now in Split Brain since the commit has been "
+                  + "persisted locally but not in SharedRef the value %s",
+              projectName, refPair.getName(), refPair.putValue);
       throw new SharedDbSplitBrainException(errorMessage);
     }
   }
