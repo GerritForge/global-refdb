@@ -19,10 +19,12 @@ import com.gerritforge.gerrit.globalrefdb.GlobalRefDbLockException;
 import com.gerritforge.gerrit.globalrefdb.GlobalRefDbSystemError;
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.NoopSharedRefDatabase;
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.entities.Project;
 import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.gerrit.metrics.Timer0.Context;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import java.util.Optional;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
@@ -32,7 +34,9 @@ import org.eclipse.jgit.lib.Ref;
  * binding. Such instance is bound optionally and, in case no explicit binding is registered a
  * {@link NoopSharedRefDatabase} instance is wrapped instead.
  */
+@Singleton
 public class SharedRefDatabaseWrapper implements GlobalRefDatabase {
+  private static final FluentLogger log = FluentLogger.forEnclosingClass();
   private static final GlobalRefDatabase NOOP_REFDB = new NoopSharedRefDatabase();
 
   @Inject(optional = true)
@@ -131,6 +135,16 @@ public class SharedRefDatabaseWrapper implements GlobalRefDatabase {
   }
 
   private GlobalRefDatabase sharedRefDb() {
-    return Optional.ofNullable(sharedRefDbDynamicItem).map(di -> di.get()).orElse(NOOP_REFDB);
+    if (sharedRefDbDynamicItem == null) {
+      log.atWarning().log("DynamicItem<GlobalRefDatabase> has not been injected");
+    }
+
+    return Optional.ofNullable(sharedRefDbDynamicItem)
+        .map(di -> di.get())
+        .orElseGet(
+            () -> {
+              log.atWarning().log("Using NOOP_REFDB");
+              return NOOP_REFDB;
+            });
   }
 }
