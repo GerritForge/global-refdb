@@ -21,6 +21,7 @@ import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedRefEnforceme
 import com.gerritforge.gerrit.globalrefdb.validation.dfsrefdb.SharedRefEnforcement.EnforcePolicy;
 import com.google.common.base.Supplier;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;
 import java.io.IOException;
@@ -102,9 +103,11 @@ public class SharedRefDbConfiguration {
     public static final String SECTION = "ref-database";
     public static final String ENABLE_KEY = "enabled";
     public static final String SUBSECTION_ENFORCEMENT_RULES = "enforcementRules";
+    public static final String IGNORED_REFS_PREFIXES = "ignoredRefsPrefixes";
 
     private final boolean enabled;
     private final Multimap<EnforcePolicy, String> enforcementRules;
+    private final ImmutableSet<String> ignoredRefsPrefixes;
 
     private SharedRefDatabase(Supplier<Config> cfg) {
       enabled = getBoolean(cfg, SECTION, null, ENABLE_KEY, false);
@@ -113,6 +116,8 @@ public class SharedRefDbConfiguration {
         enforcementRules.putAll(
             policy, getList(cfg, SECTION, SUBSECTION_ENFORCEMENT_RULES, policy.name()));
       }
+
+      ignoredRefsPrefixes = ImmutableSet.copyOf(getList(cfg, SECTION, null, IGNORED_REFS_PREFIXES));
     }
 
     /**
@@ -144,6 +149,16 @@ public class SharedRefDbConfiguration {
      */
     public Multimap<EnforcePolicy, String> getEnforcementRules() {
       return enforcementRules;
+    }
+
+    /**
+     * Returns the set of refs prefixes that are ignored during the validation and enforcement of
+     * the global refdb.
+     *
+     * @return Set of ignored prefixes of ignored refs
+     */
+    public ImmutableSet<String> getIgnoredRefsPrefixes() {
+      return ignoredRefsPrefixes;
     }
 
     private List<String> getList(
